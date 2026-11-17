@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.6.1...v0.7.0) (2026-11-17)
+
+
+### Features
+
+* ikb: a leaner page (no type or optional on every option) and the first release measured ([#24](https://github.com/grenudi/ideal-knowledge-base/issues/24)) ([52d8d49](https://github.com/grenudi/ideal-knowledge-base/commit/52d8d4977f3459a3f8f07cca762474949dbb5cdb))
+
 ## [0.6.1](https://github.com/grenudi/ideal-knowledge-base/compare/v0.6.0...v0.6.1) (2026-11-17)
 
 
