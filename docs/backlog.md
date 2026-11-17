@@ -230,13 +230,10 @@ Opened
 ### ideal-agent's guard refuses tad sql writes and says ikb set / ikb remove
 
 Status
-: open
+: done
 
 Note
-: For the roles session (owner of ideal-agent's hooks): the guard already refuses python; a tad sql with INSERT, UPDATE or DELETE can say: use ikb set / ikb remove / the record.
-
-Waits
-: ikb 0.5 released
+: Done by the roles session: ideal-agent 0.3.18 refuses tad sql writes and answers with ikb set / ikb remove (decision 2026-11-17-the-guard-refuses-tad-sql-writes in grenudi/ideal-agent); TAD_SQL_WRITE_OK=1 lets a one-time migration through.
 
 About
 : ikb
