@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.2](https://github.com/grenudi/ideal-knowledge-base/compare/ikb-v0.5.1...ikb-v0.5.2) (2026-11-17)
+
+
+### Bug Fixes
+
+* ikb: --help says every command, records and fixed ones alike ([#54](https://github.com/grenudi/ideal-knowledge-base/issues/54)) ([599de84](https://github.com/grenudi/ideal-knowledge-base/commit/599de8467a79c0657d21fdf9184aa75cb7848dee))
+
 ## [0.5.1](https://github.com/grenudi/ideal-knowledge-base/compare/ikb-v0.5.0...ikb-v0.5.1) (2026-11-17)
 
 
