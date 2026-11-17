@@ -2,7 +2,7 @@
 
 How a knowledge base is organised so that an agent answers by one query. This base describes itself: its concepts
 (the practices of organising knowledge; `tad q about` lists them), the decisions and research behind them, and the work ahead.
-Setup once: `./bin/install-tad.sh && tad engine`.
+Setup once: `./bin/install-tad.sh && tad engine && sh bin/install-ikb.sh`. To record, read `IKB.md`.
 
 <!-- idealkb:begin - kept by grenudi/ideal-knowledge-base at the release idealkb.toml names: change it there -->
 ## Finding what is known
@@ -23,12 +23,8 @@ its first paragraph, another subject, `tad statements` - only when a step needs 
 with `--format csv`.
 
 ## Recording
-Through the named records, never by hand: `tad r decision` (with what was rejected), `tad r research`,
-`tad r source`, `tad r backlog`, `tad r session-log` - each naming what it is about (`--about`), a decision
-and a research with its brief (`--brief`, the record in one line; the title is the brief of the rest). Then
-`tad canon && tad render`, and land. Where `tad q about` says a summary is due for a subject you recorded
-into, renew it: `tad r summary --about S --says ...` - how it stands now, naming the records that carry it.
+Read `IKB.md`: every record of this base with its options, written from its `records/*.sql`. Record with `ikb RECORD --option value` (`ikb help` lists them; `sh bin/install-ikb.sh` once installs it): long text from a file or stdin (`--found @-`), the id made from the brief, canon and render done after - never SQL, never by hand. Each record names what it is about (`--about`) and, for a decision or a research, its brief (the record in one line; the title is the brief of the rest), then land. Where `tad q about` says a summary is due for a subject you recorded into, renew it: `ikb summary --about S --says ...` - how it stands now, naming the records that carry it.
 A thing there are many of with one shape is a row; prose read once in order is a file (README, this entry,
 a brief), and a file opens with its own brief: its first paragraph says what it holds. Research is both: its finding a row, its own material - notes, excerpts, measurements - a dated
-folder the row names (`--material research/SUBJECT/YYYY-MM-DD/`); redone, a new row `--supersedes` the old.
+folder the row names (`--material auto` makes `research/ABOUT/DATE/`); redone, a new row `--supersedes` the old.
 <!-- idealkb:end -->

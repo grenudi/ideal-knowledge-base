@@ -1,0 +1,18 @@
+[package]
+name = "ikb"
+version = "0.0.0"
+edition = "2021"
+description = "Record into a knowledge base by domain commands read from its own records/*.sql: one man page is all an agent needs"
+license = "MIT"
+publish = false
+
+[[bin]]
+name = "ikb"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1"
+argenv = "0.4"
+argenv-resolve = "0.4"
+toml = "0.8"
+tad = { git = "https://github.com/creation-guidelines/tad-engine", tag = "tad-v0.7.0" }

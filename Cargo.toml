@@ -1,0 +1,4 @@
+# ikb, the Rust command, lives in ikb/; this workspace lets the release conveyor build it from the root.
+[workspace]
+members = ["ikb"]
+resolver = "2"

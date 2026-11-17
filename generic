@@ -14,3 +14,4 @@ records/source.sql
 records/summary.sql
 AGENTS.md
 tables.toml
+bin/install-ikb.sh
