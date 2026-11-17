@@ -201,7 +201,7 @@ Status
 : in-progress
 
 Note
-: Tables, records upstream/upstream-item/upstream-state, queries upstream/upstreams built in idealkb. Next: release, docs follows (seed upstreams and the six upstream-* items; patches stay files), ideal-agent skill says how to find and choose an upstream, recorded the dated way.
+: Released: idealkb 0.8.1 (pending pin), ikb 0.3.0. docs declares the tables (#217). Next: docs follows and migrates upstream-queue's six items (patches stay files); ideal-agent skill: how to find and choose an upstream.
 
 About
 : ikb
