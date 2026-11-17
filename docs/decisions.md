@@ -286,3 +286,28 @@ About
 
 Research
 : ikb-friction-and-world
+
+
+<a id="2026-11-17-no-ikb-md"></a>
+### 2026-11-17-no-ikb-md
+
+Date
+: 2026-11-17
+
+Brief
+: IKB.md is not kept anywhere; ikb page only prints; help, man page and completions are generated on demand.
+
+Decision
+: IKB.md is not kept in any base. `ikb page` only prints the one page (for people: `ikb page > page.md`); the `--write` option is gone, docs' verify no longer refreshes it, AGENTS.md points at `ikb --help` and `ikb help RECORD`. The man page, the help, the page and the completions are all generated on demand from the records, never stored.
+
+Why
+: Nothing read it that the help does not serve: agents go to ikb help RECORD, people can open the record headers in records/*.sql on GitHub or run ikb page, CI checks nothing about it. A committed copy of every record header drifts with each record and each wording change (five regenerations in a day), adds a 9-13 KB file to the read path wherever a skill points at it, and needs ikb in CI to be kept honest, which the orchestration rightly refuses. The author doubted the file needs to exist; the measurement agrees.
+
+Rejected
+: Keep IKB.md as a committed page for people, refreshed by verify: a drifting duplicate of the SQL headers, and only honest when ikb runs in CI. Generate it at publish time into the Pages site: no one asked for it there; ikb page can feed it if someone does. Keep `ikb page --write`: a writer of a file nobody reads. Hand-writing any of it: the man page, help, page and completions come from the records.
+
+About
+: ikb
+
+Research
+: ikb-page-file-readers

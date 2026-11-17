@@ -9,7 +9,7 @@ pub const FIXED: &[(&str, &str)] = &[
     ("help", "this list, or one record's options (help RECORD)"),
     (
         "page",
-        "IKB.md, the browsable page for people (--write writes it beside tables.toml)",
+        "every record and query on one page, printed (ikb page > page.md for people to browse)",
     ),
     ("man", "the man page"),
     (
