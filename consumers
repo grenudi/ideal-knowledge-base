@@ -1,3 +1,4 @@
 # The knowledge bases that follow ideal-knowledge-base, each pinning a release in its idealkb.toml;
 # bin/update-pins.sh now keeps them current, landing a change their own CI must pass.
 linux-phone-oco/docs
+grenudi/ideal-agent
