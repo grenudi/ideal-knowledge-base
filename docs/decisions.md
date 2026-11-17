@@ -145,3 +145,25 @@ About
 
 Research
 : research-aside-world
+
+
+<a id="2026-11-17-brief-first"></a>
+### 2026-11-17-brief-first
+
+Date
+: 2026-11-17
+
+Brief
+: Every record has a one-line brief and every answer gives briefs; the whole is read only when the task needs it.
+
+Decision
+: Decisions and research gain brief, the record in one line of at most 200 characters, required by their named records (a longer one is refused); work, the log and sources have their title as brief. about, find and recent answer with briefs - where an older record has none, the first sentence of what it says - and about --whole true, row --id give the whole. A file opens with its brief, its first paragraph. AGENTS.md's generic part says to read briefs first and deeper only when the task needs it. A follower takes it with the pin; a base that names about.sql its own (linux-phone-oco/docs) carries the change to its own copy.
+
+Why
+: The author, 2026-11-17, through ideal-agent: records - tables and files - should all have a brief summary to begin with, read by default; more detail only when the task needs it. Measured here: one subject's about answer 1,965 bytes whole, 273 by briefs.
+
+Rejected
+: A brief only per subject (the summary layer condenses a subject, but each record still came whole in every answer). Cutting answers at a fixed width, as find and recent did with 100 characters (a cut is not a brief: it ends mid-word and says less than a sentence). A brief field on every table (work, the log and sources already open with a title that is their brief: a second one would say the same). Briefs filled by a program from the text (the first sentence stands in only for records written before; a brief is written by whoever records, who knows what matters).
+
+About
+: brief-first

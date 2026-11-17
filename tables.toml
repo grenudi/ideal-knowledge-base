@@ -133,6 +133,11 @@ name = "date"
 type = "date"
 required = true
 
+# its brief: the record in one line, at most 200 characters - what an answer shows unless the whole is asked
+[[tables.decisions.fields]]
+name = "brief"
+type = "string"
+
 [[tables.decisions.fields]]
 name = "decision"
 type = "string"
@@ -168,6 +173,11 @@ pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
 name = "date"
 type = "date"
 required = true
+
+# its brief: the record in one line, at most 200 characters - what an answer shows unless the whole is asked
+[[tables.research.fields]]
+name = "brief"
+type = "string"
 
 [[tables.research.fields]]
 name = "question"
