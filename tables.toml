@@ -260,6 +260,10 @@ name = "year"
 type = "integer"
 
 [[tables.sources.fields]]
+name = "by"
+type = "string"
+
+[[tables.sources.fields]]
 name = "takes"
 type = "string"
 # idealkb:end

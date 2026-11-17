@@ -99,13 +99,29 @@ Opened
 ### grenudi/ideal-agent follows ideal-knowledge-base: a single-place base, the closest to the generic shape
 
 Status
-: in-progress
+: done
 
 Note
-: Taken up by summary-and-research-layers on 2026-11-17: ideal-agent follows idealkb 0.2.0 once it is released (its about field on the record tables, its references rule, follow.sh).
+: Taken up by summary-and-research-layers on 2026-11-17: ideal-agent follows idealkb 0.2.0 once it is released (its about field on the record tables, its references rule, follow.sh). Done 2026-11-17: grenudi/ideal-agent #7 follows 0.1.0 - a subjects table about names, about on every record; its own records stay own.
 
 About
 : follow-by-pin
+
+Opened
+: 2026-11-17
+
+
+<a id="about-names-any-subject-table"></a>
+### The observatory's reasoning lens accepts any table a base's references rule names for about
+
+Status
+: open
+
+Note
+: Sign from ideal-agent's follow (2026-11-17): ocoeco's language limits decisions.about to milestones, concepts, backlog, components, features and devices, so a base whose subjects are a table of its own fails ocoeco check; subjects was added by hand (ocoeco #458). A base with another subject table meets it again. Belongs to ocoeco's language: read about's targets from the base's own rule.
+
+About
+: about-link
 
 Opened
 : 2026-11-17

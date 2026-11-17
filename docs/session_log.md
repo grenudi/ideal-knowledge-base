@@ -40,3 +40,21 @@ Rejected
 
 About
 : summary-layer
+
+---
+
+
+<a id="2026-11-17-sources-by"></a>
+### sources keep who made what they describe
+
+Entry date
+: 2026-11-17
+
+Done
+: Both followers kept a by on their sources (docs as a field, ideal-agent folded it into takes): the generic sources table and the source record take an optional by. Optional, so a base that follows gains the field with no row changed.
+
+Rejected
+: Leaving it to each base (two of two needed it).
+
+About
+: standing-tables

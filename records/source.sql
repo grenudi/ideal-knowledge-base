@@ -4,7 +4,8 @@
 -- --url     string    https://...
 -- --author  string?   who wrote it
 -- --year    integer?  when
+-- --by      string?   who made what it describes
 -- --takes   string?   what is taken from it
 DELETE FROM sources WHERE id = $id;
-INSERT INTO sources (id, title, url, author, year, takes)
-VALUES ($id, $title, $url, $author, $year, $takes);
+INSERT INTO sources (id, title, url, author, year, "by", takes)
+VALUES ($id, $title, $url, $author, $year, $by, $takes);
