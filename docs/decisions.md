@@ -189,3 +189,25 @@ Rejected
 
 About
 : follow-by-pin
+
+
+<a id="2026-11-17-ask-the-task-only"></a>
+### 2026-11-17-ask-the-task-only
+
+Date
+: 2026-11-17
+
+Brief
+: At a task's start an agent asks only about the task's subject and acts; deeper reading only when a step needs it.
+
+Decision
+: AGENTS.md's generic part says: at a task's start ask only about its subject (about --subject S, or next --about S) and act; a record whole, a file past its first paragraph, another subject or the list of statements only when a step needs more.
+
+Why
+: The author, 2026-11-17: an agent reads only summaries and goes into detail only when its current task needs it. Measured on surya's second keeper (ideal-agent research what-a-started-agent-reads): of 33.5 KB read before its first act, 12.1 KB was tad's help and 9.4 KB one subject whole.
+
+Rejected
+: A list of what not to read (an agent reads what it is pointed at; the entry points at the one question to ask first).
+
+About
+: brief-first

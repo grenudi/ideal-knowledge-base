@@ -6,7 +6,7 @@ How a knowledge base is organised so that an agent, or a person, answers a quest
 
 - [Backlog](backlog.md): 9
 - [Concepts](concepts.md): 10
-- [Decisions](decisions.md): 9
+- [Decisions](decisions.md): 10
 - [Research](research.md): 5
 - [Session Log](session_log.md): 3
 - [Sources](sources.md): 30

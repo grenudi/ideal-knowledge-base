@@ -17,8 +17,10 @@ Ask a query; never read `data/` or `docs/` to answer - they are the database's f
 | what was recorded lately | `tad q recent` (`--days N`) |
 | anything else | `tad statements`: every query and record, with its parameters |
 
-Every answer gives each record by its brief, its one line. Read deeper - `row --id`, `--whole true`, a file
-past its first paragraph - only when the task needs more. Long answers read best with `--format csv`.
+At a task's start ask only about its subject (`about --subject S`, or `next --about S`) and act. Every
+answer gives each record by its brief, its one line. Read deeper - `row --id`, `--whole true`, a file past
+its first paragraph, another subject, `tad statements` - only when a step needs more. Long answers read best
+with `--format csv`.
 
 ## Recording
 Through the named records, never by hand: `tad r decision` (with what was rejected), `tad r research`,
