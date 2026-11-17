@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/grenudi/ideal-knowledge-base/compare/ikb-v0.2.0...ikb-v0.3.0) (2026-11-17)
+
+
+### Features
+
+* ikb: upstream records - where knowledge can flow, what is sent, one shape ([#28](https://github.com/grenudi/ideal-knowledge-base/issues/28)) ([5d44fc0](https://github.com/grenudi/ideal-knowledge-base/commit/5d44fc0331f9ab468cad5907a3ad2f2e7af7f357))
+
 ## [0.2.0](https://github.com/grenudi/ideal-knowledge-base/compare/ikb-v0.1.1...ikb-v0.2.0) (2026-11-17)
 
 
