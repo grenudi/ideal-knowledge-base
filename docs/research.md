@@ -242,3 +242,25 @@ About
 
 Material
 : research/chain-follow/2026-11-17/
+
+
+<a id="stale-waits"></a>
+### stale-waits
+
+Date
+: 2026-11-17
+
+Brief
+: Three phone-lane stalls today came from waits typed as text: an empty string and two items still waiting on a done item.
+
+Question
+: How should an item's wait be kept so that it clears when what it waits on is done?
+
+Found
+: Three stalls on 2026-11-17 (the Top Coordinator): an empty string read as waiting, twice a wait on an already-done item; each re-entered by hand. In the device bases the waits that are plainly item ids: surya-lab 3 rows, google-walleye-lab 8; others are prose mentioning ids or outside things. tad has no rule for a list of references or an either/or pair, so the check is in the records. Also found: the tad library 0.7.0 behind ikb read a reference by the field id, so ikb set refused rows of a table keyed by another field (parts); tad 0.7.1 fixes it and ikb now links 0.7.1. Not measured: how many of docs' own waits would clear.
+
+Sources
+: git-notes
+
+About
+: ikb

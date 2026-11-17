@@ -272,3 +272,19 @@ About
 
 Opened
 : 2026-11-17
+
+
+<a id="blocked-by-everywhere"></a>
+### blocked_by in docs' own lane queries and in idealkb's generic backlog once every base carries it
+
+Status
+: open
+
+Note
+: Landed in device-template, surya-lab, google-walleye-lab. docs: lane-next, phone-next, phone-queue and its backlog table (keyed project, id) take the same shape if its lanes still read waits; then the generic backlog and next query.
+
+About
+: ikb
+
+Opened
+: 2026-11-17
