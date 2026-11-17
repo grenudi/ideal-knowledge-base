@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.3](https://github.com/grenudi/ideal-knowledge-base/compare/v0.10.2...v0.10.3) (2026-11-17)
+
+
+### Bug Fixes
+
+* ikb: the installer pins ikb 0.5.2 ([#56](https://github.com/grenudi/ideal-knowledge-base/issues/56)) ([ee1c2bf](https://github.com/grenudi/ideal-knowledge-base/commit/ee1c2bf673857a06a19568e6daa1a1ab1d388e81))
+
 ## [0.10.2](https://github.com/grenudi/ideal-knowledge-base/compare/v0.10.1...v0.10.2) (2026-11-17)
 
 
