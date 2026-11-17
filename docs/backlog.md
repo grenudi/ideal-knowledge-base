@@ -304,3 +304,19 @@ About
 
 Opened
 : 2026-11-17
+
+
+<a id="hardware-generic"></a>
+### Hardware as a generic idealkb part, if a second domain keeps lab hardware
+
+Status
+: open
+
+Note
+: Today one domain (linux-phone-oco): the hardware table is in docs and device-template (decision 2026-11-17-hardware-is-one-table-in-every-base in docs). Extract into idealkb's generic tables when a second base needs it.
+
+About
+: ikb
+
+Opened
+: 2026-11-17
