@@ -6,10 +6,10 @@
 ### linux-phone-oco/docs follows ideal-knowledge-base: pins it, takes its generic statements, and its AGENTS.md is the short entry
 
 Status
-: in-progress
+: done
 
 Note
-: Next: docs pins 0.1.0, takes next, find, row and recent, keeps about and its records with --project as its own, and its AGENTS.md comes under 3 KB; then the three questions of kb-navigation-measured are measured again.
+: Done 2026-11-17 (linux-phone-oco/docs #180): docs pins 0.1.0; next, find, row and recent are ours; its about query, its records (they take --project) and tables.toml are named own. AGENTS.md went from 7.9 KB to 2.1 KB. Measured again (docs research kb-navigation-remeasured): the modem question 0.2 KB, the microphone 15.9 KB as csv but 91 KB in tad's box format - compact-query-output is now the weight.
 
 About
 : follow-by-pin
@@ -70,7 +70,7 @@ Status
 : open
 
 Note
-: Measured in docs: tad q backlog printed 327 KB in its box format and 37 KB as csv. AGENTS.md says --format csv for now. Belongs upstream in tad (creation-guidelines/tad-engine).
+: Measured in docs: about --subject audio-mic is 15.9 KB as csv and 91 KB in tad's default box format, which pads every cell (tad q backlog: 37 KB against 327 KB). AGENTS.md says --format csv for now. Belongs upstream in tad (creation-guidelines/tad-engine): compact rows when stdout is not a terminal.
 
 About
 : generic-queries
@@ -83,10 +83,10 @@ Opened
 ### The lab machine runs bin/update-pins.sh now every week, as it does tad's
 
 Status
-: open
+: done
 
 Note
-: A systemd timer beside tad-update-pins in lab-machine.
+: Done 2026-11-17: lab-machine #28, systemd/idealkb-update-pins.timer (Mondays 07:00, after tad's), installed and active on the lab. tad's own pin job now reaches this base too (tad-engine #87).
 
 About
 : follow-by-pin
