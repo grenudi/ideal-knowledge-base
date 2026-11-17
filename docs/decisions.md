@@ -311,3 +311,28 @@ About
 
 Research
 : ikb-page-file-readers
+
+
+<a id="2026-11-17-commons-and-unit-bases"></a>
+### 2026-11-17-commons-and-unit-bases
+
+Date
+: 2026-11-17
+
+Brief
+: A commons base plus one open base per unit (device); the commons pulls and derives progress, never copies or types it.
+
+Decision
+: A commons base and one open base per unit (here: per device). 1. A device base (a repository made from device-template: surya-lab, google-walleye-lab, a third device) holds everything about that device: its queue (backlog with needs and waits), its log of tries, measurements (test_runs, test_results), decisions and research about that device, the sources it used, and its parts: one row per part of the device with a status, the evidence for it (a run id or link) and the date. It follows idealkb (pinned) and runs ikb like any base; its next item is its own `tad q next` (and `phone-queue` for its keeper). 2. docs holds only what helps every device: concepts, the components/features catalogue, the landscape, general decisions and research (dt-any-phone, how knowledge bases work), shared sources, the tests catalogue, the lab tooling (lab-tools), and a registry of devices (id, name, SoC, the address of its base, the template version). Support status and progress for a device are derived, never typed in docs: a feed record pulls each registered base's `parts` table over HTTPS in CI (feeds.yml), validates it against the contract the template declares, and fills support_status and feature_support with the device's own claim, its evidence link and its date; a device that has not declared a part, or whose base is unreachable or stale, shows "not known yet". docs never copies a device's queue, tries or measurements. 3. A third device is made from device-template (the template carries tables.toml, the idealkb pin, ikb, device.toml and tests); adding it to docs is one `ikb device` record with the base's address. 4. Moving today's mixed records: by the `device` field on backlog (docs 260) and by the project of the row - the rows of surya-lab and google-walleye-lab, docs' own device-named backlog/research/decisions/log, test_runs and test_results move to the device base, replayed record by record with their ids; general rows stay. A cross-reference from a device row to a docs concept is written `docs:ID` in text, since the references rule works within one base. 5. Lanes and launchers: a launcher for a device works in that device's repository and asks its base (`tad q next`, `lane-next` there); docs' lane-next stays only for the general queue; the observatory already reads each repository's oco.toml exports for the cross-device picture. 6. This supersedes decision 2026-11-17-one-database for devices only: docs and its lab tools stay one database; devices get theirs.
+
+Why
+: What is true of every large open project read: the commons holds schema, rules and process, each unit its own files and its own claim, and the commons derives by pulling - a status typed in both places drifts. Measured here: 40 of docs' own 81 backlog items, 34 of 49 research rows and 14 of 28 decisions name a device; test_results is 1.3 MB of docs' 2.0 MB; the keeper's landings every few minutes conflict whole-file in docs' data; a device is opened by other people as data (surya, walleye are forks of the template), and the author wants docs to hold only general knowledge useful to all devices. The `device` field and lane-next (docs 260) separate the lanes at no cost and stay until the move, but do not lighten docs or its conflicts.
+
+Rejected
+: Keeping one database with a device field and lane-next: tells lanes apart, leaves the weight, the keeper's conflicts and one commons holding every device's work - the author's clutter. Per-device status typed in docs and in the device (two copies): drifts. Embedding device repositories in docs as git submodules or subtrees: copies the work, history and drift in. A GitHub template repository with no link back: no way to bring later template changes (the idealkb pin carries the generic part; the rest is a backlog item). Deriving status from CI results only (option C): a phone cannot run in CI, most parts would stay unknown. A push from each device into docs: needs a credential in every device base and a writer in docs' data; pull needs none. Superseding one-database wholesale: its reasons (two tools writing one database, glimpse conflicts) still hold for docs and its tools, which stay one database.
+
+About
+: ikb
+
+Research
+: commons-and-unit-bases-world

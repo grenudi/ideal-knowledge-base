@@ -173,3 +173,25 @@ About
 
 Material
 : research/ikb/2026-11-17/
+
+
+<a id="commons-and-unit-bases-world"></a>
+### commons-and-unit-bases-world
+
+Date
+: 2026-11-17
+
+Brief
+: Open projects keep schema and process in the commons, each unit its own claim; the commons pulls and derives, never types status twice.
+
+Question
+: How should linux-phone-oco/docs split general knowledge from per-device work, and how does docs learn each device's progress?
+
+Found
+: Linux MAINTAINERS, devicetree bindings vs board dts, the Debian ports wiki, Renovate, GitHub templates and Copier show one shape: the commons holds schema, rules and process; each unit holds its files and its own claim of status in a fixed shape; the commons learns by pulling and derives a summary, with stale or missing units shown as not known. Hand-typed status in two places drifts (Debian's per-port pages), a GitHub template keeps no link back, and CI-derived status fails where hardware cannot run in CI. Here docs holds 2.0 MB (test_results 1.3 MB) and, in its own project, 40 of 81 backlog items, 34 of 49 research rows and 14 of 28 decisions name a device; the keeper's landings conflict whole-file in docs' data. Not read: postmarketOS (redirects), Fedora ARM, nixpkgs/Wikidata/OSM patterns.
+
+About
+: ikb
+
+Material
+: research/commons-bases/2026-11-17/

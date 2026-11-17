@@ -208,3 +208,19 @@ About
 
 Opened
 : 2026-11-17
+
+
+<a id="unit-bases-pull"></a>
+### The pull of a unit base's declared table: a shared helper (ikb or a feed script) once a second commons needs it
+
+Status
+: open
+
+Note
+: docs' feed-device-bases comes first (docs owner, with orchestration); extract only when a second commons pulls. Contract: the unit's tables.toml declares the table, the commons validates what it pulls and shows stale or missing as not known yet.
+
+About
+: ikb
+
+Opened
+: 2026-11-17
