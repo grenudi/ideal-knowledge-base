@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.12.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.11.1...v0.12.0) (2026-11-17)
+
+
+### Features
+
+* ikb: blocked_by in the generic backlog; waits not empty; next shows blocked_on ([#62](https://github.com/grenudi/ideal-knowledge-base/issues/62)) ([0ec1a08](https://github.com/grenudi/ideal-knowledge-base/commit/0ec1a08904e943442d9a15cb6e2ec15e70370a35))
+
 ## [0.11.1](https://github.com/grenudi/ideal-knowledge-base/compare/v0.11.0...v0.11.1) (2026-11-17)
 
 
