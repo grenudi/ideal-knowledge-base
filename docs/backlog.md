@@ -115,10 +115,10 @@ Opened
 ### The observatory's reasoning lens accepts any table a base's references rule names for about
 
 Status
-: open
+: done
 
 Note
-: Sign from ideal-agent's follow (2026-11-17): ocoeco's language limits decisions.about to milestones, concepts, backlog, components, features and devices, so a base whose subjects are a table of its own fails ocoeco check; subjects was added by hand (ocoeco #458). A base with another subject table meets it again. Belongs to ocoeco's language: read about's targets from the base's own rule.
+: Sign from ideal-agent's follow (2026-11-17): ocoeco's language limits decisions.about to milestones, concepts, backlog, components, features and devices, so a base whose subjects are a table of its own fails ocoeco check; subjects was added by hand (ocoeco #458). A base with another subject table meets it again. Belongs to ocoeco's language: read about's targets from the base's own rule. Closed here 2026-11-17: since lab-agent #219 a tad base lands on tad check and make verify alone, with no ocoeco check (the author: our systems must not depend on ocoeco), so it no longer stops a base. What is left is how ocoeco's own harvest shows about - ocoeco's concern, not this base's.
 
 About
 : about-link
