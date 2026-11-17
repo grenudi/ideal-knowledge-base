@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.2.0...v0.3.0) (2026-11-17)
+
+
+### Features
+
+* sources keep who made what they describe (by); second follower done ([#7](https://github.com/grenudi/ideal-knowledge-base/issues/7)) ([dc3cca0](https://github.com/grenudi/ideal-knowledge-base/commit/dc3cca06084d9312f5cc10af1338c35c287f7673))
+
 ## [0.2.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.1.0...v0.2.0) (2026-11-17)
 
 
