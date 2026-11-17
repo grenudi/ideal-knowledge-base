@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.3.0...v0.4.0) (2026-11-17)
+
+
+### Features
+
+* briefs first: every record has a one-line brief, answers give briefs ([#11](https://github.com/grenudi/ideal-knowledge-base/issues/11)) ([8775b40](https://github.com/grenudi/ideal-knowledge-base/commit/8775b40d03664631a68c61ef06eb03899439518c))
+
 ## [0.3.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.2.0...v0.3.0) (2026-11-17)
 
 
