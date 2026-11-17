@@ -151,3 +151,25 @@ About
 
 Material
 : research/upstream/2026-11-17/
+
+
+<a id="ikb-page-file-readers"></a>
+### ikb-page-file-readers
+
+Date
+: 2026-11-17
+
+Brief
+: Nothing needs IKB.md: agents use ikb help, people the record headers or ikb page, CI checks nothing; it drifted five times a day.
+
+Question
+: Who reads IKB.md, could ikb --help, ikb help RECORD and ikb man serve instead, and how do other tools treat generated docs?
+
+Found
+: Readers: two AGENTS.md lines, one skill line and docs' verify; no CI check. Its content is a copy of the records' own headers. Same pattern elsewhere in the commons: tad's man page and completions are built in packaging (tad/generated is gitignored); only tad's rendered docs/*.md, the product people open, are committed and checked. Second remeasure with four agents: equal tokens before and after (about 64k each), 0-1 failures, so the file bought nothing measurable.
+
+About
+: ikb
+
+Material
+: research/ikb/2026-11-17/

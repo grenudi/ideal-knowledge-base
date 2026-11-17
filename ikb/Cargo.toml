@@ -19,7 +19,7 @@ tad = { git = "https://github.com/creation-guidelines/tad-engine", tag = "tad-v0
 
 [package.metadata.deb]
 maintainer = "grenudi <agent@grenudi>"
-extended-description = "Record into a knowledge base by domain commands read from its own records/*.sql: one generated page (IKB.md) is all an agent needs."
+extended-description = "Record into a knowledge base by domain commands read from its own records/*.sql: ikb --help and ikb help RECORD are all an agent needs."
 assets = [
     ["target/release/ikb", "usr/bin/", "755"],
 ]

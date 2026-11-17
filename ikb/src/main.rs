@@ -1,5 +1,5 @@
 //! ikb - record into a knowledge base by domain commands. Every record of the base (records/*.sql) is a
-//! subcommand with its header's options; the man page and IKB.md are written from the same headers. ikb
+//! subcommand with its header's options; the man page and the page are written from the same headers. ikb
 //! calls tad for the work and holds no table, no SQL and no layout of its own beyond the files a record names.
 use anyhow::{bail, Context, Result};
 use argenv_resolve::generate::{self, Program};
@@ -32,15 +32,6 @@ contract! {
         ty:      Type::Bool,
         arg:     Some(Arg::long("skip-render")),
         summary: "Do not run tad canon and tad render after the record (run them once after several records)",
-        ..Input::EMPTY
-    };
-
-    /// Write IKB.md.
-    WRITE: bool = Input {
-        key:     "write",
-        ty:      Type::Bool,
-        arg:     Some(Arg::long("write")),
-        summary: "page: write IKB.md in the base instead of printing it",
         ..Input::EMPTY
     };
 }
@@ -152,17 +143,7 @@ fn run() -> Result<()> {
                     )?
                 );
             } else {
-                let md = model::page(&shown, &model::load_queries(&root));
-                if Contract::WRITE
-                    .get_from_or_default(&resolved)
-                    .unwrap_or(false)
-                {
-                    let to = root.join("IKB.md");
-                    std::fs::write(&to, &md)?;
-                    println!("wrote {}", to.display());
-                } else {
-                    print!("{md}");
-                }
+                print!("{}", model::page(&shown, &model::load_queries(&root)));
             }
         }
         name => record(&root, &tables, find(&all, name)?)?,

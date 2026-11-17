@@ -198,10 +198,10 @@ Opened
 ### Upstream records: upstreams and upstream_items, with ikb handles; docs migrates upstream-queue's state into them
 
 Status
-: in-progress
+: done
 
 Note
-: Released: idealkb 0.8.1 (pending pin), ikb 0.3.0. docs declares the tables (#217). Next: docs follows and migrates upstream-queue's six items (patches stay files); ideal-agent skill: how to find and choose an upstream.
+: Landed: idealkb tables and records, docs seeded (8 items), ideal-agent skill paragraph. Next for the author: ready on a draft, then the send.
 
 About
 : ikb
