@@ -288,3 +288,19 @@ About
 
 Opened
 : 2026-11-17
+
+
+<a id="principles-generic"></a>
+### Principles as a generic part of idealkb (concepts with ord, the citation check) once a second base keeps them
+
+Status
+: open
+
+Note
+: Used in linux-phone-oco/docs only (check-principles.sh, tad q principles). overlay-check takes the principles as its fourth argument (ideal-agent 0.3.24, roles session).
+
+About
+: ikb
+
+Opened
+: 2026-11-17

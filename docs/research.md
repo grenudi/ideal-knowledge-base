@@ -264,3 +264,25 @@ Sources
 
 About
 : ikb
+
+
+<a id="charter-pattern-world"></a>
+### charter-pattern-world
+
+Date
+: 2026-11-17
+
+Brief
+: A project's principles: five to ten rows with stable ids, cited by link, with the citation checked and the restating measured.
+
+Question
+: How should a base keep its founding principles so that guides cite and never restate them?
+
+Found
+: Read (2026-11-17, for linux-phone-oco/docs): Debian Social Contract/DFSG, Mozilla Manifesto, Wikipedia five pillars, Rust API guidelines checklist, RFC 7282, PEP 20, the kernel's DCO 1.1, MADR decision drivers - small sets with stable linkable ids; none enforces cite-not-restate. Not read: Arch principles, PEP 1, Nygard's ADR post, the Rust RFC process. Full record in docs: research principles-world.
+
+Sources
+: git-notes
+
+About
+: ikb
