@@ -278,10 +278,10 @@ Opened
 ### blocked_by in docs' own lane queries and in idealkb's generic backlog once every base carries it
 
 Status
-: open
+: done
 
 Note
-: Landed in device-template, surya-lab, google-walleye-lab. docs: lane-next, phone-next, phone-queue and its backlog table (keyed project, id) take the same shape if its lanes still read waits; then the generic backlog and next query.
+: Done 2026-11-17: idealkb's generic backlog has blocked_by and a non-empty waits, the generic backlog record takes --blocked-by, backlog-blocked is generic, next shows blocked_on. docs carries the field (docs #…) so the followers gate passes; device bases carry it. Followers get it with their next pin.
 
 About
 : ikb
