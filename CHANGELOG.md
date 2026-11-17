@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.8.4...v0.9.0) (2026-11-17)
+
+
+### Features
+
+* ikb: IKB.md is not kept; ikb page only prints ([#39](https://github.com/grenudi/ideal-knowledge-base/issues/39)) ([ad8bfdb](https://github.com/grenudi/ideal-knowledge-base/commit/ad8bfdb70e85b16175dcd217b078de70d5e877f3))
+
 ## [0.8.4](https://github.com/grenudi/ideal-knowledge-base/compare/v0.8.3...v0.8.4) (2026-11-17)
 
 
