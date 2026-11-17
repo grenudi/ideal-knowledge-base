@@ -261,3 +261,28 @@ About
 
 Research
 : upstream-records-world
+
+
+<a id="2026-11-17-ikb-help-first-completions-asked"></a>
+### 2026-11-17-ikb-help-first-completions-asked
+
+Date
+: 2026-11-17
+
+Brief
+: An agent starts with ikb --help and ikb help RECORD; IKB.md is for people; completions ask ikb as you type.
+
+Decision
+: An agent starts with `ikb --help` (every record of the base, one line each) and reads `ikb help RECORD` for the record it needs (about 0.8 KB); IKB.md stays as the page for people to browse. `ikb completions bash|zsh|fish|nushell` prints a small glue script; at completion time the shell asks `ikb complete --cur=WORD WORDS...`, which answers from the base's own records (record names, each record's options not yet given, `auto` after --material/--file, shell names) - so the completions are never out of date and never written by hand. The help, the man page, IKB.md and the completions all come from the same records (the argenv contract of the fixed commands plus the run-time records); only the four glue scripts are text. bin/install-ikb.sh writes the completions for the shells it finds.
+
+Why
+: Measured by the second before/after: agents read what the skill sends them to; sending them to the 10-13 KB IKB.md (every record concatenated) made their start as heavy as reading tad statements, whereas `ikb --help` plus one `ikb help RECORD` is about 2-3 KB. The author's intent: ikb explains itself through generated help, a man page and completions.
+
+Rejected
+: argenv's own completions generator for the whole script: it writes the record names into the script at generation time, so a script made in one base is wrong in another and stale after a new record (tad avoids this only for positional words through `asked`; ikb's records are subcommands, not positionals). Writing completion words by hand per base. A fifth, base-specific completion file in each base.
+
+About
+: ikb
+
+Research
+: ikb-friction-and-world
