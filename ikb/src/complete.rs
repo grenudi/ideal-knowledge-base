@@ -11,6 +11,11 @@ pub const FIXED: &[(&str, &str)] = &[
         "page",
         "every record and query on one page, printed (ikb page > page.md for people to browse)",
     ),
+    (
+        "set",
+        "change fields of one existing row of any table, checked (set TABLE --key K --field NAME=VALUE)",
+    ),
+    ("remove", "take one row away, checked (remove TABLE --key K)"),
     ("man", "the man page"),
     (
         "completions",
@@ -144,6 +149,7 @@ mod tests {
         assert!(candidates(&r, &[], "").contains(&"note".to_string()));
         assert_eq!(candidates(&r, &[], "no"), vec!["note"]);
         assert_eq!(candidates(&r, &["help".into()], ""), vec!["note"]);
+        assert!(candidates(&r, &[], "re").contains(&"remove".to_string()));
         let opts = candidates(&r, &["note".into(), "--id".into(), "a".into()], "--");
         assert!(opts.contains(&"--material".to_string()) && !opts.contains(&"--id".to_string()));
         assert_eq!(
