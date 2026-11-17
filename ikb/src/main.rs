@@ -184,6 +184,9 @@ fn record(root: &Path, tables: &str, s: &Statement) -> Result<()> {
         let k = model::key(p);
         if matches!(resolved.source(&k), Some(Source::Arg) | Some(Source::Env)) {
             let raw = resolved.raw(&k).unwrap_or_default();
+            if raw.is_empty() {
+                continue; // an empty value is not a value: the option is not given
+            }
             given.push((p.name.clone(), text::expand(raw, &mut std::io::stdin())?));
         }
     }

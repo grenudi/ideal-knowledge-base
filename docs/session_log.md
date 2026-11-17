@@ -79,3 +79,18 @@ Rejected
 
 About
 : ikb
+
+---
+
+
+<a id="2026-11-17-upstream-records-built"></a>
+### Upstream records built: upstreams and upstream_items in idealkb 0.8, docs seeded
+
+Entry date
+: 2026-11-17
+
+Done
+: idealkb 0.8.1 / ikb 0.3.0: tables upstreams and upstream_items, records upstream, upstream-item (from-work checked in SQL, --file auto makes upstream/UPSTREAM/ID/) and upstream-state (refuses an unknown id: a plain UPDATE would have changed nothing silently), queries upstream and upstreams, row/find/recent read them. The gate (followers answer) caught docs lacking the tables: docs declared them first (#217), then followed and was seeded from upstream-queue: six upstreams, eight items, patches and messages copied beside the rows (#221). ikb learned: @- once per call (a second @- silently gave empty text), an empty value counts as not given. Lesson: a second `@-` produced empty required text without an error - guards belong where silent failure is possible.
+
+About
+: ikb
