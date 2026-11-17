@@ -4,7 +4,7 @@
 
 Add to this knowledge base with `ikb RECORD --option value ...`; you need nothing else - not SQL, not the layout of the files.
 
-- A text option takes its text from a file with `@FILE`, or from standard input with `@-` (`--found @-`): long text and apostrophes need no quoting. `@@x` is the text `@x`.
+- A text option takes its text from a file with `@FILE`, or from standard input with `@-` (`--found @-`, once per call): long text and apostrophes need no quoting. `@@x` is the text `@x`.
 - A record is checked before it is kept; a wrong call says what is wrong and what is accepted, and nothing is changed. A record of an id that exists replaces it.
 - After a record `ikb` runs `tad canon` and `tad render` (`--skip-render` to batch several records and run them once), and says one line. Then land your change.
 - `--id` is made from the brief when you leave it out; `--date` is today; `--by` is `$OCOECO_BY`.
@@ -107,6 +107,69 @@ ikb summary --about STRING --says STRING [--date DATE]
 - --says: how it stands, in at most 1500 characters, naming the records that carry it
 - --date (date, default today): when
 
+### `ikb upstream`
+
+A place knowledge can flow to - a project, a list, a tracker, a wiki, a standard, a person or team, another
+
+```
+ikb upstream --id STRING --kind STRING --name STRING --address STRING --how STRING [--contacts STRING] [--notes STRING]
+```
+
+- --id: a-short-name
+- --kind: code-project, list, tracker, wiki, standard, person-team, kb-instance or distro
+- --name: what it is called
+- --address: its URL, list address or contact
+- --how: how contributions are made there (git send-email to the list; a merge request; a comment on the page; ask the maintainer)
+- --contacts: maintainers or contacts
+- --notes: what else a sender needs: rules, habits, where its rules are written
+
+### `ikb upstream-item`
+
+Something headed to an upstream: a patch, information, a correction, a question or a finding, linked to the
+
+```
+ikb upstream-item --upstream STRING --title STRING --form STRING --from-work STRING [--id STRING] [--state STRING] [--domain STRING] [--tags STRING] [--about STRING] [--local-ref STRING] [--file STRING] [--sent-on DATE] [--forwarded STRING] [--bug STRING] [--version STRING] [--supersedes STRING] [--applied-upstream STRING] [--waits STRING] [--note STRING] [--last-update DATE]
+```
+
+- --id: a-short-name (made from the title when not given)
+- --upstream: where it goes (an upstreams id; the upstream record makes one)
+- --title: what it is, in one line
+- --form: patch, information, correction, question or finding
+- --from-work: the work here it comes from: a backlog item, decision or research id
+- --state (default draft): draft, ready (the person said it may go), sent, under-review, changes-requested, accepted, landed, held, rejected, superseded, not-needed or withdrawn
+- --domain: the field of work it belongs to
+- --tags: facet tags, comma-separated
+- --about: what it is about (tad q about lists the subjects)
+- --local-ref: the branch, pull request or commit here it is made in
+- --file: its folder or file: auto makes upstream/UPSTREAM/ID/
+- --sent-on (date): when it was sent
+- --forwarded: where it stands there: its address (a link, a message id), or not-needed
+- --bug: the upstream report or thread it answers or opened
+- --version: v2, v3 ... when sent again
+- --supersedes: the item it is a later version of
+- --applied-upstream: the version, commit or link where it landed
+- --waits: what it waits on (a person's word, a reply)
+- --note: where it stands, and the next step
+- --last-update (date, default today): when
+
+### `ikb upstream-state`
+
+Where an upstream item stands now: its state, and what is known since (what is not given is kept as it was).
+
+```
+ikb upstream-state --id STRING --state STRING [--note STRING] [--waits STRING] [--forwarded STRING] [--sent-on DATE] [--applied-upstream STRING] [--bug STRING] [--last-update DATE]
+```
+
+- --id: the item
+- --state: draft, ready, sent, under-review, changes-requested, accepted, landed, held, rejected, superseded, not-needed or withdrawn
+- --note: where it stands, and the next step
+- --waits: what it waits on
+- --forwarded: its address there (a link, a message id)
+- --sent-on (date): when it was sent
+- --applied-upstream: the version, commit or link where it landed
+- --bug: the upstream report or thread
+- --last-update (date, default today): when
+
 ## Asking
 
 Answer from a query, never from `data/` or `docs/`: `tad q NAME --option value` (`--format csv` for long answers).
@@ -116,3 +179,5 @@ Answer from a query, never from `data/` or `docs/`: `tad q NAME --option value` 
 - `tad q next [--about]` - The work ahead: what is in progress, then what is open, the newest first - with what it is about and
 - `tad q recent [--days]` - What was recorded lately, the newest first: decisions, research, work opened and the log, each by its
 - `tad q row --id STRING` - One record whole, by its id, from whichever standing table holds it: every field, as JSON (a summary by
+- `tad q upstream [--upstream] [--state] [--about]` - What is headed upstream and where it stands: the items not yet landed, rejected, superseded, not-needed or
+- `tad q upstreams` - The places knowledge can flow to: what each is, its address and how contributions are made there, with how

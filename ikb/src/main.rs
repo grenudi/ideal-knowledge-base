@@ -170,6 +170,14 @@ fn record(root: &Path, tables: &str, s: &Statement) -> Result<()> {
     }
     .resolve(&model);
     handle_problems(&lint(&model, &resolved), OnProblems::FailOnError);
+    let stdin_uses = s
+        .params
+        .iter()
+        .filter(|p| resolved.raw(&model::key(p)) == Some("@-"))
+        .count();
+    if stdin_uses > 1 {
+        bail!("@- (standard input) is given to {stdin_uses} options; it can be read once - put the other texts in files (@FILE)");
+    }
     // what was given, by an option or by its variable; a default is tad's to apply
     let mut given: Vec<(String, String)> = Vec::new();
     for p in &s.params {
@@ -196,22 +204,29 @@ fn record(root: &Path, tables: &str, s: &Statement) -> Result<()> {
         said.push(format!("id {id}"));
         given.push(("id".into(), id));
     }
-    if let Some(i) = given
-        .iter()
-        .position(|(k, v)| k == "material" && v == "auto")
-    {
-        let about = get(&given, "about")
-            .context("--material auto needs --about: the folder is research/ABOUT/DATE/")?;
-        let folder = format!("research/{about}/{date}/");
-        given[i].1 = folder;
-    }
-    if let Some(m) = get(&given, "material") {
-        let dir = root.join(&m);
-        if dir.is_file() {
-            bail!("--material {m} is a file; it names a folder: research/SUBJECT/YYYY-MM-DD/");
+    // a file option names a place in the base's structure; `auto` makes the conventional one
+    for (name, what) in [("material", "research material"), ("file", "upstream item")] {
+        if let Some(i) = given.iter().position(|(k, v)| k == name && v == "auto") {
+            given[i].1 = if name == "material" {
+                let about = get(&given, "about")
+                    .context("--material auto needs --about: the folder is research/ABOUT/DATE/")?;
+                format!("research/{about}/{date}/")
+            } else {
+                let up = get(&given, "upstream")
+                    .context("--file auto needs --upstream: the folder is upstream/UPSTREAM/ID/")?;
+                let id = get(&given, "id")
+                    .context("--file auto needs --id (or a title to make it from)")?;
+                format!("upstream/{up}/{id}/")
+            };
         }
-        std::fs::create_dir_all(&dir)?;
-        said.push(format!("material folder {m}"));
+        if let Some(m) = get(&given, name) {
+            let dir = root.join(&m);
+            if dir.is_file() {
+                bail!("--{name} {m} is a file; it names a folder to put the {what} in");
+            }
+            std::fs::create_dir_all(&dir)?;
+            said.push(format!("{name} folder {m}"));
+        }
     }
     let mut cmd = Command::new("tad");
     cmd.arg("record")

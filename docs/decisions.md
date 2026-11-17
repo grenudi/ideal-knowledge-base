@@ -236,3 +236,28 @@ About
 
 Research
 : ikb-friction-and-world
+
+
+<a id="2026-11-17-upstream-two-tables"></a>
+### 2026-11-17-upstream-two-tables
+
+Date
+: 2026-11-17
+
+Brief
+: Upstream work is two tables, upstreams and upstream_items, one shape for any upstream and any form; ikb adds them.
+
+Decision
+: idealkb gains `upstreams` (where knowledge can flow: kind code-project|list|tracker|wiki|standard|person-team|kb-instance|distro, address, how contributions are made, contacts) and `upstream_items` (each thing headed somewhere: form patch|information|correction|question|finding; state draft, ready, sent, under-review, changes-requested, accepted, landed, held, rejected, superseded, not-needed, withdrawn; from_work linking back to a backlog item, decision or research, checked by the record; domain, tags, about, local_ref, file, sent_on, forwarded, bug, version, supersedes, applied_upstream, waits). Records upstream, upstream-item (--file auto makes upstream/UPSTREAM/ID/ for a patch or a long message) and upstream-state; queries `tad q upstream` (what waits, longest first) and `tad q upstreams`; ikb generates the commands. Another idealkb instance is an upstream of kind kb-instance: a general improvement made in a domain base goes upstream to idealkb the same way.
+
+Why
+: One shape serves a project, a list, a wiki, a standard, a person and another knowledge base; the item's form says what it is. The state only moves forward and the person's word that a draft may go is the state ready, so an agent never sets a consent flag. A row holds what is queried; the patch or message stays a file beside it. Measured need: docs' six upstream-* items know only open/in-progress/done, and destinations, contacts and send commands live in a README outside git.
+
+Rejected
+: A second tracker next to the backlog (the queue repo grown into one): two sources of truth drift. Only an upstream column on backlog items: a patch sent in several versions has nowhere to go and no state beyond open/done. Item files with front matter indexed into a table (DEP-3 style): an indexer and two truths; the row stays the truth and the file holds what prose cannot. One kind per upstream (git, wiki, standard): the differences are the form and the how-text, not the shape. Mirroring the remote tracker's status or review threads: link the archive instead. A separate state machine for following an upstream (Renovate): another direction, another table when needed.
+
+About
+: ikb
+
+Research
+: upstream-records-world
