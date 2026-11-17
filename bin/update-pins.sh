@@ -14,6 +14,8 @@ latest=$(gh release list -R grenudi/ideal-knowledge-base --limit 20 --exclude-dr
 [ -n "$latest" ] || { echo "update-pins: no release of ideal-knowledge-base" >&2; exit 1; }
 repos="$*"; [ -n "$repos" ] || repos=$(grep -vE '^[[:space:]]*(#|$)' "$here/consumers")
 failed=0
+# a base that refuses a release is left as its main has it: its clone is shared with the sessions working there
+back() { git reset -q --hard && git clean -qfd && { git checkout -q main 2>/dev/null || git checkout -q --detach origin/main; }; }
 for r in $repos; do
 	dir="$HOME/Projects/$r"
 	[ -d "$dir" ] || { echo "$r: not cloned at $dir" >&2; failed=1; continue; }
@@ -23,13 +25,13 @@ for r in $repos; do
 	if [ "$pin" = "$latest" ]; then echo "$r: idealkb $pin, current"; continue; fi
 	said=$(mktemp); own=0
 	rc=0; "$here/bin/follow.sh" "$dir" "$latest" > "$said" || rc=$?
-	case $rc in 0) ;; 3) own=1 ;; *) cat "$said" >&2; failed=1; continue ;; esac
+	case $rc in 0) ;; 3) own=1 ;; *) cat "$said" >&2; back; failed=1; continue ;; esac
 	asked=1
 	for q in "about" "next" "find --text a" "row --id a" "recent"; do
 		# shellcheck disable=SC2086 # each line is a query and its parameters, split on purpose
 		tad q $q --format csv >/dev/null 2>&1 || { echo "$r: tad q $q does not answer on this base" >&2; asked=0; }
 	done
-	[ "$asked" = 1 ] || { failed=1; continue; }
+	[ "$asked" = 1 ] || { echo "$r: idealkb $latest not laid - the base needs what the release asks of its own tables first" >&2; back; failed=1; continue; }
 	tad canon >/dev/null && tad render >/dev/null
 	git add -A
 	git -c user.name="${GIT_NAME:-idealkb update-pins}" -c user.email="${GIT_EMAIL:-agent@creation-guidelines}" \
