@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.5.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.4.0...v0.5.0) (2026-11-17)
+
+
+### Features
+
+* a release waits until every follower answers the five queries with it laid ([#15](https://github.com/grenudi/ideal-knowledge-base/issues/15)) ([bdafc93](https://github.com/grenudi/ideal-knowledge-base/commit/bdafc93b7d332488c113efbd5005d37b8286640c))
+* at a task's start ask only about its subject; deeper only when a step needs it ([#18](https://github.com/grenudi/ideal-knowledge-base/issues/18)) ([a066b6b](https://github.com/grenudi/ideal-knowledge-base/commit/a066b6b23eab77617db2b5c68c2b378a27927feb))
+
+
+### Bug Fixes
+
+* a release is tagged only once every follower answers with main laid over it ([#16](https://github.com/grenudi/ideal-knowledge-base/issues/16)) ([acc6558](https://github.com/grenudi/ideal-knowledge-base/commit/acc6558ae514e7dae51ee6c740fa8ff983bc87d2))
+* the pin job leaves a base that refuses a release as its main has it ([#13](https://github.com/grenudi/ideal-knowledge-base/issues/13)) ([812dc8e](https://github.com/grenudi/ideal-knowledge-base/commit/812dc8eefc20a1b37cf5aae634028ee7b723fe89))
+
 ## [0.4.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.3.0...v0.4.0) (2026-11-17)
 
 
