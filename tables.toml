@@ -1,0 +1,242 @@
+# The tables of this database, declared as data: the authority on what data/ may hold, checked by tad
+# (https://github.com/creation-guidelines/tad-engine) on every change. Declare each table as [tables.NAME]
+# with its key and its [[tables.NAME.fields]]; tad declare --from-sql FILE translates a schema written in
+# SQL. Named statements are kept beside this file: queries/NAME.sql read, records/NAME.sql write.
+[tables]
+
+# How the index reads: one row, its heading and introduction.
+[tables.about]
+key = ["title"]
+
+[[tables.about.fields]]
+name = "title"
+type = "string"
+required = true
+
+[[tables.about.fields]]
+name = "summary"
+type = "string"
+required = true
+
+# What this base is about: its concepts - the practices of organising a knowledge base; each record names one in about.
+[tables.concepts]
+key = ["id"]
+
+[[tables.concepts.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.concepts.fields]]
+name = "name"
+type = "string"
+required = true
+
+[[tables.concepts.fields]]
+name = "summary"
+type = "string"
+required = true
+
+[[tables.concepts.fields]]
+name = "why"
+type = "string"
+required = true
+
+# idealkb:begin - the standing tables of a knowledge base, kept by grenudi/ideal-knowledge-base at the
+# release idealkb.toml names (change them there). Every record names what it is about in about; the base
+# says what about may name in its own [[rules.references]] (field = "TABLE.about", to = its subject tables).
+[tables.backlog]
+key = ["id"]
+
+[[tables.backlog.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.backlog.fields]]
+name = "title"
+type = "string"
+required = true
+
+[[tables.backlog.fields]]
+name = "status"
+type = "string"
+required = true
+enum = ["open", "in-progress", "done"]
+
+[[tables.backlog.fields]]
+name = "note"
+type = "string"
+
+[[tables.backlog.fields]]
+name = "waits"
+type = "string"
+
+[[tables.backlog.fields]]
+name = "about"
+type = "string"
+
+[[tables.backlog.fields]]
+name = "opened"
+type = "date"
+required = true
+
+[tables.session_log]
+key = ["id"]
+
+[[tables.session_log.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[0-9]{4}-[0-9]{2}-[0-9]{2}-[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.session_log.fields]]
+name = "entry_date"
+type = "date"
+required = true
+
+[[tables.session_log.fields]]
+name = "title"
+type = "string"
+required = true
+
+[[tables.session_log.fields]]
+name = "done"
+type = "string"
+required = true
+
+[[tables.session_log.fields]]
+name = "considered"
+type = "string"
+
+[[tables.session_log.fields]]
+name = "rejected"
+type = "string"
+
+[[tables.session_log.fields]]
+name = "about"
+type = "string"
+
+[tables.decisions]
+key = ["id"]
+
+[[tables.decisions.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[0-9]{4}-[0-9]{2}-[0-9]{2}-[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.decisions.fields]]
+name = "date"
+type = "date"
+required = true
+
+[[tables.decisions.fields]]
+name = "decision"
+type = "string"
+required = true
+
+[[tables.decisions.fields]]
+name = "why"
+type = "string"
+required = true
+
+[[tables.decisions.fields]]
+name = "rejected"
+type = "string"
+
+[[tables.decisions.fields]]
+name = "about"
+type = "string"
+
+[[tables.decisions.fields]]
+name = "research"
+type = "string"
+
+[tables.research]
+key = ["id"]
+
+[[tables.research.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.research.fields]]
+name = "date"
+type = "date"
+required = true
+
+[[tables.research.fields]]
+name = "question"
+type = "string"
+required = true
+
+[[tables.research.fields]]
+name = "found"
+type = "string"
+required = true
+
+[[tables.research.fields]]
+name = "sources"
+type = "string"
+
+[[tables.research.fields]]
+name = "about"
+type = "string"
+
+[tables.sources]
+key = ["id"]
+
+[[tables.sources.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.sources.fields]]
+name = "title"
+type = "string"
+required = true
+
+[[tables.sources.fields]]
+name = "url"
+type = "string"
+required = true
+starts_with = "https://"
+
+[[tables.sources.fields]]
+name = "author"
+type = "string"
+
+[[tables.sources.fields]]
+name = "year"
+type = "integer"
+
+[[tables.sources.fields]]
+name = "takes"
+type = "string"
+# idealkb:end
+
+# What about may name here: a concept, or an item of work.
+[[rules.references]]
+field = "decisions.about"
+to = ["concepts", "backlog"]
+
+[[rules.references]]
+field = "research.about"
+to = ["concepts", "backlog"]
+
+[[rules.references]]
+field = "backlog.about"
+to = ["concepts", "backlog"]
+
+[[rules.references]]
+field = "session_log.about"
+to = ["concepts", "backlog"]
+
+[[rules.references]]
+field = "decisions.research"
+to = ["research"]

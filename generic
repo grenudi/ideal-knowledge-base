@@ -1,0 +1,15 @@
+# What a knowledge base takes from ideal-knowledge-base, at the release its idealkb.toml names: the named
+# statements whole, and the part of AGENTS.md and of tables.toml between the lines idealkb:begin and
+# idealkb:end. bin/follow.sh lays them; a base keeps a file as its own by naming it in idealkb.toml.
+queries/about.sql
+queries/next.sql
+queries/find.sql
+queries/row.sql
+queries/recent.sql
+records/decision.sql
+records/research.sql
+records/backlog.sql
+records/session-log.sql
+records/source.sql
+AGENTS.md
+tables.toml

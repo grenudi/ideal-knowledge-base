@@ -1,0 +1,20 @@
+# This repository's mark: how it fits the Open Commons Observatory's picture.
+# https://github.com/open-commons-observatory/open-commons-observatory.github.io/tree/main/marks
+schema = 1
+
+[project]
+id = "grenudi/ideal-knowledge-base"
+name = "Ideal knowledge base: how a base is organised so that an agent answers by one query - a layer on tad"
+title = "Ideal knowledge base"
+kind = "canon"
+parent = "open-commons-observatory"
+
+# One tad database (tables.toml, data/): the observatory reads its tables as this place's rows. The record of
+# work is the commit itself - no glimpses.
+[exports]
+concepts = "data/concepts.json"
+decisions = "data/decisions.json"
+research = "data/research.json"
+sources = "data/sources.json"
+backlog = "data/backlog.json"
+session_log = "data/session_log.json"
