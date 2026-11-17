@@ -403,8 +403,8 @@ dependencies = [
 
 [[package]]
 name = "tad"
-version = "0.7.0"
-source = "git+https://github.com/creation-guidelines/tad-engine?tag=tad-v0.7.0#22a8f8141111a7d3238db62db5dc01de557c36b9"
+version = "0.7.1"
+source = "git+https://github.com/creation-guidelines/tad-engine?tag=tad-v0.7.1#561b72802771428e2370139416c80dbf84dacbc3"
 dependencies = [
  "anyhow",
  "argenv",

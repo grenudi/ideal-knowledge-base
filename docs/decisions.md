@@ -386,3 +386,28 @@ About
 
 Research
 : chain-follow-world
+
+
+<a id="2026-11-17-blocked-by-clears-itself"></a>
+### 2026-11-17-blocked-by-clears-itself
+
+Date
+: 2026-11-17
+
+Brief
+: A wait on an item of the same base is named in blocked_by and clears itself when that item is done; waits stays free text for outside things.
+
+Decision
+: A wait on another item of the same base is named, not described: backlog gets `blocked_by` (ids of this base's items, comma-separated, pattern-checked; the records refuse an id that is no item) beside `waits`, which stays free text for what is outside the base (the author, a SIM card, hardware) and may no longer be empty (pattern). An item is clear when `waits` is empty and every item in `blocked_by` is done: phone-next and phone-queue read that off the data (the queue shows `blocked_on`, the items still open), so nothing is typed again when the blocking item is done. Records: backlog (--blocked-by) and backlog-blocked (set or take away). Landed 2026-11-17 in device-template and in surya-lab and google-walleye-lab, with the waits that were plainly item ids migrated (3 and 8 rows); the other waits stay as written. docs' own lane-next, phone-next and phone-queue and idealkb's generic backlog are not changed yet (their tables are the bases' own).
+
+Why
+: Three times today a phone lane stalled on a stale wait - an empty string read as waiting, and twice an item still waiting on one already done - and each time a coordinator re-entered the row by hand. Practice 28: what an item waits on is read off the data, not typed as a state to keep true. The waits already in the two device bases named items in 3 and 8 rows (exactly an id, or a comma list of ids), so the shape was already in use; prose that merely mentions an id (for example 'walleye-ufs-readonly (not required) / walleye-first-fastboot-boot; a person witnesses...') stays free text because a query cannot read intent from prose.
+
+Rejected
+: Reading ids out of the free text of waits: brittle (prose mentions ids without waiting on them). One field that holds either an item id or text, told apart by whether an item of that id exists: an item later created with that id changes what an old row means. A referenced field per wait (tad's references rule): a wait can name several items and the rule checks a single value; the record checks the list instead. A mutually exclusive pair enforced in the declaration: tad has no such rule; the queries read both. Changing the generic backlog of idealkb now: docs and the device bases own their tables, so the generic next query would fail where the column is missing; it follows once every base carries it.
+
+About
+: ikb
+
+Research
+: stale-waits
