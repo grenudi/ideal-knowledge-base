@@ -70,3 +70,23 @@ Summary
 
 Why
 : The commons grows by joining: a better query found in one base should reach every base, and a silent overwrite would lose it.
+
+
+<a id="summary-layer"></a>
+### A summary over many records
+
+Summary
+: When one subject gathers records, its answer leads with a short, dated how-it-stands that condenses them; the records stay beneath, reached by id. The query says when one is due, by what the records weigh, and the session that records into the subject renews it.
+
+Why
+: An answer that grows with every record stops being read whole: docs' microphone answer went from 9.4 KB to 15.9 KB as its records went from 18 to 26. Everyone who keeps a living body of knowledge puts a dated summary on top and keeps the detail (research summary-layer-world).
+
+
+<a id="research-aside"></a>
+### Research kept aside
+
+Summary
+: A research is a row - the question, the finding, its sources, its date - and its own material, if any, is a dated folder the row names, research/SUBJECT/YYYY-MM-DD/. Redone research is a new row that supersedes the old; the old stays reachable but leaves the subject's answer.
+
+Why
+: Research before a change must be kept with its sources, yet not weigh on every agent that starts: the finding is what is read; the material is read only when the finding is questioned (research research-aside-world).
