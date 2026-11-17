@@ -89,11 +89,16 @@ fn run() -> Result<()> {
         .cloned()
         .collect();
     let first = args.first().map(String::as_str).unwrap_or("help");
+    // --help (or -h) after any command says that command, the same way for a record and for the fixed ones
+    if first != "help" && args[1..].iter().any(|a| a == "--help" || a == "-h") {
+        print!("{}", command_help(first, &all)?);
+        return Ok(());
+    }
     match first {
         "-V" | "--version" => println!("ikb {}", env!("CARGO_PKG_VERSION")),
         "help" | "-h" | "--help" => match args.get(1).filter(|a| !a.starts_with('-')) {
             None => print!("{}", usage(&shown)),
-            Some(n) => print!("{}", model::help(find(&all, n)?)),
+            Some(n) => print!("{}", command_help(n, &all)?),
         },
         "set" | "remove" => {
             let call = edit::parse(first, &args[1..])?;
@@ -340,4 +345,44 @@ fn record(root: &Path, tables: &str, s: &Statement) -> Result<()> {
         said.join("; ")
     );
     Ok(())
+}
+
+/// What `ikb help NAME` and `ikb NAME --help` say: a record's options from its header, a fixed command's
+/// usage and its options from the contract.
+fn command_help(name: &str, all: &[Statement]) -> Result<String> {
+    if let Some(s) = all.iter().find(|s| s.name == name) {
+        return Ok(model::help(s));
+    }
+    let said = complete::FIXED
+        .iter()
+        .find(|(n, _)| *n == name)
+        .map(|(_, d)| *d)
+        .with_context(|| {
+            format!("'{name}' is not a command or a record of this base (ikb --help lists them)")
+        })?;
+    let usage = match name {
+        "set" => "ikb set TABLE --key K [--key K2] --field NAME=VALUE [--field ...] [--skip-render] [--tables FILE]",
+        "remove" => "ikb remove TABLE --key K [--key K2] [--skip-render] [--tables FILE]",
+        "completions" => "ikb completions bash|zsh|fish|nushell",
+        "help" => "ikb help [COMMAND]",
+        _ => "ikb page|man [--tables FILE]",
+    };
+    let wanted: &[&str] = match name {
+        "set" => &["key", "field", "skip_render", "tables"],
+        "remove" => &["key", "skip_render", "tables"],
+        "page" | "man" => &["tables"],
+        _ => &[],
+    };
+    let mut t = format!("{said}\n\n{usage}\n\n");
+    for r in Contract::records()
+        .iter()
+        .filter(|r| wanted.contains(&r.key.as_str()))
+    {
+        t.push_str(&format!(
+            "  {}: {}\n",
+            r.arg_labels().join(", "),
+            r.summary.clone().unwrap_or_default()
+        ));
+    }
+    Ok(t)
 }
