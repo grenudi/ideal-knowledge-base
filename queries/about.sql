@@ -1,17 +1,21 @@
 -- Everything known of one subject, the short answer first: how it stands (its summary, dated), then what was
--- recorded since, the work open and the sources - and the records the summary condenses by id only (--whole
--- gives them in full; row --id one). Research a later one supersedes leaves the answer; find and row reach it.
+-- recorded since - each record by its brief, its one line - the work open and the sources, and the records the
+-- summary condenses by id only. --whole gives every record in full; row --id one. Read deeper only when the
+-- task needs it. Research a later one supersedes leaves the answer; find and row reach it.
 -- A word before a dash names a family (modem: modem-data, modem-calls). Without a subject: every subject,
 -- with how many records it has, what they weigh, its summary's date and whether a summary is due - when
 -- they weigh over 8 KB with none, or over 4 KB were recorded since it (open work is never condensed).
 -- --subject  string?          the subject (every subject when not given)
 -- --whole    boolean = false  every record in full, the condensed ones too
 WITH s AS (SELECT $subject AS w, $whole AS whole),
+-- a record's brief is its one line; where none was written, the first sentence of what it says
 rec AS (
-    SELECT 'research' AS kind, id, about, date AS day, question || ' - ' || found || coalesce(' Material: ' || material, '') AS says
+    SELECT 'research' AS kind, id, about, date AS day, question || ' - ' || found || coalesce(' Material: ' || material, '') AS says,
+           coalesce(brief, CASE WHEN strpos(found, '. ') > 0 THEN left(found, strpos(found, '. ')) ELSE found END) AS brief
       FROM research WHERE id NOT IN (SELECT supersedes FROM research WHERE supersedes IS NOT NULL)
-    UNION ALL SELECT 'decision', id, about, date, decision || coalesce(' Rejected: ' || rejected, '') FROM decisions
-    UNION ALL SELECT 'log', id, about, entry_date, title || ' - ' || done FROM session_log
+    UNION ALL SELECT 'decision', id, about, date, decision || coalesce(' Rejected: ' || rejected, ''),
+           coalesce(brief, CASE WHEN strpos(decision, '. ') > 0 THEN left(decision, strpos(decision, '. ')) ELSE decision END) FROM decisions
+    UNION ALL SELECT 'log', id, about, entry_date, title || ' - ' || done, title FROM session_log
 ),
 hit AS (SELECT a FROM (SELECT about AS a FROM rec UNION SELECT about FROM backlog UNION SELECT about FROM summaries), s
         WHERE a IS NOT NULL AND (a = s.w OR a LIKE s.w || '-%')),
@@ -22,9 +26,11 @@ shown AS (SELECT r.* FROM rec r, s WHERE r.about IN (SELECT a FROM hit)
 known AS (
     SELECT 0 AS o, 'summary' AS kind, about AS id, about, 'condenses ' || (length(condenses) - length(replace(condenses, ',', '')) + 1)::VARCHAR AS state,
            date AS day, says FROM sm
-    UNION ALL SELECT CASE kind WHEN 'research' THEN 1 WHEN 'decision' THEN 2 ELSE 4 END, kind, id, about, NULL, day, says FROM shown
-    UNION ALL SELECT 3, 'work', id, about, status, opened, title || coalesce(' - ' || note, '') || coalesce(' Waits: ' || waits, '')
-      FROM backlog WHERE status <> 'done' AND (about IN (SELECT a FROM hit) OR id IN (SELECT a FROM hit))
+    UNION ALL SELECT CASE kind WHEN 'research' THEN 1 WHEN 'decision' THEN 2 ELSE 4 END, kind, id, about, NULL, day,
+           CASE WHEN s.whole THEN says ELSE brief END FROM shown, s
+    UNION ALL SELECT 3, 'work', id, about, status, opened,
+           CASE WHEN s.whole THEN title || coalesce(' - ' || note, '') || coalesce(' Waits: ' || waits, '') ELSE title || coalesce(' Waits: ' || waits, '') END
+      FROM backlog, s WHERE status <> 'done' AND (about IN (SELECT a FROM hit) OR id IN (SELECT a FROM hit))
     UNION ALL SELECT DISTINCT 5, 'source', id, NULL, NULL, NULL, title || ' <' || url || '>'
       FROM sources WHERE id IN (SELECT trim(unnest(string_split(r.sources, ','))) FROM research r WHERE r.id IN (SELECT id FROM shown))
     UNION ALL SELECT 6, 'condensed', c.about, c.about, count(*)::VARCHAR, NULL, string_agg(c.id, ', ' ORDER BY c.id)

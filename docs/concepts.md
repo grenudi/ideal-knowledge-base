@@ -26,7 +26,7 @@ Why
 ### Five questions, one query each
 
 Summary
-: Every base answers the same five questions the same way: about SUBJECT (everything known of it), next (the work ahead), find TEXT (ids and first words of every record that says it), row ID (one record whole) and recent (what was recorded lately). tad statements lists everything else. Writing goes through named records - decision, research, backlog, session-log, source - each with --about.
+: Every base answers the same five questions the same way: about SUBJECT (everything known of it), next (the work ahead), find TEXT (ids and briefs of every record that says it), row ID (one record whole) and recent (what was recorded lately). tad statements lists everything else. Writing goes through named records - decision, research, backlog, session-log, source - each with --about.
 
 Why
 : An agent moving between bases learns one way in. Named statements are reviewable SQL beside the data, run with typed parameters (tad's 2026-11-17-named-statements).
@@ -90,3 +90,13 @@ Summary
 
 Why
 : Research before a change must be kept with its sources, yet not weigh on every agent that starts: the finding is what is read; the material is read only when the finding is questioned (research research-aside-world).
+
+
+<a id="brief-first"></a>
+### Briefs first, the whole on demand
+
+Summary
+: Every record has a brief, its one line of at most 200 characters - a decision and a research a brief field, the rest their title - and a file opens with its own brief, its first paragraph. Every answer gives records by their briefs; an agent reads deeper - row --id, --whole true, a file past its first paragraph - only when its task needs more. A summary is the brief of a subject, as a brief is of a record.
+
+Why
+: The author, 2026-11-17: records - tables and files - should all have a brief summary to begin with; by default an agent reads the summaries, and reads deeper only when the task needs more detail. Measured on this base: the about answer for one subject went from 1,965 bytes to 273 when it gave briefs instead of whole records. It is the stage before the whole in progressive disclosure, as a skill is its name and line before its body (kb-organisation-world).
