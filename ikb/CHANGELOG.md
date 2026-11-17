@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/grenudi/ideal-knowledge-base/compare/ikb-v0.5.2...ikb-v0.6.0) (2026-11-17)
+
+
+### Features
+
+* ikb: tad 0.7.1, and the research and decision on waits that clear themselves ([#58](https://github.com/grenudi/ideal-knowledge-base/issues/58)) ([99e6ae7](https://github.com/grenudi/ideal-knowledge-base/commit/99e6ae7194668e9d974e00e53438f890e47ed94b))
+
 ## [0.5.2](https://github.com/grenudi/ideal-knowledge-base/compare/ikb-v0.5.1...ikb-v0.5.2) (2026-11-17)
 
 
