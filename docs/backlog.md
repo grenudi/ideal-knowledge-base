@@ -162,22 +162,6 @@ Opened
 : 2026-11-17
 
 
-<a id="ikb-build"></a>
-### Build ikb 0.1: record commands, help, man IKB.md, text from files, ids, material folders; release; docs follows
-
-Status
-: in-progress
-
-Note
-: Crate ikb/ built and tried on docs (a copy). Next: release ikb-v0.1.0, docs follows (orchestration told), ideal-agent skills point to ikb, measure before/after.
-
-About
-: ikb
-
-Opened
-: 2026-11-17
-
-
 <a id="ikb-machine-records"></a>
 ### Machine records (feeds, derivations) are named in idealkb.toml machine = [...] so IKB.md stays light
 
@@ -186,6 +170,22 @@ Status
 
 Note
 : Built in 0.1 (model::machine). docs lists its feed-*, derive-*, test-run, support-unknown, device-source.
+
+About
+: ikb
+
+Opened
+: 2026-11-17
+
+
+<a id="ikb-build"></a>
+### Build ikb 0.1: record commands, help, man IKB.md, text from files, ids, material folders; release; docs follows
+
+Status
+: done
+
+Note
+: Released: ikb 0.2.0 pinned by bin/install-ikb.sh (checksums). docs follows (PR). Next: ideal-agent skills, then the upstream notion.
 
 About
 : ikb
