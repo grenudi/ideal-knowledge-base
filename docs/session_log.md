@@ -58,3 +58,24 @@ Rejected
 
 About
 : standing-tables
+
+---
+
+
+<a id="2026-11-17-ikb-first-release"></a>
+### ikb released (0.1.1) and measured against tad r on the same recording
+
+Entry date
+: 2026-11-17
+
+Done
+: ikb 0.1.0 failed to attach (the conveyor needs a .deb and an .rpm); 0.1.1 released with binaries, installed by bin/install-ikb.sh with checksums. Measured on one recording (a source, a research with quotes and a material folder, a decision) by two fresh subagents on docs: before (tad r, AGENTS.md + tad statements): 5 tool calls, 1 failed (--about on source), 63.5k tokens, the found text escaped by hand, the dated folder and the decision id chosen by hand. After (ikb, AGENTS.md + IKB.md): 5 tool calls, 0 failed, 65.0k tokens, text from stdin unescaped, --material auto made the folder. Same rows, both canonical. Honest reading: on a lean task the tokens are equal because IKB.md (10.9 KB, now 9.6 KB for docs) is heavier than the filtered tad statements (5.2 KB); what ikb removes is failure, quoting and convention-guessing, not reading. Next: keep the page lean (param lines shortened in 0.1.2), then the upstream notion.
+
+Considered
+: Hiding records in the page by name list in idealkb.toml (machine); static clap commands
+
+Rejected
+: Adding ikb to docs CI install: a failed download must not block docs landings; verify refreshes IKB.md only when ikb is installed
+
+About
+: ikb
