@@ -1,0 +1,11 @@
+# How ikb is delivered: read by the package conveyor (linux-package-distribution-oco/conveyor).
+# Binaries for every release tag ikb-v*; the build and pack scripts stay here.
+[package]
+name = "ikb"
+tag-prefix = "ikb-v"
+fingerprint = "none - ikb publishes no package repository yet"
+key = "none"
+
+[binaries]
+build = "packaging/build-binary.sh"
+package = "packaging/build-packages.sh"

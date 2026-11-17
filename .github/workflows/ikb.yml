@@ -1,0 +1,20 @@
+# ikb, the Rust command: built and tested on every change.
+name: ikb
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: ikb
+    steps:
+      - uses: actions/checkout@v7
+      - run: cargo fmt --check
+      - run: cargo clippy --all-targets --locked -- -D warnings
+      - run: cargo test --locked

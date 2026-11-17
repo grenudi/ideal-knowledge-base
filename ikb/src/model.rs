@@ -1,0 +1,258 @@
+//! The contract of a knowledge base's records, built at run time from the headers of its records/*.sql:
+//! one subcommand per record, one option per header parameter. tad reads the headers (tad::statements);
+//! nothing here parses SQL. The same records feed the checking of a call, the help, the man page and IKB.md.
+use anyhow::Result;
+use argenv::{ArgBinding, EnvBinding, Record};
+use std::path::Path;
+use tad::statements::{self, Kind, Param, Statement};
+
+/// Every record of the place, in order.
+pub fn load(root: &Path) -> Result<Vec<Statement>> {
+    statements::names(root, Kind::Record)
+        .iter()
+        .map(|n| statements::load(root, Kind::Record, n))
+        .collect()
+}
+
+/// Every query of the place, in order.
+pub fn load_queries(root: &Path) -> Vec<Statement> {
+    statements::names(root, Kind::Query)
+        .iter()
+        .filter_map(|n| statements::load(root, Kind::Query, n).ok())
+        .collect()
+}
+
+pub fn has(s: &Statement, param: &str) -> bool {
+    s.params.iter().any(|p| p.name == param)
+}
+
+/// The record's id is made from its brief (or title) when not given.
+pub fn id_is_made(s: &Statement) -> bool {
+    has(s, "id") && (has(s, "brief") || has(s, "title"))
+}
+
+/// The environment variable that fills a parameter when it is not given.
+fn env_of(param: &str) -> Option<&'static str> {
+    (param == "by").then_some("OCOECO_BY")
+}
+
+pub fn key(p: &Param) -> String {
+    p.key()
+}
+
+/// The same records with each key prefixed by its record, so that the man page can tell same-named options apart.
+pub fn records_prefixed(all: &[Statement]) -> Vec<Record> {
+    let mut v = records(all);
+    let mut i = 0;
+    for s in all {
+        for _ in &s.params {
+            v[i].key = format!("{}_{}", s.name.replace('-', "_"), v[i].key);
+            i += 1;
+        }
+    }
+    v
+}
+
+fn record(s: &Statement, p: &Param) -> Record {
+    let made = p.name == "id" && id_is_made(s);
+    let mut summary = p.summary.clone();
+    if made {
+        summary.push_str(" (made from the brief or title when not given)");
+    }
+    if p.name == "material" {
+        summary.push_str(" ('auto' makes research/ABOUT/DATE/)");
+    }
+    Record {
+        key: p.key(),
+        ty: "string".into(),
+        default: None,
+        allowed: vec![],
+        separators: vec![],
+        required: p.required && !made,
+        stability: "stable".into(),
+        since: None,
+        deprecation: None,
+        group: None,
+        maps_to: None,
+        example: None,
+        observe: None,
+        reviewed: None,
+        summary: Some(summary),
+        modified: None,
+        source: None,
+        env: env_of(&p.name).map(|n| EnvBinding {
+            name: n.into(),
+            aliases: vec![],
+        }),
+        arg: Some(ArgBinding {
+            long: Some(p.name.clone()),
+            short: None,
+            arity: 1,
+            value_name: Some(p.ty.name().to_uppercase()),
+            negatable: false,
+            repeatable: false,
+            position: None,
+        }),
+        subcommands: vec![s.name.clone()],
+    }
+}
+
+/// The records' parameters as contract records, each scoped to its subcommand.
+pub fn records(all: &[Statement]) -> Vec<Record> {
+    all.iter()
+        .flat_map(|s| s.params.iter().map(move |p| record(s, p)))
+        .collect()
+}
+
+/// The usage line: required options first, optional ones in brackets.
+pub fn usage(s: &Statement) -> String {
+    let mut u = format!("ikb {}", s.name);
+    let made = id_is_made(s);
+    for p in s
+        .params
+        .iter()
+        .filter(|p| p.required && !(made && p.name == "id"))
+    {
+        u.push_str(&format!(" --{} {}", p.name, p.ty.name().to_uppercase()));
+    }
+    for p in s
+        .params
+        .iter()
+        .filter(|p| !p.required || (made && p.name == "id"))
+    {
+        u.push_str(&format!(" [--{} {}]", p.name, p.ty.name().to_uppercase()));
+    }
+    u
+}
+
+fn param_line(s: &Statement, p: &Param) -> String {
+    let made = p.name == "id" && id_is_made(s);
+    let how = if p.required && !made {
+        "required".to_string()
+    } else if let Some(d) = &p.default {
+        format!("default {d}")
+    } else {
+        "optional".to_string()
+    };
+    let made_from = if made {
+        " (made from the brief or title when not given)"
+    } else {
+        ""
+    };
+    format!(
+        "--{} ({}, {}): {}{}",
+        p.name,
+        p.ty.name(),
+        how,
+        p.summary,
+        made_from
+    )
+}
+
+/// What `ikb help NAME` says.
+pub fn help(s: &Statement) -> String {
+    let mut t = format!("{}\n\n{}\n\n", s.summary, usage(s));
+    for p in &s.params {
+        t.push_str(&format!("  {}\n", param_line(s, p)));
+    }
+    t
+}
+
+/// IKB.md: the one page a fresh agent reads, written from the records (and queries) of the base.
+pub fn page(version: &str, recs: &[Statement], queries: &[Statement]) -> String {
+    let mut t = format!(
+        "<!-- Generated by ikb {version} from this base's records/*.sql and queries/*.sql: `ikb page --write`. Do not edit by hand. -->\n\n# IKB - recording into this knowledge base\n\n\
+Add to this knowledge base with `ikb RECORD --option value ...`; you need nothing else - not SQL, not the layout of the files.\n\n\
+- A text option takes its text from a file with `@FILE`, or from standard input with `@-` (`--found @-`): long text and apostrophes need no quoting. `@@x` is the text `@x`.\n\
+- A record is checked before it is kept; a wrong call says what is wrong and what is accepted, and nothing is changed. A record of an id that exists replaces it.\n\
+- After a record `ikb` runs `tad canon` and `tad render` (`--skip-render` to batch several records and run them once), and says one line. Then land your change.\n\
+- `--id` is made from the brief when you leave it out; `--date` is today; `--by` is `$OCOECO_BY`.\n\
+- `ikb help RECORD` is this section alone; `ikb man` is the man page.\n\n## Records\n\n"
+    );
+    for s in recs {
+        t.push_str(&format!(
+            "### `ikb {}`\n\n{}\n\n```\n{}\n```\n\n",
+            s.name,
+            s.summary,
+            usage(s)
+        ));
+        for p in &s.params {
+            t.push_str(&format!("- {}\n", param_line(s, p)));
+        }
+        t.push('\n');
+    }
+    if !queries.is_empty() {
+        t.push_str("## Asking\n\nAnswer from a query, never from `data/` or `docs/`: `tad q NAME --option value` (`--format csv` for long answers).\n\n");
+        for s in queries {
+            let opts: String = s
+                .params
+                .iter()
+                .map(|p| {
+                    if p.required {
+                        format!(" --{} {}", p.name, p.ty.name().to_uppercase())
+                    } else {
+                        format!(" [--{}]", p.name)
+                    }
+                })
+                .collect();
+            t.push_str(&format!("- `tad q {}{}` - {}\n", s.name, opts, s.summary));
+        }
+    }
+    t
+}
+
+/// The records a base keeps for machines (a feed, a derivation, a filing from a script): idealkb.toml's
+/// `machine = [...]`. They run like any other but are left out of the help, the man page and IKB.md.
+pub fn machine(root: &Path) -> Vec<String> {
+    std::fs::read_to_string(root.join("idealkb.toml"))
+        .ok()
+        .and_then(|t| t.parse::<toml::Table>().ok())
+        .and_then(|t| t.get("machine").and_then(|m| m.as_array().cloned()))
+        .map(|a| {
+            a.iter()
+                .filter_map(|v| v.as_str().map(str::to_string))
+                .collect()
+        })
+        .unwrap_or_default()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn base() -> std::path::PathBuf {
+        let d = std::env::temp_dir().join(format!("ikb-test-{}", std::process::id()));
+        std::fs::create_dir_all(d.join("records")).unwrap();
+        std::fs::write(
+            d.join("records/note.sql"),
+            "-- A note.\n-- --id    string        YYYY-MM-DD-what\n-- --brief  string        in one line\n-- --by     string?       who\n-- --date   date = today  when\nINSERT INTO notes VALUES ($id);\n",
+        )
+        .unwrap();
+        d
+    }
+
+    #[test]
+    fn a_record_is_a_command_with_its_options() {
+        let all = load(&base()).unwrap();
+        assert_eq!(all.len(), 1);
+        assert!(id_is_made(&all[0]));
+        assert_eq!(
+            usage(&all[0]),
+            "ikb note --brief STRING [--id STRING] [--by STRING] [--date DATE]"
+        );
+        let recs = records(&all);
+        assert!(recs.iter().find(|r| r.key == "brief").unwrap().required);
+        assert!(!recs.iter().find(|r| r.key == "id").unwrap().required);
+        assert_eq!(
+            recs.iter()
+                .find(|r| r.key == "by")
+                .unwrap()
+                .env
+                .as_ref()
+                .unwrap()
+                .name,
+            "OCOECO_BY"
+        );
+        assert!(page("0", &all, &[]).contains("### `ikb note`"));
+    }
+}

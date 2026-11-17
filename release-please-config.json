@@ -1,10 +1,20 @@
 {
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
-  "release-type": "simple",
   "bump-minor-pre-major": true,
-  "initial-version": "0.1.0",
+  "plugins": ["cargo-workspace"],
   "packages": {
     ".": {
+      "release-type": "simple",
+      "initial-version": "0.1.0",
+      "changelog-path": "CHANGELOG.md",
+      "exclude-paths": ["ikb", "packaging", "Cargo.toml", "Cargo.lock", "bin/install-ikb.sh", ".github/workflows/ikb.yml"]
+    },
+    "ikb": {
+      "release-type": "rust",
+      "component": "ikb",
+      "include-component-in-tag": true,
+      "draft": true,
+      "force-tag-creation": true,
       "changelog-path": "CHANGELOG.md"
     }
   }

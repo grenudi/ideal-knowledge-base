@@ -29,9 +29,26 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+    outputs:
+      ikb_created: ${{ steps.rp.outputs['ikb--release_created'] }}
+      ikb_tag: ${{ steps.rp.outputs['ikb--tag_name'] }}
     steps:
-      - uses: googleapis/release-please-action@v5
+      - id: rp
+        uses: googleapis/release-please-action@v5
         with:
           # the version comes from the manifest, not from a guess
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
+  # ikb's release is tagged ikb-vX.Y.Z as a draft; the package conveyor builds the binaries with signed
+  # provenance in this same run and says the release once they are all attached.
+  binaries:
+    needs: release-please
+    if: needs.release-please.outputs.ikb_created == 'true'
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+    uses: linux-package-distribution-oco/conveyor/.github/workflows/binaries.yml@v1
+    with:
+      tag: ${{ needs.release-please.outputs.ikb_tag }}
+      declaration: packaging/conveyor.toml
