@@ -167,3 +167,25 @@ Rejected
 
 About
 : brief-first
+
+
+<a id="2026-11-17-followers-answer-before-release"></a>
+### 2026-11-17-followers-answer-before-release
+
+Date
+: 2026-11-17
+
+Brief
+: A release is made only when every follower answers the five queries with it laid over its main
+
+Decision
+: release-please's pull request runs bin/followers-answer.sh now (workflow followers): each base in consumers is cloned from its main, this checkout's generic files are laid over it by follow.sh with its own files kept, and the five generic queries are asked of its data. land refuses the release while one does not answer. Other pull requests skip it; workflow_dispatch asks it any time.
+
+Why
+: Found 2026-11-17: v0.4.0's find and recent read decisions.brief, and linux-phone-oco/docs, which keeps tables.toml as its own, has no brief, so its weekly pin could only fail after the release was out. Proposed by the ideal-agent session, which made 0.4.0. Tried: ideal-agent answers all five; docs does not, for brief.
+
+Rejected
+: Checking after the release, in the weekly pin (it finds the break once every follower is already asked to take it); running it on every pull request (a change waiting on a follower would block unrelated work - the release is where it reaches them); generic queries that test whether a column exists (SQL that guesses at a base's shape hides what a follower lacks).
+
+About
+: follow-by-pin

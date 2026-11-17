@@ -134,7 +134,7 @@ Status
 : open
 
 Note
-: Found 2026-11-17: 0.4.0's find and recent read decisions.brief and research.brief; docs keeps tables.toml as its own and has no brief, so the weekly pin job cannot land 0.2.0-0.4.0 there (it now leaves docs' clone as main has it). Next, in docs (its conveyor's): add brief to decisions and research, take it in its own decision and research records and about query, then the pin lands by itself.
+: Found 2026-11-17: 0.4.0's find and recent read decisions.brief and research.brief; docs keeps tables.toml as its own and has no brief, so the weekly pin job cannot land 0.2.0-0.4.0 there (it now leaves docs' clone as main has it). Next, in docs (its conveyor's): add brief to decisions and research, take it in its own decision and research records and about query, then the pin lands by itself. Since decision 2026-11-17-followers-answer-before-release, no release of idealkb is made until docs answers: this item now holds idealkb's releases too.
 
 About
 : follow-by-pin
