@@ -361,19 +361,6 @@ Takes
 : The lead summarises the most important contents and stands on its own; 250-400 words in featured articles; citations may stay in the body.
 
 
-<a id="adr-tools"></a>
-### adr-tools
-
-Url
-: https://github.com/npryce/adr-tools
-
-Author
-: Nat Pryce
-
-Takes
-: adr new -s N writes the new record and marks N superseded by it - both directions linked.
-
-
 <a id="pep-1"></a>
 ### PEP 1 - PEP Purpose and Guidelines
 
@@ -456,3 +443,81 @@ Year
 
 Takes
 : Knowledge kept by rewriting one summary erodes (context collapse) and drifts terse; itemised additions keep the detail.
+
+
+<a id="git-notes"></a>
+### git notes
+
+Url
+: https://git-scm.com/docs/git-notes
+
+By
+: ikb-cli
+
+Takes
+: refuse to overwrite silently; text from file or stdin
+
+
+<a id="adr-tools"></a>
+### adr-tools
+
+Url
+: https://github.com/npryce/adr-tools
+
+By
+: ikb-cli
+
+Takes
+: a new entry is one command with the template and numbering done for you; not the numbers or the editor
+
+
+<a id="log4brains"></a>
+### log4brains
+
+Url
+: https://github.com/thomvaill/log4brains
+
+By
+: ikb-cli
+
+Takes
+: date-prefixed names avoid merge conflicts
+
+
+<a id="taskwarrior-udas"></a>
+### Taskwarrior user defined attributes
+
+Url
+: https://taskwarrior.org/docs/udas/
+
+By
+: ikb-cli
+
+Takes
+: typed attributes with allowed values and defaults
+
+
+<a id="hugo-new-content"></a>
+### hugo new content
+
+Url
+: https://gohugo.io/commands/hugo_new_content/
+
+By
+: ikb-cli
+
+Takes
+: the command decides the path and fills date and title
+
+
+<a id="writing-tools-for-agents"></a>
+### Writing tools for agents (Anthropic)
+
+Url
+: https://www.anthropic.com/engineering/writing-tools-for-agents
+
+By
+: ikb-cli
+
+Takes
+: few consolidated tools; errors that steer toward correct input

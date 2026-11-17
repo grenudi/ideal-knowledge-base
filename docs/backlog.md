@@ -141,3 +141,38 @@ About
 
 Opened
 : 2026-11-17
+
+
+<a id="ikb-build"></a>
+### Build ikb 0.1: record commands, help, man IKB.md, text from files, ids, material folders; release; docs follows
+
+Status
+: in-progress
+
+Note
+: crate ikb/ in idealkb; then install-ikb.sh and pin; docs first follower; ideal-agent skills point to ikb
+
+About
+: ikb
+
+Opened
+: 2026-11-17
+
+
+<a id="tad-per-record-help"></a>
+### tad: tad r NAME --help from the statement header, and completion of enumerated values (about subjects, project places)
+
+Status
+: open
+
+Note
+: 14 of 41 failed records in transcripts were --help. ikb help NAME covers it until tad does. Belongs in tad-engine.
+
+Waits
+: tad-engine
+
+About
+: ikb
+
+Opened
+: 2026-11-17
