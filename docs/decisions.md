@@ -411,3 +411,28 @@ About
 
 Research
 : stale-waits
+
+
+<a id="2026-11-17-principles-cited-not-restated"></a>
+### 2026-11-17-principles-cited-not-restated
+
+Date
+: 2026-11-17
+
+Brief
+: A base keeps its principles as a few concept rows with stable ids; guides cite by link, the citation is checked, restating is measured.
+
+Decision
+: A base's founding principles are a small numbered set (at most about ten) kept once, as rows of its concepts with a stable id, a one-line statement and a why; where a principle rests on a general practice it cites that practice by number, not by its words. Briefs, guides and other repositories' AGENTS.md cite a principle by a link to its anchor and never restate it. Two checks keep that honest: the citations resolve (a dead id or an uncited principle fails, in the base's verify) and the restating is measured (overlay-check with the principles' text as an extra base). A principle whose meaning changes gets a new id; the old row stays. A decision or work that rests on a principle names it in --about, so tad q about --subject ID lists what rests on it. First used in linux-phone-oco/docs (decision 2026-11-17-principles-are-concepts-cited-by-id).
+
+Why
+: Durable charters (Debian's Social Contract and DFSG, the Mozilla Manifesto, Wikipedia's five pillars, Rust's API guidelines) are small, on one page, with short stable ids that are link targets; none enforces cite-not-restate mechanically, so the link is checked and the restating measured. Rows render with anchors and show on the face already, so no new page or table is needed.
+
+Rejected
+: A free-standing manifesto file: prose nobody can cite by id, no check, no face. A table of its own for principles: a second kind of concept. Versioned texts: ceremony at this size. Making it a generic idealkb table now: one base uses it; extract when a second does.
+
+About
+: ikb
+
+Research
+: charter-pattern-world
