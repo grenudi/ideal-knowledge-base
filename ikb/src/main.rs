@@ -8,6 +8,7 @@ use std::path::Path;
 use std::process::Command;
 use tad::statements::Statement;
 
+mod complete;
 mod model;
 mod text;
 
@@ -52,7 +53,10 @@ fn usage(all: &[Statement]) -> String {
     for r in all {
         s.push_str(&format!("  {:<18} {}\n", r.name, r.summary));
     }
-    s.push_str("\nother commands:\n  help [RECORD]      this list, or one record's options\n  page [--write]     IKB.md: the one page to read (written beside tables.toml with --write)\n  man                the man page\n");
+    s.push_str("\nother commands:\n");
+    for (n, d) in complete::FIXED {
+        s.push_str(&format!("  {n:<18} {d}\n"));
+    }
     s
 }
 
@@ -81,6 +85,27 @@ fn run() -> Result<()> {
             None => print!("{}", usage(&shown)),
             Some(n) => print!("{}", model::help(find(&all, n)?)),
         },
+        "completions" => {
+            let shell = args.get(1).map(String::as_str).unwrap_or("");
+            print!(
+                "{}",
+                complete::script(shell).with_context(|| format!("completions for bash, zsh, fish or nushell; '{shell}' is none of them (ikb completions SHELL)"))?
+            );
+        }
+        "complete" => {
+            let cur = args
+                .iter()
+                .find_map(|a| a.strip_prefix("--cur="))
+                .unwrap_or("");
+            let words: Vec<String> = args[1..]
+                .iter()
+                .filter(|a| !a.starts_with("--cur=") && !a.starts_with("--tables"))
+                .cloned()
+                .collect();
+            for c in complete::candidates(&shown, &words, cur) {
+                println!("{c}");
+            }
+        }
         "page" | "man" => {
             let fixed = Contract::records();
             let resolved = Invocation {
@@ -96,6 +121,10 @@ fn run() -> Result<()> {
                         name: &s.name,
                         summary: &s.summary,
                     })
+                    .chain(complete::FIXED.iter().map(|(n, d)| generate::Command {
+                        name: n,
+                        summary: d,
+                    }))
                     .collect();
                 let date = tad::today();
                 let program = Program {
