@@ -25,7 +25,7 @@ Status
 : open
 
 Note
-: Its standing tables already have this shape except about. Next: add about to its record tables and a references rule, then follow.sh.
+: Its standing tables already have this shape except about. Next: add about to its record tables and a references rule, then follow.sh. On ideal-agent's backlog as follow-ideal-knowledge-base (its own records practice, practice-shown-in, landscape and backlog-status stay own); offered to the author 2026-11-17, not started.
 
 About
 : follow-by-pin
@@ -38,10 +38,10 @@ Opened
 ### How an agent finds its way in any base is a skill of grenudi/ideal-agent, pointing here
 
 Status
-: open
+: done
 
 Note
-: Its owner was told on 2026-11-17. The skill says: read AGENTS.md, ask the five queries, never read data/; this repository keeps what a base is.
+: Done 2026-11-17: ideal-agent's skill ask-a-knowledge-base (skills/ask-a-knowledge-base/SKILL.md, plugin 0.1.3): read the base's AGENTS.md, ask the five queries (--format csv for long answers), never read data/ or docs/, record through tad r ... --about; it points here for what a base is.
 
 About
 : one-entry
