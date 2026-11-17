@@ -211,3 +211,28 @@ Rejected
 
 About
 : brief-first
+
+
+<a id="2026-11-17-ikb-run-time-from-records"></a>
+### 2026-11-17-ikb-run-time-from-records
+
+Date
+: 2026-11-17
+
+Brief
+: ikb: one pinned binary builds each base's record commands and man page from its records/*.sql at run time; no fork.
+
+Decision
+: ikb is one released Rust binary (crate ikb/ in idealkb, command line declared with argenv, tad's statements library pinned) that is run in a base and reads that base's own records/*.sql at run time: every record becomes a subcommand with its header's typed options, and the contract and man page are built from those headers. What it adds over tad r: per-record help and one man page written to IKB.md; long text from a file or stdin (--NAME-file, - for stdin) so no shell quoting; id made from the brief when none is given; `about`, project and brief length checked before the run, with the accepted values named; research --material creates and names research/SUBJECT/YYYY-MM-DD/; canon and render run after every record and say one line; --by from OCOECO_BY. It does not parse SQL itself, hold any table, or re-implement tad: it calls tad. A base extends ikb by adding records/*.sql, never by forking code. Per-record --help and completion of enumerated values belong in tad (backlog on tad); ikb help NAME covers it until then.
+
+Why
+: Measured 17% of tad r calls failed, 14 of 41 failures only asked --help, 100 of 240 calls carried long text through shell quoting, and canon/render printed 74 KB. docs already overrides five generic records (--project), so a fixed generic CLI would be wrong for it; reading records/*.sql at run time makes each base's difference automatic and keeps pulls trivial because nothing is copied.
+
+Rejected
+: Rhizoid/rhizcut fork of the ikb crate into each base: a fork is for patching code, and bases differ only in records, which are data - a fork would carry a Rust workspace into every knowledge base and make every pull a merge; rhizoid stays the way for a base that really must patch ikb's source. A library plus a thin per-base binary: still a build per base. Plugins: a loading mechanism for what a SQL file already declares. Static subcommands generated at build time: a new record would need a release. An MCP server over the CLI: adds schema and context cost; the man page is the interface, MCP can wrap ikb later. Sequential ids (adr-tools): collide across branches; ids are slugs of the brief. $EDITOR flows: not for agents.
+
+About
+: ikb
+
+Research
+: ikb-friction-and-world

@@ -100,3 +100,13 @@ Summary
 
 Why
 : The author, 2026-11-17: records - tables and files - should all have a brief summary to begin with; by default an agent reads the summaries, and reads deeper only when the task needs more detail. Measured on this base: the about answer for one subject went from 1,965 bytes to 273 when it gave briefs instead of whole records. It is the stage before the whole in progressive disclosure, as a skill is its name and line before its body (kb-organisation-world).
+
+
+<a id="ikb"></a>
+### ikb: record by domain command
+
+Summary
+: One command, ikb, gives each base's records as subcommands read from its records/*.sql at run time, so an agent needs only its man page (IKB.md) to add rows and files.
+
+Why
+: Measured 2026-11-17: 17% of tad r calls failed, 14 from asking --help, 100 of 240 carried long text through shell quoting, 74 KB of canon/render chatter.

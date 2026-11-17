@@ -101,3 +101,28 @@ About
 
 Material
 : research/summary-layer/2026-11-17/
+
+
+<a id="ikb-friction-and-world"></a>
+### ikb-friction-and-world
+
+Date
+: 2026-11-17
+
+Brief
+: Recording costs 17% failed tad r calls and shell quoting; others declare an entry once and derive flags, help, man.
+
+Question
+: What do agents spend on recording into a tad base, what exists, what do others do, and what does ikb add over tad r?
+
+Found
+: Measured on 31 transcripts of 2026-11-17: 240 tad r calls, 41 failed (17%), 8.4 tool calls and ~11k tokens per failure. Causes: missing parameter 7, doubled project prefix 5, brief over 200 chars 5, duplicate source id 4, SQL/apostrophe 6, shell parse 5, material path not a folder/status 3, '--help is not a declared flag' 14 (9 sessions). 100 of 240 calls carry 2-10 KB of text in double quotes, 46 in heredocs; 74 KB of canon/render chatter. Before the first good record agents read ~9 KB (statements 0.6 KB, SQL 1 KB). Exists: tad r runs named statements with typed params and defaults from the header comment, tad::statements is a library, tad prints no per-record help; argenv Record is an owned run-time struct, so a contract and man page can be built from headers at run time. World: git notes, adr-tools, log4brains, Taskwarrior UDAs, hugo new: one declaration gives flags, defaults, validation, templates, dated names; agent guidance: few tools, errors that steer.
+
+Sources
+: git-notes,adr-tools,log4brains,taskwarrior-udas,hugo-new-content,writing-tools-for-agents
+
+About
+: ikb
+
+Material
+: research/ikb/2026-11-17/
