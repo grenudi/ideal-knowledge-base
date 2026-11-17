@@ -195,3 +195,25 @@ About
 
 Material
 : research/commons-bases/2026-11-17/
+
+
+<a id="tad-sql-hand-writes"></a>
+### tad-sql-hand-writes
+
+Date
+: 2026-11-17
+
+Brief
+: 56 hand-written tad sql writes in 13 sessions: mostly one field of one row, or a removal, which no named record covers.
+
+Question
+: Which generic record or commands stop agents writing tad sql by hand?
+
+Found
+: The roles session's count (ideal-agent research work-struggles) of 2026-11-17: backlog status/waits/note 22, decisions 8, sources 9, practices 5, test_results inserts 4, research deletes 2, subjects inserts 2 - 56 in 13 sessions. tad set exists and checks every rule but offers no help on tables, fields or values and adds an absent row. practices and subjects are ideal-agent's own tables, test_results is devlab's test-run record. Not measured here: how many of the 56 were one-offs against a missing record, or why agents did not use tad set.
+
+Sources
+: git-notes
+
+About
+: ikb

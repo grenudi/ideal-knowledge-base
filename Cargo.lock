@@ -162,6 +162,7 @@ dependencies = [
  "anyhow",
  "argenv",
  "argenv-resolve",
+ "serde_json",
  "tad",
  "toml",
 ]

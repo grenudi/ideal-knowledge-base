@@ -34,7 +34,12 @@ pub fn candidates(records: &[Statement], words: &[String], cur: &str) -> Vec<Str
             .collect(),
         Some("help") if words.len() == 1 => names(),
         Some("completions") if words.len() == 1 => SHELLS.iter().map(|s| s.to_string()).collect(),
-        Some("page") => vec!["--write".into(), "--tables".into()],
+        Some("set") | Some("remove") => vec![
+            "--key".into(),
+            "--field".into(),
+            "--skip-render".into(),
+            "--tables".into(),
+        ],
         Some("help") | Some("completions") | Some("man") => vec![],
         Some(name) => match records.iter().find(|s| s.name == name) {
             None => vec![],

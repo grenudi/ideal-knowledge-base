@@ -224,3 +224,22 @@ About
 
 Opened
 : 2026-11-17
+
+
+<a id="tad-sql-guard"></a>
+### ideal-agent's guard refuses tad sql writes and says ikb set / ikb remove
+
+Status
+: open
+
+Note
+: For the roles session (owner of ideal-agent's hooks): the guard already refuses python; a tad sql with INSERT, UPDATE or DELETE can say: use ikb set / ikb remove / the record.
+
+Waits
+: ikb 0.5 released
+
+About
+: ikb
+
+Opened
+: 2026-11-17
