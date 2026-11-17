@@ -12,8 +12,14 @@ What it adds to a bare tad database:
 - **The about link.** Every record names what it is about, checked against the base's subjects.
 - **Five questions, one query each.** `tad q about --subject S`, `tad q next`, `tad q find --text WORDS`,
   `tad q row --id ID`, `tad q recent` - and named records to write: `decision`, `research`, `source`,
-  `backlog`, `session-log`, each with `--about`.
-- **The standing tables.** `backlog`, `session_log`, `decisions` (with what was rejected), `research`, `sources`.
+  `backlog`, `session-log`, each with `--about`, and `summary`.
+- **The standing tables.** `backlog`, `session_log`, `decisions` (with what was rejected), `research`, `sources`,
+  `summaries`.
+- **A summary over many records.** When a subject's records weigh over 8 KB, `tad q about` says a summary is
+  due: a short, dated "how it stands" (`tad r summary`), returned first; the records it condenses stay, named
+  by id (`--whole` gives them in full). Renewed when over 4 KB more was recorded since.
+- **Research kept aside.** Its finding is a row; its own material a dated folder the row names,
+  `research/SUBJECT/YYYY-MM-DD/`, read only when needed. Redone research supersedes the old, which stays.
 - **One entry.** `AGENTS.md` under 3 KB - what the base is in two lines, a table from question to command,
   and the rule: never read `data/` to answer. `CLAUDE.md` is `@AGENTS.md`.
 

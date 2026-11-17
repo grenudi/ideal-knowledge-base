@@ -19,3 +19,24 @@ Rejected
 
 About
 : follow-by-pin
+
+---
+
+
+<a id="2026-11-17-summary-and-research-layers"></a>
+### Summaries over many records, and research kept aside
+
+Entry date
+: 2026-11-17
+
+Done
+: Asked by the author. Looked around first (research summary-layer-world and research-aside-world, material in research/summary-layer/2026-11-17/). Added the summaries table and tad r summary; research gains material and supersedes; about leads with the summary and condenses records to ids, says per subject when a summary is due; find, recent and row reach summaries. The entry and README say it. ideal-agent follows idealkb next, and docs takes it with audio-mic's summary.
+
+Considered
+: Keeping docs' how-it-stands rows as the summary; a count threshold; a model-written summary on a schedule.
+
+Rejected
+: See decisions 2026-11-17-summary-layer and 2026-11-17-research-aside.
+
+About
+: summary-layer

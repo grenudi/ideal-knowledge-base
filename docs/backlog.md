@@ -18,22 +18,6 @@ Opened
 : 2026-11-17
 
 
-<a id="second-follower"></a>
-### grenudi/ideal-agent follows ideal-knowledge-base: a single-place base, the closest to the generic shape
-
-Status
-: open
-
-Note
-: Its standing tables already have this shape except about. Next: add about to its record tables and a references rule, then follow.sh. On ideal-agent's backlog as follow-ideal-knowledge-base (its own records practice, practice-shown-in, landscape and backlog-status stay own); offered to the author 2026-11-17, not started.
-
-About
-: follow-by-pin
-
-Opened
-: 2026-11-17
-
-
 <a id="navigation-skill"></a>
 ### How an agent finds its way in any base is a skill of grenudi/ideal-agent, pointing here
 
@@ -106,6 +90,22 @@ Note
 
 About
 : one-entry
+
+Opened
+: 2026-11-17
+
+
+<a id="second-follower"></a>
+### grenudi/ideal-agent follows ideal-knowledge-base: a single-place base, the closest to the generic shape
+
+Status
+: in-progress
+
+Note
+: Taken up by summary-and-research-layers on 2026-11-17: ideal-agent follows idealkb 0.2.0 once it is released (its about field on the record tables, its references rule, follow.sh).
+
+About
+: follow-by-pin
 
 Opened
 : 2026-11-17

@@ -288,3 +288,171 @@ Year
 
 Takes
 : The commons' template for a knowledge base kept as data; last changed 2026-11-04 and still describing the vendored Python engine on a DuckDB schema (bin/adopt-engine.sh, .tad/), which every base left for tad on 2026-11-11.
+
+
+<a id="cochrane-lsr-guidance"></a>
+### Guidance for the production and publication of Cochrane living systematic reviews, v1.0
+
+Url
+: https://community.cochrane.org/sites/default/files/uploads/inline-files/Transform/201912_LSR_Revised_Guidance.pdf
+
+Author
+: Cochrane
+
+Year
+: 2019
+
+Takes
+: Searched monthly, republished only when new evidence would change the conclusions or on a schedule; between versions a What's New line: searched, N pending, conclusions stand. No numeric threshold for an important change exists.
+
+
+<a id="elliott-lsr-2017"></a>
+### Living systematic review: 1. Introduction - the why, what, when, and how
+
+Url
+: https://pubmed.ncbi.nlm.nih.gov/28912002/
+
+Author
+: Elliott, Synnot, Turner et al.
+
+Year
+: 2017
+
+Takes
+: A review continually updated as new evidence becomes available, where new evidence could change decisions.
+
+
+<a id="wikipedia-summary-style"></a>
+### Wikipedia:Summary style
+
+Url
+: https://en.wikipedia.org/wiki/Wikipedia:Summary_style
+
+Author
+: Wikipedia editors
+
+Takes
+: A long section spun off into its own article leaves a summary with a Main link; new material goes to the child first, then is summarised in the parent; Sync marks a summary fallen behind.
+
+
+<a id="wikipedia-article-size"></a>
+### Wikipedia:Article size
+
+Url
+: https://en.wikipedia.org/wiki/Wikipedia:Article_size
+
+Author
+: Wikipedia editors
+
+Takes
+: Size thresholds for dividing: over 8,000 words of prose may, over 9,000 probably, over 15,000 almost certainly; under 6,000 length alone does not justify it.
+
+
+<a id="wikipedia-lead"></a>
+### Manual of Style: Lead section
+
+Url
+: https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style/Lead_section
+
+Author
+: Wikipedia editors
+
+Takes
+: The lead summarises the most important contents and stands on its own; 250-400 words in featured articles; citations may stay in the body.
+
+
+<a id="adr-tools"></a>
+### adr-tools
+
+Url
+: https://github.com/npryce/adr-tools
+
+Author
+: Nat Pryce
+
+Takes
+: adr new -s N writes the new record and marks N superseded by it - both directions linked.
+
+
+<a id="pep-1"></a>
+### PEP 1 - PEP Purpose and Guidelines
+
+Url
+: https://peps.python.org/pep-0001/
+
+Author
+: Python
+
+Takes
+: Superseded-By with a matching Replaces; a resolved PEP is a historical document, not a living specification.
+
+
+<a id="beads-compaction"></a>
+### Beads
+
+Url
+: https://github.com/steveyegge/beads
+
+Author
+: Steve Yegge
+
+Takes
+: Closed issues summarised 30 days after closing by a small model, kept only if shorter, the original snapshotted and restorable; run when 10 or more are eligible.
+
+
+<a id="gastown"></a>
+### Gas Town
+
+Url
+: https://github.com/gastownhall/gastown
+
+Author
+: Steve Yegge
+
+Takes
+: Work state in git-backed hooks and the Beads ledger; gt seance questions an earlier session's logs rather than a stored summary.
+
+
+<a id="artcraft"></a>
+### ArtCraft
+
+Url
+: https://github.com/storytold/artcraft
+
+Author
+: Storyteller
+
+Takes
+: CLAUDE.md is @AGENTS.md; a shared rules block pinned by commit and checksum; plan/ a git-ignored notebook; dated raw evidence beside a summary (docs/performance/2026-09-26-*.json).
+
+
+<a id="claude-code-skills"></a>
+### Extend Claude with skills
+
+Url
+: https://code.claude.com/docs/en/skills
+
+Author
+: Anthropic
+
+Year
+: 2026
+
+Takes
+: The description is always in context, the body loaded when used; SKILL.md under 500 lines, reference in files read only when needed.
+
+
+<a id="ace-context-collapse"></a>
+### Agentic Context Engineering
+
+Url
+: https://arxiv.org/abs/2510.04618
+
+Author
+: Zhang et al.
+
+Year
+: 2025
+
+Takes
+: Knowledge kept by rewriting one summary erodes (context collapse) and drifts terse; itemised additions keep the detail.

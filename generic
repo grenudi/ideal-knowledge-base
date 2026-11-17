@@ -11,5 +11,6 @@ records/research.sql
 records/backlog.sql
 records/session-log.sql
 records/source.sql
+records/summary.sql
 AGENTS.md
 tables.toml

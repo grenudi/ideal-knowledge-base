@@ -57,3 +57,47 @@ Sources
 
 About
 : follow-by-pin
+
+
+<a id="summary-layer-world"></a>
+### summary-layer-world
+
+Date
+: 2026-11-17
+
+Question
+: When one subject gathers many records, how do others keep a short, dated how-it-stands on top - when is it renewed, and by whom?
+
+Found
+: They agree on the shape and disagree only on the trigger. A dated summary on top that stands on its own and links what it condenses: Cochrane's abstract and What's New, Wikipedia's lead and Main link, PhotoCraft's ROADMAP, a skill's description. Two speeds: a cheap line every cycle (Cochrane: searched, N pending, conclusions stand) and a rewrite only when conclusions would change, or on a size, age or batch trigger (Wikipedia 8,000 words of prose; Beads 10 closed issues 30 days old; skills 500 lines). Nobody has a numeric threshold for an important change (Cochrane says so). Whoever changes the detail renews the summary (Wikipedia: child first, then the parent's summary; Cochrane's authors); a background model only where nobody is at hand (Beads), and then only if shorter, the original kept. The detail is never thrown away: rewriting one summary as the only copy erodes it (ACE's context collapse). Risk: summaries go stale - Wikipedia's Sync tag; more than half of living reviews never update.
+
+Sources
+: cochrane-lsr-guidance,elliott-lsr-2017,wikipedia-summary-style,wikipedia-article-size,wikipedia-lead,beads-compaction,photocraft-agents-md,claude-code-skills,ace-context-collapse,anthropic-context-engineering
+
+About
+: summary-layer
+
+Material
+: research/summary-layer/2026-11-17/
+
+
+<a id="research-aside-world"></a>
+### research-aside-world
+
+Date
+: 2026-11-17
+
+Question
+: How do others keep research with its sources but out of everyday reading - dated versions, the latest first, the old superseded but reachable?
+
+Found
+: Supersede, never delete: the old version stays, marked, out of the default reading, and points at its replacement - Nygard's ADRs, adr-tools (both directions), MADR's status, PEP 1's Superseded-By and Replaces, RFC Obsoletes. Detail one link away from what is read every day: Wikipedia's Main article, a skill's reference files, ArtCraft's dated raw evidence beside its summary (docs/performance/2026-09-26-*.json); scratch can stay out of the record entirely (ArtCraft's git-ignored plan/). No common practice of a dated research/YYYY-MM-DD/ folder was found - not known yet; ArtCraft's dated evidence files are nearest. In idealkb the research row already is the short summary the proposal asked for (finding, date, sources); what it lacked was a link to its material and a way to be superseded.
+
+Sources
+: nygard-adr,adr-tools,madr,pep-1,artcraft,wikipedia-summary-style,claude-code-skills,gastown
+
+About
+: research-aside
+
+Material
+: research/summary-layer/2026-11-17/
