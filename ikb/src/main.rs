@@ -123,11 +123,7 @@ fn run() -> Result<()> {
                     )?
                 );
             } else {
-                let md = model::page(
-                    env!("CARGO_PKG_VERSION"),
-                    &shown,
-                    &model::load_queries(&root),
-                );
+                let md = model::page(&shown, &model::load_queries(&root));
                 if Contract::WRITE
                     .get_from_or_default(&resolved)
                     .unwrap_or(false)

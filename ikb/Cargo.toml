@@ -16,3 +16,15 @@ argenv = "0.4"
 argenv-resolve = "0.4"
 toml = "0.8"
 tad = { git = "https://github.com/creation-guidelines/tad-engine", tag = "tad-v0.7.0" }
+
+[package.metadata.deb]
+maintainer = "grenudi <agent@grenudi>"
+extended-description = "Record into a knowledge base by domain commands read from its own records/*.sql: one generated page (IKB.md) is all an agent needs."
+assets = [
+    ["target/release/ikb", "usr/bin/", "755"],
+]
+
+[package.metadata.generate-rpm]
+assets = [
+    { source = "target/release/ikb", dest = "/usr/bin/ikb", mode = "755" },
+]
