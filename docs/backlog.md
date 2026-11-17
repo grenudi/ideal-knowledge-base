@@ -192,3 +192,19 @@ About
 
 Opened
 : 2026-11-17
+
+
+<a id="upstream-records"></a>
+### Upstream records: upstreams and upstream_items, with ikb handles; docs migrates upstream-queue's state into them
+
+Status
+: in-progress
+
+Note
+: Tables, records upstream/upstream-item/upstream-state, queries upstream/upstreams built in idealkb. Next: release, docs follows (seed upstreams and the six upstream-* items; patches stay files), ideal-agent skill says how to find and choose an upstream, recorded the dated way.
+
+About
+: ikb
+
+Opened
+: 2026-11-17

@@ -15,3 +15,8 @@ records/summary.sql
 AGENTS.md
 tables.toml
 bin/install-ikb.sh
+queries/upstream.sql
+queries/upstreams.sql
+records/upstream.sql
+records/upstream-item.sql
+records/upstream-state.sql

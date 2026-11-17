@@ -126,3 +126,28 @@ About
 
 Material
 : research/ikb/2026-11-17/
+
+
+<a id="upstream-records-world"></a>
+### upstream-records-world
+
+Date
+: 2026-11-17
+
+Brief
+: Upstream work everywhere is two things: where it can go, and what was sent with a forward-only state, linked back to its origin.
+
+Question
+: What one general shape records upstream work (any external resource, any form) so that linux-phone-oco/docs can follow it instead of a second tracker?
+
+Found
+: DEP-3, the kernel trailers, Debian's BTS and Launchpad converge on an origin, a forwarded-to address, a link to the report and an applied-upstream marker; Patchwork and IETF errata give states (new/under review/accepted/rejected; reported/verified/held/rejected); OSM notes show a light question-or-information form with no patch; Renovate shows that following an upstream is another direction. Here the upstream-queue repo keeps patches and send commands in a README outside git, and docs' six upstream-* backlog items know only open/in-progress/done - nothing says sent, awaiting review, or links an item to its file, branch or PR. Shape taken: upstreams (id, kind, name, address, how, contacts, notes) and upstream_items (upstream, title, form patch|information|correction|question|finding, state draft..landed with side exits, from_work, domain, tags, about, local_ref, file, sent_on, forwarded, bug, version, supersedes, applied_upstream, waits, note, last_update). Not read: Patchwork's real state list, Launchpad/Fedora/Alpine trackers, wikis and standards processes beyond OSM/IETF errata/Wikidata, linked-vault tools.
+
+Sources
+: git-notes
+
+About
+: ikb
+
+Material
+: research/upstream/2026-11-17/
