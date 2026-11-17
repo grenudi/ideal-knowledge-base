@@ -1,0 +1,25 @@
+# Before a release is made, every follower must be able to take it: on release-please's pull request, this
+# checkout's generic files are laid over each base in consumers, cloned from its main, and the five generic
+# queries are asked of its data (bin/followers-answer.sh). A column a follower does not declare stops the
+# release, not that follower's weekly pin. Ask it any time with workflow_dispatch.
+name: followers
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  answer:
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.head_ref, 'release-please--')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: tad, from its pinned release
+        run: TAD_DEST="$HOME/.local/bin" ./bin/install-tad.sh && echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+      - name: every follower answers the five queries with this release laid
+        run: |
+          git config --global user.name check && git config --global user.email check@localhost
+          tad engine >/dev/null
+          ./bin/followers-answer.sh now
