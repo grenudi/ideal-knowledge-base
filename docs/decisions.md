@@ -176,16 +176,16 @@ Date
 : 2026-11-17
 
 Brief
-: A release is made only when every follower answers the five queries with it laid over its main
+: A release is tagged only once every follower answers the five queries with main's generic files laid over it
 
 Decision
-: release-please's pull request runs bin/followers-answer.sh now (workflow followers): each base in consumers is cloned from its main, this checkout's generic files are laid over it by follow.sh with its own files kept, and the five generic queries are asked of its data. land refuses the release while one does not answer. Other pull requests skip it; workflow_dispatch asks it any time.
+: The release workflow runs bin/followers-answer.sh now before release-please, on every push to main: each base in consumers is cloned from its main, main's generic files are laid over it by follow.sh with its own files kept, and the five generic queries are asked of its data. While one does not answer, release-please does not run, so no tag is made; a merged release pull request waits, untagged, until the first push after which every follower answers. workflow_dispatch asks it any time.
 
 Why
-: Found 2026-11-17: v0.4.0's find and recent read decisions.brief, and linux-phone-oco/docs, which keeps tables.toml as its own, has no brief, so its weekly pin could only fail after the release was out. Proposed by the ideal-agent session, which made 0.4.0. Tried: ideal-agent answers all five; docs does not, for brief.
+: Found 2026-11-17: v0.4.0's find and recent read decisions.brief, and linux-phone-oco/docs, which keeps tables.toml as its own, has no brief, so its weekly pin could only fail after the release was out. Proposed by the ideal-agent session, which made 0.4.0. Tried: ideal-agent answers all five; docs does not, for brief. First built as a check on release-please's pull request, it never ran there: a pull request opened with GitHub's own token starts no workflow, and land merged it with no checks.
 
 Rejected
-: Checking after the release, in the weekly pin (it finds the break once every follower is already asked to take it); running it on every pull request (a change waiting on a follower would block unrelated work - the release is where it reaches them); generic queries that test whether a column exists (SQL that guesses at a base's shape hides what a follower lacks).
+: A check on release-please's pull request (it never runs, for that reason); checking after the release, in the weekly pin (the break is found once followers are already asked to take it); a check on every pull request (a change waiting on a follower would block unrelated work); generic queries that test whether a column exists (SQL that guesses at a base's shape hides what a follower lacks).
 
 About
 : follow-by-pin

@@ -1,13 +1,34 @@
+# Releases, automated by release-please - but a release is tagged only once every follower can take it: each
+# push to main first lays main's generic files over every base in consumers, cloned from its main, and asks
+# the five generic queries of its data (bin/followers-answer.sh). While one does not answer, release-please
+# does not run: no release pull request is updated and no tag is made, and a merged release waits, untagged,
+# for the first push after which they all answer. (A check on release-please's own pull request cannot do
+# this: a pull request opened with GitHub's own token starts no workflow.)
 name: release
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
 jobs:
-  release-please:
+  followers:
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: tad, from its pinned release
+        run: TAD_DEST="$HOME/.local/bin" ./bin/install-tad.sh && echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+      - name: every follower answers the five queries with main laid over it
+        run: |
+          git config --global user.name check && git config --global user.email check@localhost
+          tad engine >/dev/null
+          ./bin/followers-answer.sh now
+  release-please:
+    needs: followers
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - uses: googleapis/release-please-action@v5
         with:
