@@ -1,6 +1,6 @@
 [package]
 name = "ikb"
-version = "0.5.0"
+version = "0.5.1"
 edition = "2021"
 description = "Record into a knowledge base by domain commands read from its own records/*.sql: one man page is all an agent needs"
 license = "MIT"
