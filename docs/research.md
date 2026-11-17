@@ -217,3 +217,28 @@ Sources
 
 About
 : ikb
+
+
+<a id="chain-follow-world"></a>
+### chain-follow-world
+
+Date
+: 2026-11-17
+
+Brief
+: What flows down the chain is a slice of files into a repo with its own data; idealkb's pin and follow.sh fit, rhizoid lacks a slice mode.
+
+Question
+: How should idealkb, device-template and the device bases take general updates and send improvements back, and does rhizoid fit?
+
+Found
+: Rhizoid (README, design log) is a fork-own-sync tool for whole dependency repositories, not implemented yet (CLI stubbed; its consumption side is an open item). idealkb's follow.sh/update-pins/consumers with the release gate already lays a slice (generic list, own list, drift exit 3) into repositories with their own data; it is source-agnostic. Subtree needs a prefix, Copier and cruft are Python with a second state file, Renovate bumps numbers. linux-phone-oco/linux (a fork of sm7150-mainline/linux) is a true cutting.
+
+Sources
+: git-notes
+
+About
+: ikb
+
+Material
+: research/chain-follow/2026-11-17/

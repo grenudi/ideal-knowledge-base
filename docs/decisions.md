@@ -361,3 +361,28 @@ About
 
 Research
 : tad-sql-hand-writes
+
+
+<a id="2026-11-17-chain-follow-by-slice"></a>
+### 2026-11-17-chain-follow-by-slice
+
+Date
+: 2026-11-17
+
+Brief
+: One pin-and-follow mechanism for the whole chain; improvements go back as PRs recorded as upstream items; rhizoid gets a slice mode.
+
+Decision
+: One mechanism, the one idealkb already has, for the whole chain: a source repository names what it gives (`generic`), releases by tag, and each follower pins a release and takes the slice with bin/follow.sh, weekly through update-pins and its own CI, ending 3 when a follower changed a generic file. idealkb is the source for every base (device bases are consumers of idealkb directly, like docs); device-template becomes a second source for the device layer (the parts contract, devices, phone queries, test-run) with its own `generic` list and releases, taken by device bases through the same script; follow.sh and update-pins.sh learn to take the source from the pin file (backlog). Pushing back: a general improvement made in a base or the template is a pull request to the source repository from the base's branch, recorded in the base as an upstream item (ikb upstream-item, form patch, --file auto for the patch or message, state draft, ready on the person's word, sent with the PR address as forwarded, landed when released). First-class upstreams: every device base ships two upstreams rows - idealkb (kind kb-instance) and device-template (kb-instance) - seeded in the template's data/upstreams.json, so the links are visible and queryable (tad q upstreams); docs records idealkb the same way. rhizoid stays the tool for forking whole repositories to patch them (linux-phone-oco/linux of sm7150-mainline/linux, tad-engine, argenv); what it lacks for this chain - a consumption mode for slices - goes on git-rhizoid's own backlog (slice-consumption), with follow.sh as its prototype, rather than worked around.
+
+Why
+: The mechanism exists, is in use for two bases, has a drift verdict (exit 3), a gate on release and a weekly job, and is source-agnostic in follow.sh. What flows is a slice laid into a repository with its own data, which none of rhizoid (whole forks; consumption side undesigned; CLI stubbed), subtree (needs a prefix), Copier/cruft (Python, a second state file) or Renovate (bumps numbers) does. Making the links visible as upstreams rows costs two rows and uses what was built today.
+
+Rejected
+: Every device base as a rhizcut (a fork) of idealkb or the template: drags the source's crate, data, research and release files into each base, and a base cannot follow two forks. git subtree or submodule: the generic files must sit at the base's root where tad reads them. Copier or cruft: Python, which the practices refuse for new tools, and an answers file beside idealkb.toml. Renovate as the updater: it can bump the version line but the files have to be laid by follow.sh anyway, which update-pins already does with its own CI. A new `ikb follow` that fetches its own standing parts at run time: attractive later (no clone with tags needed) but the weekly job works; kept as backlog. Waiting for rhizoid to be implemented: its consumption side is undesigned and the CLI stubbed; the chain is needed now.
+
+About
+: ikb
+
+Research
+: chain-follow-world

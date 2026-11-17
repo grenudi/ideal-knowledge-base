@@ -243,3 +243,35 @@ About
 
 Opened
 : 2026-11-17
+
+
+<a id="follow-source-from-pin"></a>
+### follow.sh and update-pins.sh take their source from the pin file, so device-template is a second source (generic list, releases) for device bases
+
+Status
+: open
+
+Note
+: update-pins hard-codes grenudi/ideal-knowledge-base and idealkb.toml. Needs device-template releases (release-please) and its consumers; then surya-lab and google-walleye-lab follow both. Owner: ikb with orchestration (device-template).
+
+About
+: ikb
+
+Opened
+: 2026-11-17
+
+
+<a id="ikb-follow"></a>
+### ikb follow: fetch a source's slice itself at a pinned release (no clone with tags), the same verdicts as follow.sh
+
+Status
+: open
+
+Note
+: Later; the weekly job works. Would let a base run it by hand with one verb.
+
+About
+: ikb
+
+Opened
+: 2026-11-17
