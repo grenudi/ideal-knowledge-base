@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.1](https://github.com/grenudi/ideal-knowledge-base/compare/ikb-v0.5.0...ikb-v0.5.1) (2026-11-17)
+
+
+### Bug Fixes
+
+* ikb: set and remove are listed in the help, the man page and the completions ([#48](https://github.com/grenudi/ideal-knowledge-base/issues/48)) ([8572af4](https://github.com/grenudi/ideal-knowledge-base/commit/8572af456b9c8af9137080355450c08af90ad39b))
+
 ## [0.5.0](https://github.com/grenudi/ideal-knowledge-base/compare/ikb-v0.4.0...ikb-v0.5.0) (2026-11-17)
 
 
