@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.9.1...v0.10.0) (2026-11-17)
+
+
+### Features
+
+* ikb: set and remove - the checked way to change or take away one row ([#44](https://github.com/grenudi/ideal-knowledge-base/issues/44)) ([a9619a9](https://github.com/grenudi/ideal-knowledge-base/commit/a9619a94aa66b1f7b9d91239ada141e4c0592630))
+
 ## [0.9.1](https://github.com/grenudi/ideal-knowledge-base/compare/v0.9.0...v0.9.1) (2026-11-17)
 
 
