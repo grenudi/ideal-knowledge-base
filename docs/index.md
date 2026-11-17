@@ -8,6 +8,6 @@ How a knowledge base is organised so that an agent, or a person, answers a quest
 - [Concepts](concepts.md): 11
 - [Decisions](decisions.md): 11
 - [Research](research.md): 6
-- [Session Log](session_log.md): 3
+- [Session Log](session_log.md): 4
 - [Sources](sources.md): 35
 - [Summaries](summaries.md): 0

@@ -20,12 +20,12 @@ An item of work ahead, or done (an item of that id is replaced).
 ikb backlog --title STRING [--id STRING] [--status STRING] [--note STRING] [--waits STRING] [--about STRING] [--opened DATE]
 ```
 
-- --id (string, optional): a-short-name (made from the brief or title when not given)
-- --title (string, required): what it is
-- --status (string, default open): open, in-progress or done
-- --note (string, optional): where it stands, and the next step
-- --waits (string, optional): what it waits on, if anything
-- --about (string, optional): what it is about (tad q about lists the subjects)
+- --id: a-short-name (made from the brief or title when not given)
+- --title: what it is
+- --status (default open): open, in-progress or done
+- --note: where it stands, and the next step
+- --waits: what it waits on, if anything
+- --about: what it is about (tad q about lists the subjects)
 - --opened (date, default today): when it was opened
 
 ### `ikb decision`
@@ -36,13 +36,13 @@ A decision, with what was rejected and why (a decision of that id is replaced).
 ikb decision --brief STRING --decision STRING --why STRING [--id STRING] [--rejected STRING] [--about STRING] [--research STRING] [--date DATE]
 ```
 
-- --id (string, optional): YYYY-MM-DD-what-was-decided (made from the brief or title when not given)
-- --brief (string, required): the decision in one line, at most 200 characters: what answers show
-- --decision (string, required): what was decided
-- --why (string, required): why: the evidence, whose words
-- --rejected (string, optional): what was weighed and not chosen, and why not
-- --about (string, optional): what it is about (tad q about lists the subjects)
-- --research (string, optional): the research it rests on (its id)
+- --id: YYYY-MM-DD-what-was-decided (made from the brief or title when not given)
+- --brief: the decision in one line, at most 200 characters: what answers show
+- --decision: what was decided
+- --why: why: the evidence, whose words
+- --rejected: what was weighed and not chosen, and why not
+- --about: what it is about (tad q about lists the subjects)
+- --research: the research it rests on (its id)
 - --date (date, default today): when
 
 ### `ikb research`
@@ -53,14 +53,14 @@ What was learned, and from where (a research of that id is replaced). Its findin
 ikb research --brief STRING --question STRING --found STRING [--id STRING] [--sources STRING] [--about STRING] [--material STRING] [--supersedes STRING] [--date DATE]
 ```
 
-- --id (string, optional): a-short-name (made from the brief or title when not given)
-- --brief (string, required): what was found, in one line of at most 200 characters: what answers show
-- --question (string, required): what was asked
-- --found (string, required): what was found, condensed
-- --sources (string, optional): the sources' ids, comma-separated (tad r source records each)
-- --about (string, optional): what it is about (tad q about lists the subjects)
-- --material (string, optional): its folder, research/SUBJECT/YYYY-MM-DD/
-- --supersedes (string, optional): the research it is a later version of (its id)
+- --id: a-short-name (made from the brief or title when not given)
+- --brief: what was found, in one line of at most 200 characters: what answers show
+- --question: what was asked
+- --found: what was found, condensed
+- --sources: the sources' ids, comma-separated (tad r source records each)
+- --about: what it is about (tad q about lists the subjects)
+- --material: its folder, research/SUBJECT/YYYY-MM-DD/
+- --supersedes: the research it is a later version of (its id)
 - --date (date, default today): when
 
 ### `ikb session-log`
@@ -71,12 +71,12 @@ How a stretch of work went: what was done, considered and rejected (an entry of 
 ikb session-log --title STRING --done STRING [--id STRING] [--considered STRING] [--rejected STRING] [--about STRING] [--date DATE]
 ```
 
-- --id (string, optional): YYYY-MM-DD-what (made from the brief or title when not given)
-- --title (string, required): in a few words
-- --done (string, required): what was done
-- --considered (string, optional): what was considered
-- --rejected (string, optional): what was rejected, and why
-- --about (string, optional): what it is about (tad q about lists the subjects)
+- --id: YYYY-MM-DD-what (made from the brief or title when not given)
+- --title: in a few words
+- --done: what was done
+- --considered: what was considered
+- --rejected: what was rejected, and why
+- --about: what it is about (tad q about lists the subjects)
 - --date (date, default today): when
 
 ### `ikb source`
@@ -87,13 +87,13 @@ A source research and decisions cite (a source of that id is replaced).
 ikb source --title STRING --url STRING [--id STRING] [--author STRING] [--year INTEGER] [--by STRING] [--takes STRING]
 ```
 
-- --id (string, optional): a-short-name (made from the brief or title when not given)
-- --title (string, required): its title
-- --url (string, required): https://...
-- --author (string, optional): who wrote it
-- --year (integer, optional): when
-- --by (string, optional): who made what it describes
-- --takes (string, optional): what is taken from it
+- --id: a-short-name (made from the brief or title when not given)
+- --title: its title
+- --url: https://...
+- --author: who wrote it
+- --year (integer): when
+- --by: who made what it describes
+- --takes: what is taken from it
 
 ### `ikb summary`
 
@@ -103,8 +103,8 @@ How a subject stands, in short: written - or renewed in place - when tad q about
 ikb summary --about STRING --says STRING [--date DATE]
 ```
 
-- --about (string, required): the subject (tad q about lists them, and which are due)
-- --says (string, required): how it stands, in at most 1500 characters, naming the records that carry it
+- --about: the subject (tad q about lists them, and which are due)
+- --says: how it stands, in at most 1500 characters, naming the records that carry it
 - --date (date, default today): when
 
 ## Asking

@@ -127,26 +127,25 @@ pub fn usage(s: &Statement) -> String {
 
 fn param_line(s: &Statement, p: &Param) -> String {
     let made = p.name == "id" && id_is_made(s);
-    let how = if p.required && !made {
-        "required".to_string()
-    } else if let Some(d) = &p.default {
-        format!("default {d}")
+    // the usage line already marks what is required (no brackets); only a type that is not text, and a default, are said
+    let mut how: Vec<String> = Vec::new();
+    if p.ty.name() != "string" {
+        how.push(p.ty.name().to_string());
+    }
+    if let Some(d) = &p.default {
+        how.push(format!("default {d}"));
+    }
+    let how = if how.is_empty() {
+        String::new()
     } else {
-        "optional".to_string()
+        format!(" ({})", how.join(", "))
     };
     let made_from = if made {
         " (made from the brief or title when not given)"
     } else {
         ""
     };
-    format!(
-        "--{} ({}, {}): {}{}",
-        p.name,
-        p.ty.name(),
-        how,
-        p.summary,
-        made_from
-    )
+    format!("--{}{}: {}{}", p.name, how, p.summary, made_from)
 }
 
 /// What `ikb help NAME` says.
