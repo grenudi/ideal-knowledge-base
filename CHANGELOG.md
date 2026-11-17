@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.5.0...v0.6.0) (2026-11-17)
+
+
+### Features
+
+* ikb 0.1: record into a base by commands read from its own records ([#20](https://github.com/grenudi/ideal-knowledge-base/issues/20)) ([eb51545](https://github.com/grenudi/ideal-knowledge-base/commit/eb51545cbf471e72201f535304515bfe03e27b0c))
+
 ## [0.5.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.4.0...v0.5.0) (2026-11-17)
 
 
