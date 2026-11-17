@@ -9,6 +9,7 @@ use std::process::Command;
 use tad::statements::Statement;
 
 mod complete;
+mod edit;
 mod model;
 mod text;
 
@@ -23,6 +24,24 @@ contract! {
         default: Some(String::new()),
         arg:     Some(Arg { value_name: "FILE", ..Arg::long("tables") }),
         summary: "The base's declaration (default: tables.toml); its records/ and queries/ are read beside it",
+        ..Input::EMPTY
+    };
+
+    /// A key value, for set and remove.
+    KEY: String = Input {
+        key:     "key",
+        ty:      Type::String,
+        arg:     Some(Arg { value_name: "VALUE", ..Arg::long("key") }),
+        summary: "set, remove: the row's key value (repeat for a key of several fields)",
+        ..Input::EMPTY
+    };
+
+    /// A field to change, for set.
+    FIELD: String = Input {
+        key:     "field",
+        ty:      Type::String,
+        arg:     Some(Arg { value_name: "NAME=VALUE", ..Arg::long("field") }),
+        summary: "set: a field and its new value (repeat for several; @FILE or @- read text)",
         ..Input::EMPTY
     };
 
@@ -76,6 +95,38 @@ fn run() -> Result<()> {
             None => print!("{}", usage(&shown)),
             Some(n) => print!("{}", model::help(find(&all, n)?)),
         },
+        "set" | "remove" => {
+            let call = edit::parse(first, &args[1..])?;
+            let said = if first == "set" {
+                edit::set(&tables, std::path::Path::new("data"), &call)?
+            } else {
+                edit::remove(&tables, std::path::Path::new("data"), &call)?
+            };
+            if !call.skip_render {
+                for step in ["canon", "render"] {
+                    let o = Command::new("tad")
+                        .arg(step)
+                        .arg(format!("--tables={tables}"))
+                        .output()?;
+                    if !o.status.success() {
+                        eprint!(
+                            "{}{}",
+                            String::from_utf8_lossy(&o.stdout),
+                            String::from_utf8_lossy(&o.stderr)
+                        );
+                        bail!("tad {step} failed after the change");
+                    }
+                }
+            }
+            println!(
+                "{said}{}",
+                if call.skip_render {
+                    "; run tad canon && tad render once you have changed all"
+                } else {
+                    "; canon and render done"
+                }
+            );
+        }
         "completions" => {
             let shell = args.get(1).map(String::as_str).unwrap_or("");
             print!(

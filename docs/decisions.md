@@ -336,3 +336,28 @@ About
 
 Research
 : commons-and-unit-bases-world
+
+
+<a id="2026-11-17-ikb-set-and-remove"></a>
+### 2026-11-17-ikb-set-and-remove
+
+Date
+: 2026-11-17
+
+Brief
+: ikb set and ikb remove change or take away one existing row of any declared table, checked; no tad sql by hand.
+
+Decision
+: ikb gets two fixed commands: `ikb set TABLE --key K [--key K2] --field NAME=VALUE ...` changes fields of one existing row of any declared table, and `ikb remove TABLE --key K` takes one row away. Both read the base's own tables.toml: a missing or wrong table lists the tables with their keys, a wrong field lists the fields with their allowed values, a key of several fields says how many --key values and in what order, a row that does not exist is refused (adding is its record's job), an enum value outside its list says the list. tad checks every rule before a change is kept (tad::set puts the file back; a removal runs through tad sql, which does the same); canon and render run after. A named record is kept for what is said in several fields at once (backlog-status, backlog-needs, part). The roles session's idea of a hook that refuses `tad sql` writes belongs in ideal-agent's guard, with this as its message.
+
+Why
+: Measured by the roles session (ideal-agent research work-struggles, 41 transcripts of 2026-11-17): 56 hand-written tad sql writes past the named records in 13 sessions - backlog status/waits/note 22, decisions 8, sources deleting and updating 9, practices 5, test_results inserts 4, research deletes 2, subjects inserts 2. About 41 of them are one field of one row or one removal in idealkb's standing tables; a record per field and table would be dozens of statements, most unused; one generic checked command is one thing to learn and its errors teach the tables. tad already has the checked set (tad set TABLE --key K --set F=V) but with no help for tables, fields or values and no refusal of an absent row - agents reached for sql instead.
+
+Rejected
+: One named record per table and field (backlog-waits, source-remove, decision-about ...): dozens of statements, base-specific, most never used. A generic SQL record taking table, id, field and value: a table or a column cannot be a parameter of a named statement, and the values would not be checked against the declaration. Adding a generic backlog-status to idealkb: docs and the device template already keep their own (with project or without), so it would only create drift in their own lists; ikb set covers its waits. Leaving tad sql allowed with a warning: the agents' route of least resistance stays. Putting the command in tad: tad is released separately; ikb already reads the declaration, and tad::set is what it calls.
+
+About
+: ikb
+
+Research
+: tad-sql-hand-writes
