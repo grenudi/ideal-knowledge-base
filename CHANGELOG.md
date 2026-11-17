@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.2](https://github.com/grenudi/ideal-knowledge-base/compare/v0.8.1...v0.8.2) (2026-11-17)
+
+
+### Bug Fixes
+
+* ikb: an empty option value counts as not given ([#32](https://github.com/grenudi/ideal-knowledge-base/issues/32)) ([bef407c](https://github.com/grenudi/ideal-knowledge-base/commit/bef407ce2b9d95ef8f06ea5e87a926601b66097d))
+
 ## [0.8.1](https://github.com/grenudi/ideal-knowledge-base/compare/v0.8.0...v0.8.1) (2026-11-17)
 
 
