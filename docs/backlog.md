@@ -125,3 +125,19 @@ About
 
 Opened
 : 2026-11-17
+
+
+<a id="docs-takes-briefs"></a>
+### linux-phone-oco/docs takes 0.4.0: brief on its decisions and research, and on its own about query and records
+
+Status
+: open
+
+Note
+: Found 2026-11-17: 0.4.0's find and recent read decisions.brief and research.brief; docs keeps tables.toml as its own and has no brief, so the weekly pin job cannot land 0.2.0-0.4.0 there (it now leaves docs' clone as main has it). Next, in docs (its conveyor's): add brief to decisions and research, take it in its own decision and research records and about query, then the pin lands by itself.
+
+About
+: follow-by-pin
+
+Opened
+: 2026-11-17
