@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.19.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.18.0...v0.19.0) (2026-11-18)
+
+
+### Features
+
+* feat: a base's change to a followed file goes up to its source as a PR ([#87](https://github.com/grenudi/ideal-knowledge-base/issues/87)) ([8ceab96](https://github.com/grenudi/ideal-knowledge-base/commit/8ceab9669f18ff62db10ce0cce60d3418b78c7d8))
+* feat: own files say why in the pin; update-pins holds a base that does not ([#85](https://github.com/grenudi/ideal-knowledge-base/issues/85)) ([cff240e](https://github.com/grenudi/ideal-knowledge-base/commit/cff240ebdf6214a6c9313a549e962a773c58178a))
+
 ## [0.18.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.17.0...v0.18.0) (2026-11-18)
 
 
