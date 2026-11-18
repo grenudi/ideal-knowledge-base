@@ -32,3 +32,4 @@ jobs:
           sh bin/test-follow.sh
           sh bin/test-own.sh
           sh bin/test-send-up.sh
+          sh bin/test-fork-tags.sh

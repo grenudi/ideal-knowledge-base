@@ -612,3 +612,16 @@ By
 
 Takes
 : READY, BLOCKED, WAITING as virtual tags: ready = pending, not blocked, not scheduled later
+
+
+<a id="android-common-kernel-readme"></a>
+### How do I submit patches to Android Common Kernels
+
+Url
+: https://android.googlesource.com/kernel/common/+/android-mainline/README.md
+
+By
+: Android
+
+Takes
+: subject tags UPSTREAM BACKPORT FROMGIT FROMLIST ANDROID with the evidence line each requires
