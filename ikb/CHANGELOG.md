@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.1](https://github.com/grenudi/ideal-knowledge-base/compare/ikb-v0.6.0...ikb-v0.6.1) (2026-11-18)
+
+
+### Bug Fixes
+
+* ikb: updates that match no row or change nothing are refused ([#66](https://github.com/grenudi/ideal-knowledge-base/issues/66)) ([2925183](https://github.com/grenudi/ideal-knowledge-base/commit/29251834d1360a0e3fbd668a8692e1af87f7da15))
+
 ## [0.6.0](https://github.com/grenudi/ideal-knowledge-base/compare/ikb-v0.5.2...ikb-v0.6.0) (2026-11-17)
 
 
