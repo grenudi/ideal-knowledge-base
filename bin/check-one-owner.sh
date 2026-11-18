@@ -10,8 +10,9 @@ work=$(mktemp -d); trap 'rm -rf "$work"' EXIT
 for d in "$@"; do
 	[ -f "$d/generic" ] || { echo "check-one-owner: $d has no generic list" >&2; exit 2; }
 	mark=$(sed -n 's/^#! marker = \(.*\)$/\1/p' "$d/generic" | head -1); : "${mark:=idealkb}"
+	from=$(sed -n 's/^#! from = \(.*\)$/\1/p' "$d/generic" | head -1)
 	grep -vE '^[[:space:]]*(#|$)' "$d/generic" | sort -u | while read -r f; do
-		if [ -f "$d/$f" ] && grep -q "$mark:begin" "$d/$f"; then part=$mark; else part=whole; fi
+		if [ -f "$d/$from$f" ] && grep -q "$mark:begin" "$d/$from$f"; then part=$mark; else part=whole; fi
 		printf '%s\t%s\t%s\n' "$f" "$part" "$d"
 	done
 done > "$work/all"

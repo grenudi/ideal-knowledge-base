@@ -9,7 +9,8 @@
 #                              clone this script is in, ideal-knowledge-base). A source names, in lines at the top of
 #                              its generic, the base file that holds the pin (#! pin = devicebase.toml; default
 #                              idealkb.toml) and the word of its marker lines (#! marker = template; default idealkb).
-#                              The pin file also holds source = "OWNER/REPO" (what update-pins reads), version, own.
+#                              A source may serve its files from a folder of it (#! from = DIR/): they are read there and laid at the
+#                              base's root. The pin file also holds source = "OWNER/REPO" (what update-pins reads), version, own.
 # Ends 0 when the base had no change of its own to a generic file, 3 when it had, 2 on a wrong call.
 set -eu
 kb=$(cd "$(dirname "$0")/.." && pwd)
@@ -23,6 +24,7 @@ origin=$(git -C "$kb" remote get-url origin 2>/dev/null | sed 's/\.git$//; s|.*[
 who=$(basename "${origin:-$kb}")
 pinname=$(at "$new" generic | sed -n 's/^#! pin = \(.*\)$/\1/p' | head -1); : "${pinname:=idealkb.toml}"
 mark=$(at "$new" generic | sed -n 's/^#! marker = \(.*\)$/\1/p' | head -1); : "${mark:=idealkb}"
+from=$(at "$new" generic | sed -n 's/^#! from = \(.*\)$/\1/p' | head -1)
 pin="$base/$pinname"
 old=""; own=""
 if [ -f "$pin" ]; then
@@ -35,22 +37,22 @@ drift=0
 for f in $(at "$new" generic | grep -vE '^[[:space:]]*(#|$)'); do
 	case " $own " in
 	*" $f "*)
-		if [ -n "$old" ] && [ "$(at "$old" "$f")" != "$(at "$new" "$f")" ]; then
+		if [ -n "$old" ] && [ "$(at "$old" "$from$f")" != "$(at "$new" "$from$f")" ]; then
 			echo "$f: the base's own; $who $new changed it - look at whether the base takes it:"
-			at "$new" "$f" > "$work/new"
+			at "$new" "$from$f" > "$work/new"
 			diff -u --label "the base's $f" --label "$who $new's" "$base/$f" "$work/new" | sed 's/^/    /' || true
 		else
 			echo "$f: the base's own"
 		fi
 		continue ;;
 	esac
-	at "$new" "$f" > "$work/new"
+	at "$new" "$from$f" > "$work/new"
 	mkdir -p "$(dirname "$base/$f")"
 	if grep -q "$mark:begin" "$work/new"; then
 		part < "$work/new" > "$work/part"
 		if [ -f "$base/$f" ] && grep -q "$mark:begin" "$base/$f"; then
 			part < "$base/$f" > "$work/had"
-			if [ -n "$old" ]; then at "$old" "$f" | part > "$work/was"; else cp "$work/part" "$work/was"; fi
+			if [ -n "$old" ]; then at "$old" "$from$f" | part > "$work/was"; else cp "$work/part" "$work/was"; fi
 			if ! cmp -s "$work/had" "$work/was"; then
 				drift=1; echo "$f: the base changed its generic part - replaced; the diff shows the change to send upstream"
 			fi
@@ -67,7 +69,7 @@ for f in $(at "$new" generic | grep -vE '^[[:space:]]*(#|$)'); do
 		fi
 	else
 		if [ -f "$base/$f" ] && ! cmp -s "$base/$f" "$work/new"; then
-			if [ -z "$old" ] || [ "$(at "$old" "$f")" != "$(cat "$base/$f")" ]; then
+			if [ -z "$old" ] || [ "$(at "$old" "$from$f")" != "$(cat "$base/$f")" ]; then
 				drift=1; echo "$f: the base had its own version - replaced; the diff shows it (send it upstream, or name it own)"
 			fi
 		fi
