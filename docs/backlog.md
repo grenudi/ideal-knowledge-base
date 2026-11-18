@@ -362,3 +362,16 @@ About
 
 Opened
 : 2026-11-18
+
+
+<a id="followers-derived"></a>
+### Derive the followers from each base's idealkb.toml or an upstreams row naming idealkb, instead of the hand-kept consumers
+
+Status
+: open
+
+About
+: ikb
+
+Opened
+: 2026-11-18

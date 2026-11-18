@@ -2,3 +2,6 @@
 # bin/update-pins.sh now keeps them current, landing a change their own CI must pass.
 linux-phone-oco/docs
 grenudi/ideal-agent
+linux-phone-oco/device-template
+linux-phone-oco/surya-lab
+linux-phone-oco/google-walleye-lab
