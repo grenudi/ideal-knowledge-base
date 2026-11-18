@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.15.0...v0.16.0) (2026-11-18)
+
+
+### Features
+
+* feat: update-pins follows any source named by its pin; one owner per file ([#79](https://github.com/grenudi/ideal-knowledge-base/issues/79)) ([d9b1d7f](https://github.com/grenudi/ideal-knowledge-base/commit/d9b1d7fd568a13a91692d655a716d9f3e9bc54ba))
+
 ## [0.15.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.14.0...v0.15.0) (2026-11-18)
 
 
