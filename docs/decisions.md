@@ -486,3 +486,34 @@ About
 
 Research
 : upstreaming-and-carry-world
+
+
+<a id="2026-11-18-decisions-are-superseded-not-edited"></a>
+### 2026-11-18-decisions-are-superseded-not-edited
+
+Date
+: 2026-11-18
+
+Brief
+: A decision is superseded or amended by a later row, names who it binds and the item carrying it out; where it stands is read off the work (tad q decided)
+
+Decision
+: decisions gains supersedes, amends, scope, tracked_by; ikb decision takes them and refuses unknown ids; tad q decided says superseded, carried out, in work or no item named; about leaves superseded decisions; AGENTS.md says so; followers-answer asks decided; bin/test-decisions.sh follows one decision to superseded in CI. No proposal state, no comment period, no typed back-link, no decider field.
+
+Why
+: RFC 'Obsoletes/Updates', PEP 'Replaces/Superseded-By', MADR 'superseded by' and Rust's tracking issue agree: an old decision stays and says what replaced it, and what carries it out is a link. Our own practice 28 (states are read off the work) rules out typing Draft/Accepted; practice 12 says a decision with no item named is not known yet, not undone.
+
+Rejected
+: a status field with proposed/accepted/deprecated (a state to keep true); a final comment period (sessions message each other and waits already holds a sign-off); typing Superseded-By on the old row (a second link that drifts - the other direction is a query); a links table of all kinds (one table for four fields most records never use); editing decisions in place (loses what was decided then).
+
+About
+: ikb
+
+Research
+: rfc-systems-world
+
+Scope
+: every base that follows idealkb; ideal-agent skills (record-the-work)
+
+Tracked by
+: decision-links-everywhere

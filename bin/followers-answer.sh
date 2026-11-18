@@ -25,12 +25,12 @@ for r in $repos; do
 	rc=0; "$work/kb/bin/follow.sh" "$base" 0.0.0-check > "$work/said" || rc=$?
 	case $rc in 0 | 3) ;; *) cat "$work/said"; echo "$r: follow.sh refused"; failed=1; continue ;; esac
 	answers=1
-	for q in "about" "next" "find --text a" "row --id a" "recent" "upstream" "upstreams" "carried"; do
+	for q in "about" "next" "find --text a" "row --id a" "recent" "upstream" "upstreams" "carried" "decided"; do
 		# shellcheck disable=SC2086 # each line is a query and its parameters, split on purpose
 		if ! (cd "$base" && tad q $q --format csv >/dev/null 2>"$work/err"); then
 			echo "$r: tad q $q does not answer: $(head -c 300 "$work/err")"; answers=0
 		fi
 	done
-	if [ "$answers" = 1 ]; then echo "$r: answers all eight"; else failed=1; fi
+	if [ "$answers" = 1 ]; then echo "$r: answers all nine"; else failed=1; fi
 done
 exit $failed

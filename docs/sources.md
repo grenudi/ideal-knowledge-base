@@ -361,19 +361,6 @@ Takes
 : The lead summarises the most important contents and stands on its own; 250-400 words in featured articles; citations may stay in the body.
 
 
-<a id="pep-1"></a>
-### PEP 1 - PEP Purpose and Guidelines
-
-Url
-: https://peps.python.org/pep-0001/
-
-Author
-: Python
-
-Takes
-: Superseded-By with a matching Replaces; a resolved PEP is a historical document, not a living specification.
-
-
 <a id="beads-compaction"></a>
 ### Beads
 
@@ -560,3 +547,55 @@ By
 
 Takes
 : trailers from replies to any sent version, matched by patch-id; refusals remembered by provenance
+
+
+<a id="rfc7322"></a>
+### RFC 7322: RFC Style Guide
+
+Url
+: https://www.rfc-editor.org/rfc/rfc7322.html
+
+By
+: RFC Editor
+
+Takes
+: Obsoletes and Updates header lines
+
+
+<a id="pep-1"></a>
+### PEP 1: PEP Purpose and Guidelines
+
+Url
+: https://peps.python.org/pep-0001/
+
+By
+: Python
+
+Takes
+: statuses, decider, Replaces/Superseded-By/Requires/Resolution, not modified after resolution
+
+
+<a id="rust-rfcs"></a>
+### Rust RFCs: README
+
+Url
+: https://github.com/rust-lang/rfcs/blob/master/README.md
+
+By
+: Rust
+
+Takes
+: FCP of ten days with subteam sign-off, tracking issue, amend or new RFC
+
+
+<a id="madr-template"></a>
+### MADR: ADR template
+
+Url
+: https://github.com/adr/madr/blob/develop/template/adr-template.md
+
+By
+: adr
+
+Takes
+: status incl. superseded by, decision-makers, consulted, informed, considered options

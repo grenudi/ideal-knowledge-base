@@ -167,6 +167,26 @@ type = "string"
 name = "research"
 type = "string"
 
+# What this decision replaces whole (the old stays, reachable by find and row, and leaves about and decided), and
+# what it changes in part (the old stays in force). Read the other way - superseded by, amended by - from these.
+[[tables.decisions.fields]]
+name = "supersedes"
+type = "string"
+
+[[tables.decisions.fields]]
+name = "amends"
+type = "string"
+
+# Who it binds or touches: the bases, roles, tools or people that must know - the informed of an ADR.
+[[tables.decisions.fields]]
+name = "scope"
+type = "string"
+
+# The backlog item that carries it out, as a tracking issue does an accepted RFC: what decided says of it is read from that item.
+[[tables.decisions.fields]]
+name = "tracked_by"
+type = "string"
+
 [tables.research]
 key = ["id"]
 
@@ -449,6 +469,17 @@ to = ["upstreams"]
 [[rules.references]]
 field = "upstream_items.supersedes"
 to = ["upstream_items"]
+[[rules.references]]
+field = "decisions.supersedes"
+to = ["decisions"]
+
+[[rules.references]]
+field = "decisions.amends"
+to = ["decisions"]
+
+[[rules.references]]
+field = "decisions.tracked_by"
+to = ["backlog"]
 # idealkb:end
 
 # What about may name here: a concept, or an item of work.
