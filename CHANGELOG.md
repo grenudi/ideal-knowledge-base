@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.14.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.13.0...v0.14.0) (2026-11-18)
+
+
+### Features
+
+* feat: decisions superseded or amended, scoped, tracked; tad q decided ([#72](https://github.com/grenudi/ideal-knowledge-base/issues/72)) ([e97339d](https://github.com/grenudi/ideal-knowledge-base/commit/e97339dd0f8b3639634f551be1b06f747fc8f1d9))
+
 ## [0.13.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.12.2...v0.13.0) (2026-11-18)
 
 
