@@ -310,6 +310,35 @@ About
 : ikb
 
 
+<a id="rfc-systems-world"></a>
+### rfc-systems-world
+
+Date
+: 2026-11-18
+
+Brief
+: RFC, PEP, Rust RFC, MADR: we lacked superseding a decision, its scope and its carrying work; status is read, not typed
+
+Question
+: How do RFCs, PEPs, Rust RFCs, KEPs, ADRs and the kernel's RFC convention compare with ikb's research, decision, concept and backlog records; what to adopt, what to keep different?
+
+Found
+: Compared (read this round): IETF RFC style RFC 7322 - 'Obsoletes:' and 'Updates:' header lines, each RFC fixed once published (immutability itself not on the page read). Python PEP 1 - statuses Draft, Active, Accepted, Final, Rejected, Withdrawn, Deferred, Superseded, Provisional; a decider (Steering Council or its PEP-Delegate), a Sponsor, header links Replaces, Superseded-By, Requires, a Resolution link to the pronouncement; a PEP is not substantially modified after Accepted, Final, Rejected or Superseded. Rust RFCs - pre-RFC, PR, shepherd from the subteam, final comment period of ten calendar days opened only when every subteam member signs off, ending in merge, close or postpone; every accepted RFC gets a tracking issue; small changes amend, substantial ones are a new RFC with a note on the old. MADR - status proposed, rejected, accepted, deprecated, 'superseded by ADR-0123'; decision-makers, consulted, informed; considered options with pros and cons; confirmation. Not read this round, from memory and so unchecked: Kubernetes KEP (the page did not answer) - kep.yaml status provisional/implementable/implemented, owning-sig and participating-sigs, graduation criteria per stage; Nygard's 2011 ADR note (status, context, decision, consequences; superseded ADRs stay); the kernel's RFC subject tag, which marks a patch as a request for comment, not for merge.
+Map to ikb. Fit: research = the background an RFC/PEP carries, with supersedes; decision = an ADR (decision, why, rejected = considered options, research = context); sources; backlog with blocked_by = Requires; upstream_items = the kernel and DEP-3/Upstream-Status side (research upstreaming-and-carry-world). Lacked: (1) a decision could be replaced by id only - history in git, not in the data, no Superseded-By or Updates; (2) no stated scope - who a decision binds (KEP participating-sigs, MADR informed); (3) no link from a decision to the work that carries it out (Rust tracking issue, KEP implemented) - so nothing said whether a decision was carried out; (4) no way to ask which decisions stand.
+Deliberate differences, with why. No proposal state machine: a row is decided; a proposal is research and a backlog item that waits on the author's word (waits), because the sessions decide by the canon and the author's turn is the approval - a Draft/Accepted word typed on a row is a state to keep true (practice 28). Status is read, never typed: superseded (a later row names it), carried out (its item is done), in work, or no item named - the KEP/Rust status read off the work. No final comment period: sessions message each other and work does not wait on a period; where a decision must be heard by others its scope names them, and the sign-off is a waits on an item. No typed back-link (Superseded-By, Obsoleted-by): RFCs and PEPs keep both directions by hand and drift; ours is one link and the other direction is a query. No decider/sponsor field: the record's signature (OCOECO_BY) and the author's recorded turn say it. No BCP/Standards-Track categories: a decision's about and scope place it. Written once, never edited: kept as PEP/RFC do, but through supersedes/amends rows; an id replaced is for fixing a mistake before others read it.
+Cross-reference: the carry of a patch (research upstreaming-and-carry-world) and the life of a decision share one idea - the state is read off links and work, the old row stays reachable - and the same Upstream-Status/Backport reading ('accepted upstream, ours until a release') fits 'decided, in work, carried out'.
+Reaches every base the way carried did: generic tables.toml, record, query and AGENTS.md line by the pin; bases with their own tables.toml add four fields by hand (nullable) - that gap itself is open (backlog tables-own-drift).
+
+Sources
+: rfc7322,pep-1,rust-rfcs,madr-template,dep3,yocto-upstream-status
+
+About
+: ikb
+
+Material
+: research/ikb/2026-11-18/
+
+
 <a id="upstreaming-and-carry-world"></a>
 ### upstreaming-and-carry-world
 
@@ -327,6 +356,7 @@ Found
 Others: DEP-3 (read) - Origin (upstream/backport/vendor/other), Forwarded (no, not-needed, or where), Applied-Upstream (version or commit:ID), Bug, Reviewed-by/Acked-by, Last-Update: facts in a patch header, no state word, and the patch is in the package until the next version carries it. Yocto Upstream-Status (read) - Pending, Submitted [where], Backport [version], Denied, Inappropriate [reason], Inactive-Upstream: one word per carried patch, the patch stays in the recipe whatever the word is; the word Backport means it is already in the next release, drop at the bump. b4 (read trailers page; prep/send tags from memory, not re-read) - trailers (Reviewed-by, Acked-by, Tested-by) collected from replies to any sent version by patch-id, refusals remembered by provenance; each sent revision is a version of one series; thanks sent when applied. Ours maps: our state is the word of Upstream-Status's life (draft..landed, side exits), forwarded/applied_upstream/bug are DEP-3's fields, supersedes is the b4 revision chain; what was missing is carry (the patch is in the fork whatever the state), reviewers, and the fork-of link. Sxmo's 'accepted, thank you' is state accepted; it is carried until a release has it (applied_upstream), then landed and dropped.
 Propagation: a change to the generic part (tables.toml between idealkb:begin and idealkb:end, queries, records, AGENTS.md lines named in generic) reaches a base by its pin: release, update-pins opens the pin change, follow.sh lays it, exit 3 on drift; followers-answer.sh asks every base in consumers before release - now also upstream, upstreams and carried, so a base whose data cannot answer stops the change. New fields are optional, so existing rows stay valid. Forks are not followers: a fork carries no base.
 Not read: Patchwork's state list again, Gerrit/Phabricator, git-send-email's tracking tools (git-pw), Gentoo/Arch patch-carry conventions.
+Seen with the RFC systems comparison, research rfc-systems-world: the same reading (state read off links and work) is applied to decisions.
 
 Sources
 : dep3,yocto-upstream-status,b4-trailers
