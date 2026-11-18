@@ -620,3 +620,25 @@ About
 
 Scope
 : docs device-layer; update-pins; git-rhizoid conformance (test-follow.sh)
+
+
+<a id="2026-11-18-pin-moves-only-with-its-slice"></a>
+### 2026-11-18-pin-moves-only-with-its-slice
+
+Date
+: 2026-11-18
+
+Brief
+: update-pins leaves a base's pin where it is when the release changed none of the files the source lays (bin/slice-changed.sh)
+
+Decision
+: A release that changes neither the source's generic list nor any file it names (read from its #! from folder) moves no pin and opens no change; the job says so. An unknown old pin lays the release. bin/test-follow.sh holds it.
+
+Why
+: Orchestration's upstream item idealkb-skip-unchanged-slice: releases of ikb or docs alone would otherwise make a build PR with only a pin line in every base, every hour a new one.
+
+Rejected
+: comparing laid files after follow.sh (a worktree and a branch per base per release just to find nothing); moving the pin silently (noise in every base's history).
+
+About
+: ikb

@@ -59,3 +59,9 @@ grep -q "slice v2" "$base2/queries/slice.sql" || fail "the second release's slic
 third="$work/third"; mkdir -p "$third"; printf 'queries/slice.sql\n' > "$third/generic"
 if sh "$here/bin/check-one-owner.sh" "$src2" "$third" > /dev/null 2>&1; then fail "a slice file another source lists was not found"; fi
 echo "test-follow: a folder slice is laid at the root by its own pin"
+# a release that changed none of the slice's files is no reason to move a pin
+echo "unrelated" > "$src2/README"; $git -C "$src2" add -A; $git -C "$src2" commit -qm unrelated; $git -C "$src2" tag v1.2.0
+if sh "$here/bin/slice-changed.sh" "$src2" 1.1.0 1.2.0 > /dev/null; then fail "a release that changed no slice file was said to change the slice"; fi
+sh "$here/bin/slice-changed.sh" "$src2" 1.0.0 1.1.0 > /dev/null || fail "a release that changed a slice file was said not to"
+sh "$here/bin/slice-changed.sh" "$src" 0.1.0 0.2.0 > /dev/null || fail "a changed marked part was said not to change the slice"
+echo "test-follow: a release that changed no file of the slice leaves the pin"
