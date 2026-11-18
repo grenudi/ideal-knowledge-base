@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.18.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.17.0...v0.18.0) (2026-11-18)
+
+
+### Features
+
+* feat: update-pins skips a release that changed none of the slice's files ([#83](https://github.com/grenudi/ideal-knowledge-base/issues/83)) ([91d2e0f](https://github.com/grenudi/ideal-knowledge-base/commit/91d2e0f3d76716fe1a60c1c04c6b5a9f61d10f0b))
+
 ## [0.17.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.16.0...v0.17.0) (2026-11-18)
 
 
