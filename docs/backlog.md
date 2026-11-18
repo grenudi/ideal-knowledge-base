@@ -390,22 +390,6 @@ Opened
 : 2026-11-18
 
 
-<a id="follow-source-from-pin"></a>
-### follow.sh and update-pins take their source from the pin file, so device-template is a second source for device bases
-
-Status
-: done
-
-Note
-: idealkb release with bin/follow.sh --source, sources, bin/check-one-owner.sh, bin/test-follow.sh; the template needs its release, #! lines and the three hardware files out of its generic
-
-About
-: ikb
-
-Opened
-: 2026-11-18
-
-
 <a id="tables-own-drift"></a>
 ### Bases that keep their own tables.toml miss new generic fields: each own file now says why (check-own.sh); following tables.toml by part still open
 
@@ -424,6 +408,22 @@ Opened
 
 Status
 : open
+
+About
+: ikb
+
+Opened
+: 2026-11-18
+
+
+<a id="follow-source-from-pin"></a>
+### follow.sh and update-pins take their source from the pin file; docs is the second source (device layer), device-template is retired
+
+Status
+: done
+
+Note
+: sources: linux-phone-oco/docs replaces device-template; surya-lab and google-walleye-lab follow once their pin names the source
 
 About
 : ikb
