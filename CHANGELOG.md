@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.21.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.20.0...v0.21.0) (2026-11-18)
+
+
+### Features
+
+* an item that needs a witness is not ready until a person's go is open ([#93](https://github.com/grenudi/ideal-knowledge-base/issues/93)) ([75a0f76](https://github.com/grenudi/ideal-knowledge-base/commit/75a0f7620fcc37108633d737efe11da4194e7fad))
+* feat: docs replaces device-template as idealkb's second source ([#90](https://github.com/grenudi/ideal-knowledge-base/issues/90)) ([8faa168](https://github.com/grenudi/ideal-knowledge-base/commit/8faa1682896239f03632efdb9e5ad4693afb927d))
+* the canon and the playbook follow idealkb (consumers), decision recorded ([#92](https://github.com/grenudi/ideal-knowledge-base/issues/92)) ([ddddc41](https://github.com/grenudi/ideal-knowledge-base/commit/ddddc41d6d8e838223cca117e09478a47779dc2d))
+
 ## [0.20.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.19.0...v0.20.0) (2026-11-18)
 
 
