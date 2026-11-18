@@ -42,3 +42,14 @@ lacks "ready --for builder" "^free,"
 first=$(tad q ready --for keeper --show ready --format csv | sed -n 2p | cut -d, -f1)
 [ "$first" = free ] || { echo "the keeper's first pick is '$first', not free (outside is rank 1 but waits)"; exit 1; }
 printf 'test-ready: a done blocker is clear, an outside wait is not ready, every skipped item says why\n'
+# an item that needs a witness is ready only while a person's go is open
+ik backlog --id attended --title "the author must see it" --needs phone --witness person --rank 8
+has "ready" "^attended,.*skipped,.*needs a witness"
+ik backlog-go --id attended --until "$(date -d '+1 hour' -Is)"
+has "ready" "^attended,.*ready"
+ik backlog-go --id attended --until "$(date -d '-1 hour' -Is)"
+has "ready" "^attended,.*skipped,.*needs a witness"
+ik backlog-go --id attended --until "$(date -d '+1 hour' -Is)"
+ik backlog-go --id attended
+has "ready" "^attended,.*skipped,.*needs a witness"
+if ikb backlog-go --id free --until "$(date -Is)" --skip-render >/dev/null 2>&1; then echo "backlog-go took an item that needs no witness"; exit 1; fi
