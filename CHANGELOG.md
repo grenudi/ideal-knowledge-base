@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.20.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.19.0...v0.20.0) (2026-11-18)
+
+
+### Features
+
+* feat: carried says each patch's tag; check-fork-tags reads a fork's subjects ([#88](https://github.com/grenudi/ideal-knowledge-base/issues/88)) ([68f6f8d](https://github.com/grenudi/ideal-knowledge-base/commit/68f6f8df55198d6418a581472a1f276f91584ef2))
+
 ## [0.19.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.18.0...v0.19.0) (2026-11-18)
 
 
