@@ -377,19 +377,6 @@ Opened
 : 2026-11-18
 
 
-<a id="ready-query-everywhere"></a>
-### tad q ready in every base: released, followed, briefs name it
-
-Status
-: in-progress
-
-About
-: ikb
-
-Opened
-: 2026-11-18
-
-
 <a id="ready-across-bases"></a>
 ### A blocker held in another base (the commons) resolved by a link, not typed as a wait
 
@@ -408,6 +395,22 @@ Opened
 
 Status
 : open
+
+About
+: ikb
+
+Opened
+: 2026-11-18
+
+
+<a id="ready-query-everywhere"></a>
+### tad q ready in every base: released, followed, briefs name it
+
+Status
+: done
+
+Note
+: idealkb v0.15.0; docs, ideal-agent, device-template, surya-lab, google-walleye-lab on it; orchestration switches builder.md
 
 About
 : ikb
