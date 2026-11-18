@@ -430,3 +430,22 @@ About
 
 Opened
 : 2026-11-18
+
+
+<a id="follow-canonicalizes"></a>
+### follow.sh leaves the data canonical when a release adds fields
+
+Status
+: open
+
+Note
+: 0.21.0 added backlog fields; the playbook's pin build was refused because data/backlog.json was not canonical, and was landed by hand. After follow.sh, update-pins should run tad canon and tad render in the base before its checks.
+
+About
+: follow-by-pin
+
+Opened
+: 2026-11-18
+
+Needs
+: build
