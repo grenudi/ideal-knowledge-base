@@ -1,0 +1,12 @@
+# Keep every knowledge base on ideal-knowledge-base's latest release: the generic statements and entry laid,
+# the pin in its idealkb.toml moved, landed only through that base's own CI - or, where the base had changed
+# a generic file, left as a pull request showing the change (bin/update-pins.sh in ideal-knowledge-base).
+# The token is read at run time from the lab's private file, never written here.
+[Unit]
+Description=Move each knowledge base's pinned ideal-knowledge-base to its latest release
+After=tad-update-pins.service
+[Service]
+Type=oneshot
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+Environment=LAND_RELEASE=0
+ExecStart=/bin/sh -c 'export GH_TOKEN="$$(cat %h/.config/ideal-agent/token)"; cd %h/Projects/grenudi/ideal-knowledge-base && git fetch -q origin && git checkout -q --detach origin/main && exec bin/update-pins.sh now'

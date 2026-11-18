@@ -517,3 +517,25 @@ Scope
 
 Tracked by
 : decision-links-everywhere
+
+
+<a id="2026-11-18-followers-follow-each-release"></a>
+### 2026-11-18-followers-follow-each-release
+
+Date
+: 2026-11-18
+
+Brief
+: update-pins runs hourly over every base that follows, each in its own worktree; consumers lists the device bases too
+
+Decision
+: The lab timer runs update-pins hourly (it ends at once for a base already current); consumers names docs, ideal-agent, device-template, surya-lab, google-walleye-lab; each base is followed in a scratch worktree, never the clone sessions share. The unit files are kept in packaging/systemd.
+
+Why
+: ideal-agent's roles session: nine releases in two days against a weekly job; three device bases sat at 0.9.1 because consumers was hand-kept. Releases come from GitHub and the job needs the lab's token and land, so the lab polls; a release-workflow trigger would put the lab token in CI.
+
+Rejected
+: running update-pins from the release workflow (the lab token and land are on the lab); a path unit (no local file changes on a release); deriving followers from idealkb.toml files or an upstreams row (needs a list of repositories to search first; GitHub code search is rate-limited) - kept as backlog followers-derived.
+
+About
+: ikb

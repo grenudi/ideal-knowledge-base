@@ -1,0 +1,8 @@
+[Unit]
+Description=Move each knowledge base's pinned ideal-knowledge-base to its latest release, every hour, so a release reaches every base within the hour
+[Timer]
+OnCalendar=hourly
+RandomizedDelaySec=5m
+Persistent=true
+[Install]
+WantedBy=timers.target
