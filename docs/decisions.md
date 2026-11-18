@@ -692,3 +692,31 @@ About
 
 Scope
 : update-pins on the lab; every source repo it follows from
+
+
+<a id="2026-11-18-fork-tags-derived-from-the-item"></a>
+### 2026-11-18-fork-tags-derived-from-the-item
+
+Date
+: 2026-11-18
+
+Brief
+: A fork's commits carry TAG(item): with the tag derived from the item's state (tad q carried) and checked by bin/check-fork-tags.sh; no worked-around field - the marker is the record
+
+Decision
+: tad q carried gets a tag column: UPSTREAM (landed or applied), FROMGIT (accepted), FROMLIST (sent, under review, changes requested), OURS (the rest). A fork's commit subject starts TAG(item-id): ; BACKPORT stands in where the item is UPSTREAM or FROMGIT and the commit needed changes. bin/check-fork-tags.sh BASE REPO RANGE prints commits with no tag, an uncarried item or the wrong tag. A workaround is marked WORKAROUND(item-id) in place (ideal-agent scripts/workarounds) and its place goes in local_ref; no new field on upstream_items.
+
+Why
+: The Android common kernel tags say on one line how far a patch has travelled; our states already hold it, so the tag is read from the item and the commit is checked against it. A field for where an item is worked around would repeat what the marker says and drift.
+
+Rejected
+: a worked_around field (a second record of the marker); typing the tag on the item (a state to keep true); ANDROID: for downstream-only (Android's own word); requiring the tag by a commit hook now (each fork decides; the check runs where the base is).
+
+About
+: ikb
+
+Research
+: fork-tags-and-workarounds-world
+
+Scope
+: every fork under grenudi; ideal-agent scripts/workarounds and look-around-first; bases with upstream items

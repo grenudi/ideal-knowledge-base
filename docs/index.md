@@ -6,11 +6,11 @@ How a knowledge base is organised so that an agent, or a person, answers a quest
 
 - [Backlog](backlog.md): 28
 - [Concepts](concepts.md): 11
-- [Decisions](decisions.md): 29
+- [Decisions](decisions.md): 30
 - [Hardware](hardware.md): 0
-- [Research](research.md): 17
+- [Research](research.md): 18
 - [Session Log](session_log.md): 5
-- [Sources](sources.md): 42
+- [Sources](sources.md): 43
 - [Summaries](summaries.md): 0
 - [Upstream Items](upstream_items.md): 1
 - [Upstreams](upstreams.md): 1
