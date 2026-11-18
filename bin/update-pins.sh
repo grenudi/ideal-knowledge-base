@@ -30,6 +30,8 @@ follow_one() { # follow_one SOURCE_DIR SOURCE_NAME LATEST PINNAME BASE
 	git -C "$dir" fetch -q origin || { echo "$r: could not fetch" >&2; return 1; }
 	pin=$(git -C "$dir" show "origin/main:$pinname" 2>/dev/null | sed -n 's/^version = "\(.*\)"$/\1/p')
 	if [ "$pin" = "$latest" ]; then echo "$r: $sname $pin, current"; return 0; fi
+	sc=0; [ -z "$pin" ] || sh "$here/bin/slice-changed.sh" "$src" "$pin" "$latest" || sc=$?
+	if [ "$sc" = 1 ]; then echo "$r: $sname $latest changed no file of what it lays; the pin stays at $pin"; return 0; fi
 	wt="$scratch/$(echo "$r" | tr / -)-$sname"
 	git -C "$dir" worktree add -q -f -B "build/$sname-$latest" "$wt" origin/main || { echo "$r: no worktree" >&2; return 1; }
 	cd "$wt"
