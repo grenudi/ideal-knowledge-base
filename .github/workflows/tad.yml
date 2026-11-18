@@ -28,3 +28,4 @@ jobs:
           sh bin/install-ikb.sh
           sh bin/test-upstream.sh
           sh bin/test-decisions.sh
+          sh bin/test-ready.sh
