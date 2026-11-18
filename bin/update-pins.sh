@@ -44,6 +44,7 @@ follow_one() { # follow_one SOURCE_DIR SOURCE_NAME LATEST PINNAME BASE
 		tad q $q --format csv >/dev/null 2>&1 || { echo "$r: tad q $q does not answer on this base" >&2; asked=0; }
 	done
 	[ "$asked" = 1 ] || { echo "$r: $sname $latest not laid - the base needs what the release asks of its own tables first" >&2; return 1; }
+	if ! sh "$here/bin/check-own.sh" "$wt" >> "$said" 2>&1; then own=1; fi
 	tad canon >/dev/null && tad render >/dev/null
 	git add -A
 	git -c user.name="${GIT_NAME:-idealkb update-pins}" -c user.email="${GIT_EMAIL:-agent@creation-guidelines}" \
