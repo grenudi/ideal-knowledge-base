@@ -539,3 +539,34 @@ Rejected
 
 About
 : ikb
+
+
+<a id="2026-11-18-one-ready-query"></a>
+### 2026-11-18-one-ready-query
+
+Date
+: 2026-11-18
+
+Brief
+: tad q ready --for keeper|builder|research is the one picking query of every base: no outside wait, blockers done, hardware owned; each skipped item says why
+
+Decision
+: queries/ready.sql in the generic slice, with backlog needs/proof/rank/hardware and the hardware table made generic so it binds everywhere. A done blocker is clear, an unheld blocker is not (said so), waits is not ready, hardware not owned or refuted is not. --show ready gives the picks. Briefs name it and carry no picking SQL (ideal-agent 0.3.40). bin/test-ready.sh holds it in CI; the release gate asks it of every follower.
+
+Why
+: Three picking queries differed and two signs were seen: a raw-SQL builder took an item waiting outside the base, and lane-next ignored blocked_by. Taskwarrior and Beads agree a done blocker clears and a blocked listing says why.
+
+Rejected
+: urgency scoring (the author's rank orders the queue); each base keeping its own next/phone-next/lane-next (the sign again); resolving a blocker across bases now (needs a link kind; backlog ready-across-bases); refusing the whole query when a blocker is unheld (one bad row would hide the queue - it is skipped with its why).
+
+About
+: ikb
+
+Research
+: ready-query-world
+
+Scope
+: every base that follows idealkb; ideal-agent skills and briefs (keep-a-shared-resource), orchestration's builder.md
+
+Tracked by
+: ready-query-everywhere

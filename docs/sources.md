@@ -599,3 +599,16 @@ By
 
 Takes
 : status incl. superseded by, decision-makers, consulted, informed, considered options
+
+
+<a id="taskwarrior-tags"></a>
+### Taskwarrior: Tags and Virtual Tags
+
+Url
+: https://taskwarrior.org/docs/tags/
+
+By
+: Taskwarrior
+
+Takes
+: READY, BLOCKED, WAITING as virtual tags: ready = pending, not blocked, not scheduled later

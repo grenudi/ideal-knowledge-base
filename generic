@@ -23,3 +23,7 @@ records/upstream-state.sql
 records/backlog-blocked.sql
 queries/carried.sql
 queries/decided.sql
+queries/ready.sql
+records/hardware.sql
+records/hardware-status.sql
+queries/hardware.sql

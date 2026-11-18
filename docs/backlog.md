@@ -375,3 +375,42 @@ About
 
 Opened
 : 2026-11-18
+
+
+<a id="ready-query-everywhere"></a>
+### tad q ready in every base: released, followed, briefs name it
+
+Status
+: in-progress
+
+About
+: ikb
+
+Opened
+: 2026-11-18
+
+
+<a id="ready-across-bases"></a>
+### A blocker held in another base (the commons) resolved by a link, not typed as a wait
+
+Status
+: open
+
+About
+: ikb
+
+Opened
+: 2026-11-18
+
+
+<a id="bases-retire-lane-next"></a>
+### Device bases drop lane-next and phone-next for tad q ready --for
+
+Status
+: open
+
+About
+: ikb
+
+Opened
+: 2026-11-18
