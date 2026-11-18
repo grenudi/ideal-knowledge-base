@@ -1,0 +1,3 @@
+# Other repositories that are sources like this one: a generic list, releases (tags vX) and a consumers list.
+# bin/update-pins.sh follows each, this repository first. A source is cloned at ~/Projects/OWNER/REPO.
+linux-phone-oco/device-template
