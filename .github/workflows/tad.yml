@@ -31,3 +31,4 @@ jobs:
           sh bin/test-ready.sh
           sh bin/test-follow.sh
           sh bin/test-own.sh
+          sh bin/test-send-up.sh

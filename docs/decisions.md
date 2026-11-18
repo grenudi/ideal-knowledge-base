@@ -667,3 +667,28 @@ About
 
 Scope
 : every base's pin file; update-pins
+
+
+<a id="2026-11-18-exit3-sends-up"></a>
+### 2026-11-18-exit3-sends-up
+
+Date
+: 2026-11-18
+
+Brief
+: A base's change to a followed file goes up as a branch and pull request on its source (bin/send-up.sh, three-way onto main), once, when update-pins sees the drift
+
+Decision
+: When follow.sh says the base changed a generic file or part, update-pins runs bin/send-up.sh per file: the change from the release the base was at to the base's file, merged onto the source's main (only the marked part for a part), pushed as from-BASE-FILE and opened as a pull request there; a conflict or no change sends nothing and says so; the same branch is not sent twice. The base's own pull request stays as the signal. bin/test-send-up.sh holds it.
+
+Why
+: Orchestration's item idealkb-exit3-sends-up: exit 3 only left a PR on the base for a person to notice; the change a base made to a shared file is the very thing the source should take or the base should drop.
+
+Rejected
+: pushing straight to the source's main (the source's own CI and review decide); a PR per base file edit without a merge (stale against a moved source); sending own files too (they are kept by a stated why, with an upstream item, per check-own.sh).
+
+About
+: ikb
+
+Scope
+: update-pins on the lab; every source repo it follows from
