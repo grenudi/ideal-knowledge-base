@@ -436,3 +436,28 @@ About
 
 Research
 : charter-pattern-world
+
+
+<a id="2026-11-18-updates-fail-loudly"></a>
+### 2026-11-18-updates-fail-loudly
+
+Date
+: 2026-11-18
+
+Brief
+: An update that matches no row or changes nothing is refused: ikb set, every update-only record, and backlog-needs keeps what is not given.
+
+Decision
+: An update that does nothing is refused, not shown as done. ikb: `ikb set` refuses a change the row already has ("nothing changed: backlog (x) already has rank=2"); a record whose statement only updates (UPDATE with no INSERT) is refused when tad printed no `changed:` line, which is when no row matched or nothing differed. Records: backlog-needs keeps what is not given - re-ranking is `--rank` alone and leaves what the item needs alone, `--needs none` takes it off every queue (before, a missing --needs cleared it, so a re-rank silently dropped the item off the phone queue); it and hardware-status refuse a call that gives nothing to change and a --needs outside phone, research, build or none. The existence guards of upstream-state, backlog-blocked, hardware-status, backlog-status stay. Landed in device-template, surya-lab and google-walleye-lab; idealkb's generic records already guard.
+
+Why
+: The Top Coordinator reported two backlog items in google-walleye-lab that 'silently failed to re-rank' so a builder kept taking the wrong item; docs had a status write that matched no row and still said recorded. Reproduced on a scratch base: `backlog-needs --id a --rank 2` without --needs set the rank and cleared needs, taking the item off the phone queue; tad prints `changed: TABLE` only when it changed something, so an update that matched nothing printed nothing and ikb said recorded.
+
+Rejected
+: Failing every record that changes nothing: an INSERT that replaces a row with itself is idempotent and harmless; only updates promise a change to an existing row. Making `set` print a warning: a message among others is what was missed. A guard in each SQL record only: new records would forget it; ikb checks every update-only record by what tad reports. Clearing needs by omission kept for compatibility: it was the trap.
+
+About
+: ikb
+
+Research
+: silent-noop-updates

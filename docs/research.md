@@ -286,3 +286,25 @@ Sources
 
 About
 : ikb
+
+
+<a id="silent-noop-updates"></a>
+### silent-noop-updates
+
+Date
+: 2026-11-18
+
+Brief
+: A re-rank without --needs cleared needs and an update matching no row said recorded: tad prints changed: only when it changed.
+
+Question
+: Why did a re-rank in google-walleye-lab fail silently, and how do updates fail loudly?
+
+Found
+: Reproduced 2026-11-18 on a scratch device base: backlog-needs --id a --rank 2 (no --needs) set rank 2 and needs to null, so the item left the phone queue; a second identical call printed nothing and ikb reported recorded; a status write on an absent id was only stopped where a guard existed. tad r prints a 'changed: TABLE' line exactly when it changed a table. Not asked yet: which command the walleye coordinator ran (asked; if it was another command the fix above may not be the whole cause).
+
+Sources
+: git-notes
+
+About
+: ikb
