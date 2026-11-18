@@ -97,18 +97,34 @@ fn fields_help(t: &tad::Table) -> String {
 }
 
 #[allow(clippy::cmp_owned)]
-fn row_exists(data: &Path, table: &str, key_fields: &[String], key: &[String]) -> bool {
+/// The row with this key, as the data file has it.
+fn find_row(data: &Path, table: &str, key_fields: &[String], key: &[String]) -> Option<Value> {
     std::fs::read_to_string(data.join(format!("{table}.json")))
         .unwrap_or_default()
         .lines()
         .filter_map(|l| serde_json::from_str::<Value>(l).ok())
-        .any(|r| {
+        .find(|r| {
             key_fields.iter().zip(key).all(|(k, v)| match r.get(k) {
                 Some(Value::String(s)) => s == v,
                 Some(other) => other.to_string() == *v,
                 None => false,
             })
         })
+}
+
+#[allow(clippy::cmp_owned)]
+fn row_exists(data: &Path, table: &str, key_fields: &[String], key: &[String]) -> bool {
+    find_row(data, table, key_fields, key).is_some()
+}
+
+#[allow(clippy::cmp_owned)]
+/// Whether the row already says what is asked: a field equal to its value, an empty value for a field with none.
+fn says_already(row: &Value, f: &str, v: &str) -> bool {
+    match row.get(f) {
+        None | Some(Value::Null) => v.is_empty(),
+        Some(Value::String(s)) => s == v,
+        Some(other) => other.to_string() == v,
+    }
 }
 
 /// Looks at what was asked against the declaration; returns the table and what to do next.
@@ -184,6 +200,21 @@ pub fn set(tables: &str, data: &Path, call: &Call) -> Result<String> {
                 "{f} of {} is one of: {} - not '{v}'",
                 call.table,
                 field.allowed.join(", ")
+            );
+        }
+    }
+    // a change that changes nothing is said, not shown as done
+    if let Some(row) = find_row(data, &call.table, &t.key, &call.keys) {
+        if call.fields.iter().all(|(f, v)| says_already(&row, f, v)) {
+            bail!(
+                "nothing changed: {} ({}) already has {}",
+                call.table,
+                call.keys.join(", "),
+                call.fields
+                    .iter()
+                    .map(|(f, v)| format!("{f}={v}"))
+                    .collect::<Vec<_>>()
+                    .join(", ")
             );
         }
     }

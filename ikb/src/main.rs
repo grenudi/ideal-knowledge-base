@@ -315,6 +315,18 @@ fn record(root: &Path, tables: &str, s: &Statement) -> Result<()> {
         );
         bail!("{} was refused; nothing was kept", s.name);
     }
+    // a record that only updates must say it changed something: tad prints `changed: TABLE` when it did
+    let only_updates = s.body.contains("UPDATE") && !s.body.contains("INSERT");
+    if only_updates
+        && !String::from_utf8_lossy(&out.stdout)
+            .lines()
+            .any(|l| l.starts_with("changed:"))
+    {
+        bail!(
+            "{} matched no row or changed nothing (the item may not exist, or already says this); nothing was kept",
+            s.name
+        );
+    }
     if !Contract::SKIP_RENDER
         .get_from_or_default(&resolved)
         .unwrap_or(false)
