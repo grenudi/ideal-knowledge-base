@@ -570,3 +570,28 @@ Scope
 
 Tracked by
 : ready-query-everywhere
+
+
+<a id="2026-11-18-sources-named-by-their-pin"></a>
+### 2026-11-18-sources-named-by-their-pin
+
+Date
+: 2026-11-18
+
+Brief
+: follow.sh and update-pins take the source from the pin: a source's generic names its pin file and marker; sources lists them; one owner per file is checked before any follows
+
+Decision
+: A source repository (idealkb, device-template) has a generic list with '#! pin = FILE' and '#! marker = WORD' lines, releases vX and a consumers list. follow.sh --source DIR lays it into a base and moves the pin FILE, which also names source = OWNER/REPO. update-pins walks idealkb then each repository in ./sources; before any base is followed bin/check-one-owner.sh refuses a file two sources list (AGENTS.md and tables.toml are shared part by part, by marker). bin/test-follow.sh runs it on scratch repositories in CI.
+
+Why
+: Orchestration's device-template research: the template is followed like idealkb, and three hardware files were listed by both, which opened a false changed-a-generic-file PR in every base per release. One mechanism with the source in the pin is what chain-follow-by-slice chose; the single-owner check fails the job, not a person's eye.
+
+Rejected
+: a second update script for the template (two mechanisms to keep equal); one merged generic list (the template would need idealkb releases); detecting double owners only when a PR opens (the false alarm already cost three PRs per release); git-rhizoid's slice mode now (follow.sh stays its prototype, backlog slice-consumption).
+
+About
+: ikb
+
+Scope
+: device-template and every device base; update-pins on the lab; orchestration's template-followed-by-update-pins

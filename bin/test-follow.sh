@@ -1,0 +1,42 @@
+#!/bin/sh
+# A second source, followed by the pin: a source repository that names its pin file and marker in its `generic`
+# list is laid into a base by bin/follow.sh as idealkb is - its files whole, the part of AGENTS.md between its
+# marker lines, the pin file moved - the base's own files left; and a file two sources both list is found.
+# Runs on scratch repositories; needs git. Ends 0 when every step says what it should, 1 at the first not.
+set -eu
+here=$(cd "$(dirname "$0")/.." && pwd)
+work=$(mktemp -d); trap 'rm -rf "$work"' EXIT
+fail() { echo "test-follow: $*"; exit 1; }
+git="git -c user.name=t -c user.email=t@localhost"
+src="$work/src"; mkdir -p "$src/queries" "$src/records"
+cat > "$src/generic" <<'G'
+#! pin = devicebase.toml
+#! marker = template
+# a second source: what a device base takes from it
+queries/phone.sql
+records/part.sql
+AGENTS.md
+G
+echo "-- phone v1" > "$src/queries/phone.sql"; echo "-- part v1" > "$src/records/part.sql"
+printf 'top\n<!-- template:begin -->\nthe template says v1\n<!-- template:end -->\nbottom\n' > "$src/AGENTS.md"
+$git -C "$src" init -q; $git -C "$src" add -A; $git -C "$src" commit -qm v1; $git -C "$src" tag v0.1.0
+echo "-- phone v2" > "$src/queries/phone.sql"; printf 'top\n<!-- template:begin -->\nthe template says v2\n<!-- template:end -->\nbottom\n' > "$src/AGENTS.md"
+$git -C "$src" commit -qam v2; $git -C "$src" tag v0.2.0
+base="$work/base"; mkdir -p "$base/queries" "$base/records"
+printf 'own\n<!-- template:begin -->\nthe template says v1\n<!-- template:end -->\nmine\n' > "$base/AGENTS.md"
+echo "-- the base's own part" > "$base/records/part.sql"
+printf 'source = "x/src"\nversion = "0.1.0"\nown = ["records/part.sql"]\n' > "$base/devicebase.toml"
+sh "$here/bin/follow.sh" --source "$src" "$base" 0.2.0 > "$work/said" || fail "follow ended $?: $(cat "$work/said")"
+grep -q "phone v2" "$base/queries/phone.sql" || fail "the source's query was not laid"
+grep -q "the template says v2" "$base/AGENTS.md" || fail "the marked part was not laid"
+grep -q '^own$' "$base/AGENTS.md" && grep -q '^mine$' "$base/AGENTS.md" || fail "the base's own lines of AGENTS.md were not kept"
+grep -q "phone v1\|part v2" "$base/records/part.sql" && fail "the base's own file was replaced"
+grep -q '^version = "0.2.0"$' "$base/devicebase.toml" || fail "the pin did not move: $(cat "$base/devicebase.toml")"
+grep -q '^source = "x/src"$' "$base/devicebase.toml" || fail "the pin lost its source"
+[ ! -f "$base/idealkb.toml" ] || fail "a pin file the source did not name was made"
+# one owner per file
+other="$work/other"; mkdir -p "$other"; printf 'queries/phone.sql\nqueries/else.sql\n' > "$other/generic"
+if sh "$here/bin/check-one-owner.sh" "$src" "$other" > "$work/dup" 2>&1; then fail "a file listed by two sources was not found"; fi
+grep -q "queries/phone.sql" "$work/dup" || fail "the double owner was not named: $(cat "$work/dup")"
+sh "$here/bin/check-one-owner.sh" "$src" "$here" > /dev/null 2>&1 || fail "idealkb and the source share a file: $(sh "$here/bin/check-one-owner.sh" "$src" "$here" 2>&1)"
+echo "test-follow: a second source is laid by its own pin and marker; its own files are kept; a double owner is found"
