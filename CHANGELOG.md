@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.12.2...v0.13.0) (2026-11-18)
+
+
+### Features
+
+* feat: a patch carried in a fork names it; fork-of, reviewers, tad q carried ([#70](https://github.com/grenudi/ideal-knowledge-base/issues/70)) ([60542b6](https://github.com/grenudi/ideal-knowledge-base/commit/60542b611fb962f781a1e5552164f465750091d5))
+
 ## [0.12.2](https://github.com/grenudi/ideal-knowledge-base/compare/v0.12.1...v0.12.2) (2026-11-18)
 
 
