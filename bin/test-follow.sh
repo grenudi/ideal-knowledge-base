@@ -40,3 +40,22 @@ if sh "$here/bin/check-one-owner.sh" "$src" "$other" > "$work/dup" 2>&1; then fa
 grep -q "queries/phone.sql" "$work/dup" || fail "the double owner was not named: $(cat "$work/dup")"
 sh "$here/bin/check-one-owner.sh" "$src" "$here" > /dev/null 2>&1 || fail "idealkb and the source share a file: $(sh "$here/bin/check-one-owner.sh" "$src" "$here" 2>&1)"
 echo "test-follow: a second source is laid by its own pin and marker; its own files are kept; a double owner is found"
+# a source that serves its slice from a folder: files read from there, laid at the base's root
+src2="$work/src2"; mkdir -p "$src2/layer/queries" "$src2/layer/bin" "$src2/queries"
+printf '#! pin = layer.toml\n#! from = layer/\nqueries/slice.sql\nbin/tool.sh\n' > "$src2/generic"
+echo "-- slice v1" > "$src2/layer/queries/slice.sql"; echo "tool v1" > "$src2/layer/bin/tool.sh"
+echo "-- the source's own, not in the slice" > "$src2/queries/slice.sql"
+$git -C "$src2" init -q; $git -C "$src2" add -A; $git -C "$src2" commit -qm s1; $git -C "$src2" tag v1.0.0
+base2="$work/base2"; mkdir -p "$base2"
+sh "$here/bin/follow.sh" --source "$src2" "$base2" 1.0.0 > "$work/said2" || fail "following a folder slice ended $?: $(cat "$work/said2")"
+grep -q "slice v1" "$base2/queries/slice.sql" || fail "the slice file was not laid at the base's root from the folder"
+[ -f "$base2/bin/tool.sh" ] || fail "the second slice file was not laid"
+[ ! -d "$base2/layer" ] || fail "the folder itself was laid"
+grep -q '^version = "1.0.0"$' "$base2/layer.toml" || fail "the pin of the folder source did not move"
+echo "-- slice v2" > "$src2/layer/queries/slice.sql"; $git -C "$src2" commit -qam s2; $git -C "$src2" tag v1.1.0
+sh "$here/bin/follow.sh" --source "$src2" "$base2" 1.1.0 > /dev/null || fail "the second release was not followed"
+grep -q "slice v2" "$base2/queries/slice.sql" || fail "the second release's slice file was not laid"
+# the same files from the slice and from another source are one file for the owner check
+third="$work/third"; mkdir -p "$third"; printf 'queries/slice.sql\n' > "$third/generic"
+if sh "$here/bin/check-one-owner.sh" "$src2" "$third" > /dev/null 2>&1; then fail "a slice file another source lists was not found"; fi
+echo "test-follow: a folder slice is laid at the root by its own pin"

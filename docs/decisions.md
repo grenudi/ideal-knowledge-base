@@ -595,3 +595,28 @@ About
 
 Scope
 : device-template and every device base; update-pins on the lab; orchestration's template-followed-by-update-pins
+
+
+<a id="2026-11-18-slice-from-a-folder"></a>
+### 2026-11-18-slice-from-a-folder
+
+Date
+: 2026-11-18
+
+Brief
+: A source may serve its slice from a folder (#! from = DIR/ in its generic): follow.sh reads the files there and lays them at the base's root
+
+Decision
+: follow.sh and check-one-owner.sh read '#! from = DIR/' from a source's generic; the listed names are relative to DIR and are laid, and owned, at the base's root; the pin and marker rules are unchanged. bin/test-follow.sh holds it.
+
+Why
+: Orchestration's graph research (docs decision 2026-11-18-device-layer-from-docs): docs serves a device layer from device-layer/ and takes device-template's place in ./sources, so the slice must come from a folder of a repository that is also a base. docs item idealkb-slice-from-prefix.
+
+Rejected
+: a second generic file inside the folder (the source's list would not be found before the folder is known); prefixing every listed name (the lists would differ from what lands, and one-owner could not compare them); a separate repository for the layer (the template's no-release problem again).
+
+About
+: ikb
+
+Scope
+: docs device-layer; update-pins; git-rhizoid conformance (test-follow.sh)
