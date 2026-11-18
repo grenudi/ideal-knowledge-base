@@ -320,3 +320,16 @@ About
 
 Opened
 : 2026-11-17
+
+
+<a id="upstream-trailers-by-message"></a>
+### Reviewers with the message each came from, as b4 does, when a base needs to refuse one
+
+Status
+: open
+
+About
+: ikb
+
+Opened
+: 2026-11-18

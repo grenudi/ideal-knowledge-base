@@ -461,3 +461,28 @@ About
 
 Research
 : silent-noop-updates
+
+
+<a id="2026-11-18-carry-is-a-place-not-a-state"></a>
+### 2026-11-18-carry-is-a-place-not-a-state
+
+Date
+: 2026-11-18
+
+Brief
+: A patch carried in a fork names the fork (carried_in); sent/accepted/landed stay the state; fork_of links a fork to its upstream
+
+Decision
+: upstream_items gains carried_in (fork id/branch) and reviewed_by; upstreams gains fork_of; tad q carried says keep, drop at the next rebase, or ask why; upstream-state --carried-in none ends the carry; followers-answer asks upstream, upstreams, carried too; bin/test-upstream.sh follows a patch from sent to dropped in CI. The fork keeps no base: its rows live in the base of the lane that works on it, and any base reads the same queries.
+
+Why
+: DEP-3 and Yocto keep the patch in the package whatever the upstream says; b4 keeps replies' trailers per patch. Our one state word could not say 'accepted upstream but still ours until a release' (sxmo accepted, thank you). A place beside the state tells it without a thirteenth state.
+
+Rejected
+: a state 'carried' (loses sent/accepted); a base inside every fork (forks stay cuttings of their upstream, the research chain-follow-world); one row per version of reviewers (b4's per-message provenance - too heavy until a base needs it); Yocto's one-word Upstream-Status alone (no place, no reviewers).
+
+About
+: ikb
+
+Research
+: upstreaming-and-carry-world
