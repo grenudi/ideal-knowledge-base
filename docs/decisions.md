@@ -720,3 +720,28 @@ Research
 
 Scope
 : every fork under grenudi; ideal-agent scripts/workarounds and look-around-first; bases with upstream items
+
+
+<a id="2026-11-18-the-software-canon-and-the-ideal-project"></a>
+### 2026-11-18-the-software-canon-and-the-ideal-project
+
+Date
+: 2026-11-18
+
+Brief
+: The software canon and the ideal-project playbook follow idealkb; their content stays in them
+
+Decision
+: Both bases pin idealkb (0.20.0) and take its standing tables (backlog, session_log, sources, decisions, research...) and ikb records; their principles, practices, architectures and playbook concepts stay in their own bases. update-pins keeps them current (consumers). No archiving: the playbook is a live kit, the canon is read by id from ideal-agent.
+
+Why
+: Both are small tad bases (about 50 KB and 42 KB); only ideal-agent's write-code-by-the-canon reads the canon, by id. A follower gets structure and the follow graph at the cost of one PR each. Canon #37 and playbook #32 landed.
+
+Rejected
+: Content in idealkb: it is template and tooling, each release would carry 20 principles to every follower that never reads them. A principles/practices/architectures structure in idealkb: only two bases use those tables, so they stay in the canon's own tables.toml. A merged commons base: nothing gained over two followers, adds a join and a move of every pointer.
+
+About
+: follow-by-pin
+
+Scope
+: software-engineering-canon, ideal-project-playbook, idealkb consumers
