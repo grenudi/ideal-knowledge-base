@@ -50,6 +50,12 @@ follow_one() { # follow_one SOURCE_DIR SOURCE_NAME LATEST PINNAME BASE
 	git -c user.name="${GIT_NAME:-idealkb update-pins}" -c user.email="${GIT_EMAIL:-agent@creation-guidelines}" \
 		commit -qm "build: $sname $latest" -m "The pin moves from ${pin:-none} to $latest; the files as that release has them:" -m "$(cat "$said")"
 	if [ "$own" = 1 ]; then
+		# the base's own change to a followed file goes up to the source as a pull request there, as the base had it
+		for f in $(sed -n 's/^\(.*\): the base \(changed its generic part\|had its own version\) .*$/\1/p' "$said" | sort -u); do
+			mkdir -p "$scratch/up"; rm -rf "$scratch/up/"*; mkdir -p "$scratch/up/$(dirname "$f")"
+			git show "origin/main:$f" > "$scratch/up/$f" 2>/dev/null || continue
+			sh "$here/bin/send-up.sh" "$src" "$scratch/up" "$(basename "$r")" "${pin:-0}" "$f" >> "$said" 2>&1 || true
+		done
 		git push -q -f origin "build/$sname-$latest"
 		gh pr create -R "$r" --head "build/$sname-$latest" --title "build: $sname $latest - this base changed a followed file" \
 			--body "$(printf 'This base had its own change to a file of %s. The diff shows it as the release has it; nothing was landed.\n\nSend the change upstream, or name the file in own in %s, then land this.\n\n%s\n' "$sname" "$pinname" "$(sed 's/^/    /' "$said")")" >/dev/null

@@ -417,3 +417,16 @@ About
 
 Opened
 : 2026-11-18
+
+
+<a id="exit3-sends-up-live"></a>
+### Watch the first real send-up: a base edits a followed file, update-pins opens the PR on the source
+
+Status
+: open
+
+About
+: ikb
+
+Opened
+: 2026-11-18
