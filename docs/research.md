@@ -308,3 +308,31 @@ Sources
 
 About
 : ikb
+
+
+<a id="upstreaming-and-carry-world"></a>
+### upstreaming-and-carry-world
+
+Date
+: 2026-11-18
+
+Brief
+: Sent and carried are two facts; DEP-3, Yocto and b4 agree; ours lacked carried_in, reviewers, fork-of
+
+Question
+: What does idealkb say about upstreaming, how do others tell a patch's life and carry, and how does a change reach every base?
+
+Found
+: Already here: upstreams (kind incl. code-project, kb-instance) and upstream_items (form, 12 states, from_work, local_ref, file, sent_on, forwarded, bug, version, supersedes, applied_upstream, waits), the generic part of tables.toml and AGENTS.md, the queries upstream/upstreams, records upstream/upstream-item/upstream-state; carried to every base by bin/follow.sh from the pin, answered before release by followers-answer.sh. Not here: how a patch kept in a fork until the upstream has it is told (sent and carried are two facts, the item had one state), the fork itself as an upstream that names what it forks, who reviewed (trailers), and a view that says which carried patches to keep or drop. The fork is not a base: linux-phone-oco/linux is a cutting of sm7150-mainline/linux (research chain-follow-world); its work is recorded in the base of the lane that works on it.
+Others: DEP-3 (read) - Origin (upstream/backport/vendor/other), Forwarded (no, not-needed, or where), Applied-Upstream (version or commit:ID), Bug, Reviewed-by/Acked-by, Last-Update: facts in a patch header, no state word, and the patch is in the package until the next version carries it. Yocto Upstream-Status (read) - Pending, Submitted [where], Backport [version], Denied, Inappropriate [reason], Inactive-Upstream: one word per carried patch, the patch stays in the recipe whatever the word is; the word Backport means it is already in the next release, drop at the bump. b4 (read trailers page; prep/send tags from memory, not re-read) - trailers (Reviewed-by, Acked-by, Tested-by) collected from replies to any sent version by patch-id, refusals remembered by provenance; each sent revision is a version of one series; thanks sent when applied. Ours maps: our state is the word of Upstream-Status's life (draft..landed, side exits), forwarded/applied_upstream/bug are DEP-3's fields, supersedes is the b4 revision chain; what was missing is carry (the patch is in the fork whatever the state), reviewers, and the fork-of link. Sxmo's 'accepted, thank you' is state accepted; it is carried until a release has it (applied_upstream), then landed and dropped.
+Propagation: a change to the generic part (tables.toml between idealkb:begin and idealkb:end, queries, records, AGENTS.md lines named in generic) reaches a base by its pin: release, update-pins opens the pin change, follow.sh lays it, exit 3 on drift; followers-answer.sh asks every base in consumers before release - now also upstream, upstreams and carried, so a base whose data cannot answer stops the change. New fields are optional, so existing rows stay valid. Forks are not followers: a fork carries no base.
+Not read: Patchwork's state list again, Gerrit/Phabricator, git-send-email's tracking tools (git-pw), Gentoo/Arch patch-carry conventions.
+
+Sources
+: dep3,yocto-upstream-status,b4-trailers
+
+About
+: ikb
+
+Material
+: research/ikb/2026-11-18/

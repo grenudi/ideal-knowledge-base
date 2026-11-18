@@ -286,6 +286,8 @@ type = "string"
 
 # Where knowledge can flow: any external resource - a project, a mailing list, a tracker, a wiki, a standard, a
 # person or team, another knowledge base's instance. One row each; what is headed there is an upstream_items row.
+# A fork of another upstream is a row of its own that names it (fork_of): where its patches are carried until
+# the upstream takes them.
 [tables.upstreams]
 key = ["id"]
 
@@ -324,10 +326,17 @@ type = "string"
 name = "notes"
 type = "string"
 
+[[tables.upstreams.fields]]
+name = "fork_of"
+type = "string"
+
 # What was headed to an upstream: a patch, a piece of information, a correction, a question, a finding. It
 # links back to the work here it comes from (from_work: a backlog item, decision or research id) and may be a
 # row, a file in upstream/UPSTREAM/ID/ (file), or both. The state only moves forward; the person's word that
-# a draft may go is a state (ready), never a flag an agent sets.
+# a draft may go is a state (ready), never a flag an agent sets. A patch kept in a fork until the
+# upstream has it names the fork (carried_in: the fork repository and branch) - carried is a place, not a state,
+# so a patch is "sent" and "carried" at once; reviewed_by keeps the reviewers named in the replies (Reviewed-by,
+# Acked-by, Tested-by).
 [tables.upstream_items]
 key = ["id"]
 
@@ -409,6 +418,14 @@ name = "applied_upstream"
 type = "string"
 
 [[tables.upstream_items.fields]]
+name = "carried_in"
+type = "string"
+
+[[tables.upstream_items.fields]]
+name = "reviewed_by"
+type = "string"
+
+[[tables.upstream_items.fields]]
 name = "waits"
 type = "string"
 
@@ -423,6 +440,10 @@ required = true
 
 [[rules.references]]
 field = "upstream_items.upstream"
+to = ["upstreams"]
+
+[[rules.references]]
+field = "upstreams.fork_of"
 to = ["upstreams"]
 
 [[rules.references]]

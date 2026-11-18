@@ -521,3 +521,42 @@ By
 
 Takes
 : few consolidated tools; errors that steer toward correct input
+
+
+<a id="dep3"></a>
+### DEP-3: Patch Tagging Guidelines
+
+Url
+: https://dep-team.pages.debian.net/deps/dep3/
+
+By
+: Debian
+
+Takes
+: Origin, Forwarded, Applied-Upstream, Bug, Reviewed-by, Last-Update as facts in a patch header
+
+
+<a id="yocto-upstream-status"></a>
+### Yocto recipe style guide: Upstream-Status
+
+Url
+: https://docs.yoctoproject.org/contributor-guide/recipe-style-guide.html
+
+By
+: Yocto Project
+
+Takes
+: Pending, Submitted, Backport, Denied, Inappropriate, Inactive-Upstream: one word per carried patch
+
+
+<a id="b4-trailers"></a>
+### b4: retrieving code-review trailers
+
+Url
+: https://b4.docs.kernel.org/en/latest/contributor/trailers.html
+
+By
+: kernel.org
+
+Takes
+: trailers from replies to any sent version, matched by patch-id; refusals remembered by provenance

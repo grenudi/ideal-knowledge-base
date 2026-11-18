@@ -22,3 +22,8 @@ jobs:
           tad canon && tad render
           git add --intent-to-add . && git diff --exit-code --stat || {
             echo "data/ or docs/ is not what tad writes: run tad canon && tad render, and commit"; exit 1; }
+      - name: the life of a patch, recorded and read back
+        run: |
+          tad engine
+          sh bin/install-ikb.sh
+          sh bin/test-upstream.sh
