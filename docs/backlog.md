@@ -319,19 +319,6 @@ Opened
 : 2026-11-18
 
 
-<a id="tables-own-drift"></a>
-### Bases that keep their own tables.toml miss every new generic field until someone adds it: follow it by part, or fail the base's check
-
-Status
-: open
-
-About
-: ikb
-
-Opened
-: 2026-11-18
-
-
 <a id="decision-links-everywhere"></a>
 ### Decisions superseded, amended, scoped and tracked in every base: released, followed
 
@@ -411,6 +398,19 @@ Status
 
 Note
 : idealkb release with bin/follow.sh --source, sources, bin/check-one-owner.sh, bin/test-follow.sh; the template needs its release, #! lines and the three hardware files out of its generic
+
+About
+: ikb
+
+Opened
+: 2026-11-18
+
+
+<a id="tables-own-drift"></a>
+### Bases that keep their own tables.toml miss new generic fields: each own file now says why (check-own.sh); following tables.toml by part still open
+
+Status
+: open
 
 About
 : ikb

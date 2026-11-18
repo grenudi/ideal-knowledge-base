@@ -30,3 +30,4 @@ jobs:
           sh bin/test-decisions.sh
           sh bin/test-ready.sh
           sh bin/test-follow.sh
+          sh bin/test-own.sh

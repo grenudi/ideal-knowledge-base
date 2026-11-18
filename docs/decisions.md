@@ -642,3 +642,28 @@ Rejected
 
 About
 : ikb
+
+
+<a id="2026-11-18-own-says-why"></a>
+### 2026-11-18-own-says-why
+
+Date
+: 2026-11-18
+
+Brief
+: A file a base keeps as its own says why in its pin's [why] section - a reason or upstream:ITEM; update-pins leaves a base without it as a PR (bin/check-own.sh)
+
+Decision
+: idealkb.toml / devicebase.toml carry [why] with one line per own file: the reason in words, or upstream:ID naming an item of data/upstream_items.json that sends the base's change to the source. bin/check-own.sh finds own files with none and reasons naming an item the base lacks; update-pins runs it after laying a release and, when it fails, opens a pull request instead of landing. The four bases state theirs.
+
+Why
+: Orchestration's graph research item idealkb-own-needs-item, closing tables-own-drift: an own file is a standing drift, and without a stated why nobody can later tell a needed difference from a forgotten one.
+
+Rejected
+: refusing own entirely (docs and the device bases need their own tables.toml); a separate reasons file (the pin already is the base's account of what it keeps); checking in each base's CI first (the lab job is the one place all bases are seen; a make target can call check-own.sh later).
+
+About
+: ikb
+
+Scope
+: every base's pin file; update-pins
