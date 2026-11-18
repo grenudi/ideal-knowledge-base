@@ -21,6 +21,7 @@ records/upstream.sql
 records/upstream-item.sql
 records/upstream-state.sql
 records/backlog-blocked.sql
+records/backlog-go.sql
 queries/carried.sql
 queries/decided.sql
 queries/ready.sql
