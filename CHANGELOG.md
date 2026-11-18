@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.17.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.16.0...v0.17.0) (2026-11-18)
+
+
+### Features
+
+* feat: a source serves its slice from a folder (#! from = DIR/) ([#81](https://github.com/grenudi/ideal-knowledge-base/issues/81)) ([230aa6d](https://github.com/grenudi/ideal-knowledge-base/commit/230aa6d2804f0de9c33812308851fe026dabf13d))
+
 ## [0.16.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.15.0...v0.16.0) (2026-11-18)
 
 
