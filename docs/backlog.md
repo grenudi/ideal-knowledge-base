@@ -335,11 +335,11 @@ Opened
 : 2026-11-18
 
 
-<a id="decision-links-everywhere"></a>
-### Decisions superseded, amended, scoped and tracked in every base: released, followed
+<a id="tables-own-drift"></a>
+### Bases that keep their own tables.toml miss every new generic field until someone adds it: follow it by part, or fail the base's check
 
 Status
-: in-progress
+: open
 
 About
 : ikb
@@ -348,11 +348,14 @@ Opened
 : 2026-11-18
 
 
-<a id="tables-own-drift"></a>
-### Bases that keep their own tables.toml miss every new generic field until someone adds it: follow it by part, or fail the base's check
+<a id="decision-links-everywhere"></a>
+### Decisions superseded, amended, scoped and tracked in every base: released, followed
 
 Status
-: open
+: done
+
+Note
+: idealkb v0.14.0; docs pinned; device bases have the fields, not yet the record (device-template-follow)
 
 About
 : ikb
