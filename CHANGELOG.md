@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.15.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.14.0...v0.15.0) (2026-11-18)
+
+
+### Features
+
+* feat: tad q ready - the one picking query; backlog needs/rank/hardware generic ([#77](https://github.com/grenudi/ideal-knowledge-base/issues/77)) ([c1b9279](https://github.com/grenudi/ideal-knowledge-base/commit/c1b927970f3a9340c10dc827777f86900917e1dd))
+* feat: update-pins hourly, per-base worktrees, device bases follow ([#75](https://github.com/grenudi/ideal-knowledge-base/issues/75)) ([598acb6](https://github.com/grenudi/ideal-knowledge-base/commit/598acb66ac09de5a3306e9dc260f9084f36b31ab))
+
 ## [0.14.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.13.0...v0.14.0) (2026-11-18)
 
 
