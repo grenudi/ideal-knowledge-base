@@ -59,3 +59,6 @@ ik backlog --id after-dropped --title "blocked by a dropped item" --blocked-by d
 lacks "ready" "^dropme,"
 has "ready" "^after-dropped,.*skipped,.*dropme (dropped)"
 if ikb backlog --id dropnote --title "no reason" --status dropped --skip-render >/dev/null 2>&1; then echo "a dropped item took no note"; exit 1; fi
+# a ready item that needs a witness names the person and the go's end
+ik backlog-go --id attended --until "2099-01-01T00:00:00+00:00"
+has "ready" "^attended,ready,,person,2099-01-01"
