@@ -53,3 +53,9 @@ ik backlog-go --id attended --until "$(date -d '+1 hour' -Is)"
 ik backlog-go --id attended
 has "ready" "^attended,.*skipped,.*needs a witness"
 if ikb backlog-go --id free --until "$(date -Is)" --skip-render >/dev/null 2>&1; then echo "backlog-go took an item that needs no witness"; exit 1; fi
+# an item closed without doing is neither offered nor counted done; what it blocks stays blocked, saying so
+ik backlog --id dropme --title "dropped by the author" --note "dropped: not wanted, the author's word" --status dropped
+ik backlog --id after-dropped --title "blocked by a dropped item" --blocked-by dropme --needs phone --rank 9
+lacks "ready" "^dropme,"
+has "ready" "^after-dropped,.*skipped,.*dropme (dropped)"
+if ikb backlog --id dropnote --title "no reason" --status dropped --skip-render >/dev/null 2>&1; then echo "a dropped item took no note"; exit 1; fi
