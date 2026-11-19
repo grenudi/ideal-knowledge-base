@@ -1,0 +1,9 @@
+version = 1
+
+# Everything in this repository - code, queries, records, data and pages - is MIT OR Apache-2.0, at the
+# reader's choice (LICENSE-MIT, LICENSE-APACHE). A base that follows it keeps its own licence for its own files.
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 the authors of ideal-knowledge-base"
+SPDX-License-Identifier = "MIT OR Apache-2.0"

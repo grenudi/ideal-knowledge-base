@@ -51,3 +51,7 @@ land it: the diff is the signal to send that change here, or to name the file `o
 Records go through the named records (`tad statements`), then `tad canon && tad render`; every change gets
 its own branch and lands through its checks. Commits follow Conventional Commits; release-please makes the
 releases bases pin.
+
+## Licence
+
+MIT OR Apache-2.0, at your choice: [LICENSE-MIT](LICENSE-MIT), [LICENSE-APACHE](LICENSE-APACHE). `sh bin/check-licences.sh` (run in CI) checks that every tracked file is covered.
