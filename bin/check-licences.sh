@@ -1,6 +1,6 @@
 #!/bin/sh
 # Every tracked file has a licence, and every licence named has its text in the repository: a file is covered
-# when a [[annotations]] path in REUSE.toml matches it (** any depth, * within a folder) or its first 20 lines
+# when a [[annotations]] path (one string or a list) in REUSE.toml matches it (** any depth, * within a folder) or its first 20 lines
 # carry SPDX-License-Identifier. The text of MIT is LICENSE-MIT, Apache-2.0 LICENSE-APACHE, CC-BY-SA-4.0
 # LICENSE-CC-BY-SA-4.0. Ends 0 when all is covered, 1 when not. Needs git, sed, grep.
 set -eu
@@ -8,7 +8,7 @@ cd "$(git rev-parse --show-toplevel)"
 bad=0
 pats=""
 if [ -f REUSE.toml ]; then
-	pats=$(sed -n 's/^path = "\(.*\)"$/\1/p' REUSE.toml | sed 's/[.]/\\./g; s/\*\*/\x01/g; s/\*/[^\/]*/g; s/\x01/.*/g; s/^/^/; s/$/$/')
+	pats=$(sed -n 's/^path = //p' REUSE.toml | grep -o '"[^"]*"' | tr -d '"' | sed 's/[.]/\\./g; s/\*\*/\x01/g; s/\*/[^\/]*/g; s/\x01/.*/g; s/^/^/; s/$/$/')
 fi
 for f in $(git ls-files); do
 	ok=0
