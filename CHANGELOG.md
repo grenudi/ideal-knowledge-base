@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.23.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.22.0...v0.23.0) (2026-11-19)
+
+
+### Features
+
+* a backlog item can be dropped: closed without doing, with its reason ([#100](https://github.com/grenudi/ideal-knowledge-base/issues/100)) ([be7b6cd](https://github.com/grenudi/ideal-knowledge-base/commit/be7b6cdec63fa3bbbfe04e24ef34bdbd0a70db5c))
+* licences: MIT OR Apache-2.0, REUSE.toml, and a check that every file is covered ([#97](https://github.com/grenudi/ideal-knowledge-base/issues/97)) ([917b760](https://github.com/grenudi/ideal-knowledge-base/commit/917b76022464039882e556fb10f1cf7cee412e72))
+
+
+### Bug Fixes
+
+* check-licences reads a list of paths in an annotation ([#98](https://github.com/grenudi/ideal-knowledge-base/issues/98)) ([3b8986b](https://github.com/grenudi/ideal-knowledge-base/commit/3b8986b39d453e992fff947ae83fd6e6cc2a24f2))
+
 ## [0.22.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.21.0...v0.22.0) (2026-11-19)
 
 
