@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.24.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.23.0...v0.24.0) (2026-11-19)
+
+
+### Features
+
+* tad q ready names the witness and the end of an open go ([#101](https://github.com/grenudi/ideal-knowledge-base/issues/101)) ([6ddcfd3](https://github.com/grenudi/ideal-knowledge-base/commit/6ddcfd3e2eb5aa4d3850c50a9075b96d17a14cef))
+
 ## [0.23.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.22.0...v0.23.0) (2026-11-19)
 
 
