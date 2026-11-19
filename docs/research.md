@@ -423,3 +423,22 @@ About
 
 Material
 : research/ikb/2026-11-18/
+
+
+<a id="upstream-items-already-holds-an-upstreaming-view"></a>
+### upstream-items-already-holds-an-upstreaming-view
+
+Date
+: 2026-11-19
+
+Brief
+: upstream_items already holds an upstreaming view; a table is not needed, a query and a git check are
+
+Question
+: Does upstream_items hold what a view of what we shipped where, how far, and why needs, or must a table be added? How do Patchwork, Debian's patch tracker and the Android kernel tags show it, and what can be derived from git?
+
+Found
+: Held: target (upstream, its kind), form, state (12 values), version and supersedes (series), links (forwarded, bug, applied_upstream), carried_in, reviewed_by, sent_on, last_update, why (note, waits, from_work). Patchwork's states (new, under review, changes requested, accepted, rejected, superseded, mainlined) map onto our state enum; Debian's DEP-3 fields (Forwarded, Bug, Applied-Upstream) are what we already have; the Android common kernel's UPSTREAM/FROMGIT/FROMLIST tags are the carried tag. Missing: only dates of each step (accepted, landed), which git log of the item's file gives; no new table. Derivable from git without typing: a carried patch landed upstream by patch-id (git cherry UPSTREAM FORK, the minus lines), a sent patch's state from Patchwork's REST API by message-id, replies and Reviewed-by trailers from lore (b4, lei). These are checks that propose, like check-fork-tags.sh, not writers. From memory, not re-read: Patchwork, Debian patch tracker, Linaro dashboards, KernelCI (which shows test results, not patches).
+
+About
+: follow-by-pin

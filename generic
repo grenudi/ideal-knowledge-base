@@ -23,6 +23,8 @@ records/upstream-state.sql
 records/backlog-blocked.sql
 records/backlog-go.sql
 queries/carried.sql
+queries/upstreaming.sql
+queries/upstreaming-counts.sql
 queries/decided.sql
 queries/ready.sql
 records/hardware.sql

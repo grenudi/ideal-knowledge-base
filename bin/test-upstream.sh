@@ -26,11 +26,14 @@ expect "carried" "keep"
 ik upstream-state --id retry --state sent --sent-on 2026-11-18 --forwarded https://example.org/msg1
 ik upstream-state --id retry --state changes-requested --reviewed-by "A. Maintainer"
 ik upstream-state --id retry --state accepted --reviewed-by "B. Reviewer"
+expect "upstreaming" "accepted,accepted,FROMGIT"
+expect "upstreaming-counts" "sxmo,1,0,0,1,0,0"
 expect "upstream" "retry"
 expect "row --id retry" "A. Maintainer; B. Reviewer"
 ik upstream-state --id retry --state landed --applied-upstream "v2.0, commit:abc123"
 expect "carried --fork sxmo-fork" "drop at the next rebase"
 ik upstream-state --id retry --state landed --carried-in none
+expect "upstreaming --upstream sxmo" "landed,landed,UPSTREAM"
 out=$(tad q carried --format csv); [ "$(printf '%s\n' "$out" | wc -l)" -le 1 ] || { echo "a landed item is still carried: $out"; exit 1; }
 refuse "upstream-state --id nowhere --state sent"
 say "the life of a patch reads back: sent, reviewed, accepted, landed, dropped from the fork"

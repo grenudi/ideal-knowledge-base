@@ -745,3 +745,31 @@ About
 
 Scope
 : software-engineering-canon, ideal-project-playbook, idealkb consumers
+
+
+<a id="2026-11-19-upstreaming-is-shown-by-two-queries-over"></a>
+### 2026-11-19-upstreaming-is-shown-by-two-queries-over
+
+Date
+: 2026-11-19
+
+Brief
+: Upstreaming is shown by two queries over upstream_items, not a new table
+
+Decision
+: tad q upstreaming (a row per item: target, stage, tag, days since sent, link, why) and tad q upstreaming-counts (per upstream: carried, in review, accepted, landed, closed) are generic; a site page renders them. State stays true by a check that proposes from git and Patchwork (backlog upstream-state-from-git), never typed by hand where a machine can say it.
+
+Why
+: upstream_items holds every field the view needs; the stage is read off its state as the fork tag already is.
+
+Rejected
+: A separate upstreaming table: it would repeat upstream_items and drift from it. A dates-per-step field now: git log of the item's data file already has them; add only if the page needs a duration the log cannot give.
+
+About
+: follow-by-pin
+
+Research
+: upstream-items-already-holds-an-upstreaming-view
+
+Scope
+: bases that follow idealkb, the docs site page

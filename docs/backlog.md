@@ -449,3 +449,22 @@ Opened
 
 Needs
 : build
+
+
+<a id="upstream-state-from-git"></a>
+### A check that proposes upstream state from git and Patchwork
+
+Status
+: open
+
+Note
+: Shell, proposes only, like check-fork-tags.sh: git cherry UPSTREAM FORK finds a carried patch landed by patch-id (applied_upstream); Patchwork's REST API gives a sent series' state by message-id; lore replies give reviewed_by. Print the ikb upstream-state line to run.
+
+About
+: follow-by-pin
+
+Opened
+: 2026-11-19
+
+Needs
+: build
