@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v7
       - name: tad, from its pinned release
         run: TAD_DEST="$HOME/.local/bin" ./bin/install-tad.sh && echo "$HOME/.local/bin" >> "$GITHUB_PATH"
-      - name: every follower answers the five queries with main laid over it
+      - name: every follower answers the generic queries with main laid over it
         run: |
           git config --global user.name check && git config --global user.email check@localhost
           tad engine >/dev/null
