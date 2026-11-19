@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.22.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.21.0...v0.22.0) (2026-11-19)
+
+
+### Features
+
+* tad q upstreaming and upstreaming-counts: how far what we send has got ([#95](https://github.com/grenudi/ideal-knowledge-base/issues/95)) ([aca98ba](https://github.com/grenudi/ideal-knowledge-base/commit/aca98ba59a7bbf9a371a792811eaf9b7018977d7))
+
 ## [0.21.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.20.0...v0.21.0) (2026-11-18)
 
 
