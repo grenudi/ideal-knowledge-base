@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.25.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.24.0...v0.25.0) (2026-11-20)
+
+
+### Features
+
+* an upstream item's file lives under upstream/; AGENTS says where a series goes ([#103](https://github.com/grenudi/ideal-knowledge-base/issues/103)) ([20a8742](https://github.com/grenudi/ideal-knowledge-base/commit/20a87428cdca6354865123b77dfddb4679820e26))
+
 ## [0.24.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.23.0...v0.24.0) (2026-11-19)
 
 
