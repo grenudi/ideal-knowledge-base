@@ -36,4 +36,6 @@ ik upstream-state --id retry --state landed --carried-in none
 expect "upstreaming --upstream sxmo" "landed,landed,UPSTREAM"
 out=$(tad q carried --format csv); [ "$(printf '%s\n' "$out" | wc -l)" -le 1 ] || { echo "a landed item is still carried: $out"; exit 1; }
 refuse "upstream-state --id nowhere --state sent"
+refuse "upstream-item --id elsewhere --upstream sxmo --title x --form patch --from-work send-it --file research/x"
+ik upstream-item --id inplace --upstream sxmo --title "kept under upstream" --form patch --from-work send-it --file auto
 say "the life of a patch reads back: sent, reviewed, accepted, landed, dropped from the fork"
