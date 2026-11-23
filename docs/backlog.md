@@ -563,3 +563,22 @@ Opened
 
 Needs
 : build
+
+
+<a id="follow-by-rhizoid"></a>
+### bin/follow.sh becomes a shim over rhizoid follow (git-rhizoid v0.2.5)
+
+Status
+: open
+
+Note
+: Practice 21: follow.sh is 90 lines of shell that parses. Steps: (1) bin/install-rhizoid.sh from the release asset, checksum checked, like install-tad.sh; CI and the pin job install it; (2) bin/follow.sh stays as the one entry, a shim exec-ing rhizoid follow, so update-pins, check-own and followers-answer change nothing; (3) soak: run old and new follow on every consumer at the current pin and compare stdout, exit and tree, before switching; (4) test-follow.sh passes on the shim in CI. The three stated differences (a regex marker refused, a failed write exit 2, no NUL warning) are fine: our markers are plain words.
+
+About
+: follow-by-pin
+
+Opened
+: 2026-11-23
+
+Needs
+: build
