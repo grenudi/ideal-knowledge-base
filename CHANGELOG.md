@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.26.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.25.0...v0.26.0) (2026-11-23)
+
+
+### Features
+
+* ready shows unranked items first with a finding; backlog-go requires outcomes ([#109](https://github.com/grenudi/ideal-knowledge-base/issues/109)) ([a0f77b9](https://github.com/grenudi/ideal-knowledge-base/commit/a0f77b939dadfa42b2e9b984ae1e685b8d7aaa90))
+
 ## [0.25.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.24.0...v0.25.0) (2026-11-20)
 
 
