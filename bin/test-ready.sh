@@ -45,11 +45,11 @@ printf 'test-ready: a done blocker is clear, an outside wait is not ready, every
 # an item that needs a witness is ready only while a person's go is open
 ik backlog --id attended --title "the author must see it" --needs phone --witness person --rank 8
 has "ready" "^attended,.*skipped,.*needs a witness"
-ik backlog-go --id attended --until "$(date -d '+1 hour' -Is)"
+ik backlog-go --id attended --until "$(date -d '+1 hour' -Is)" --outcomes "if the go is open then ready shows it"
 has "ready" "^attended,.*ready"
-ik backlog-go --id attended --until "$(date -d '-1 hour' -Is)"
+ik backlog-go --id attended --until "$(date -d '-1 hour' -Is)" --outcomes "if the go is open then ready shows it"
 has "ready" "^attended,.*skipped,.*needs a witness"
-ik backlog-go --id attended --until "$(date -d '+1 hour' -Is)"
+ik backlog-go --id attended --until "$(date -d '+1 hour' -Is)" --outcomes "if the go is open then ready shows it"
 ik backlog-go --id attended
 has "ready" "^attended,.*skipped,.*needs a witness"
 if ikb backlog-go --id free --until "$(date -Is)" --skip-render >/dev/null 2>&1; then echo "backlog-go took an item that needs no witness"; exit 1; fi
@@ -59,6 +59,11 @@ ik backlog --id after-dropped --title "blocked by a dropped item" --blocked-by d
 lacks "ready" "^dropme,"
 has "ready" "^after-dropped,.*skipped,.*dropme (dropped)"
 if ikb backlog --id dropnote --title "no reason" --status dropped --skip-render >/dev/null 2>&1; then echo "a dropped item took no note"; exit 1; fi
+if ikb backlog-go --id attended --until "2099-01-01T00:00:00+00:00" --skip-render >/dev/null 2>&1; then echo "a go opened without outcomes"; exit 1; fi
+# an unranked item is a finding and comes first, not last
+ik backlog --id norank --title "recorded without a rank" --needs phone
+ik backlog --id ranked1 --title "ranked" --needs phone --rank 1
+has "ready" "^norank,.*unranked: give it a rank"
 # a ready item that needs a witness names the person and the go's end
-ik backlog-go --id attended --until "2099-01-01T00:00:00+00:00"
+ik backlog-go --id attended --until "2099-01-01T00:00:00+00:00" --outcomes "if the go is open then ready shows it"
 has "ready" "^attended,ready,,person,2099-01-01"
