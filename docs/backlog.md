@@ -468,3 +468,60 @@ Opened
 
 Needs
 : build
+
+
+<a id="docs-pages-rendered-in-ci"></a>
+### Stop committing rendered docs/: render in the Pages workflow
+
+Status
+: open
+
+Note
+: Steward's structure review rule 6. idealkb first, then google-walleye-lab (conflicts hurt most), then the rest; data/ stays committed. Objections: playbook's make rst/site and the docs site (orchestration's feeds) read rendered pages, so render first there; verify keeps tad check and a canonical check on data.
+
+About
+: follow-by-pin
+
+Opened
+: 2026-11-23
+
+Needs
+: build
+
+
+<a id="go-as-a-record"></a>
+### A go is its own append-only record, which backlog cannot clear; ready prints the verdict
+
+Status
+: open
+
+Note
+: Rule 7. Generic table: item, until, by, what (free text), closed. The image sha256 is the device bases', their own extra field. Replaces go_until on backlog (keep witness). waits stays free text; ready derives 'waits: a go' from witness with no open go, and prints act now (go until T) / waits: RECORD / blocked: ID.
+
+About
+: follow-by-pin
+
+Opened
+: 2026-11-23
+
+Needs
+: build
+
+
+<a id="material-and-file-have-a-home"></a>
+### research --material refused outside research/; CI checks named paths exist
+
+Status
+: open
+
+Note
+: Rule 8. Same refusal as upstream-item --file. The existence check fails today on older rows whose folder is gone or lives in another repo: repair or allow-list first, then turn it on.
+
+About
+: follow-by-pin
+
+Opened
+: 2026-11-23
+
+Needs
+: build
