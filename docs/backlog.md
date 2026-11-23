@@ -470,6 +470,25 @@ Needs
 : build
 
 
+<a id="material-and-file-have-a-home"></a>
+### research --material refused outside research/; CI checks named paths exist
+
+Status
+: open
+
+Note
+: Rule 8. Same refusal as upstream-item --file. The existence check fails today on older rows whose folder is gone or lives in another repo: repair or allow-list first, then turn it on.
+
+About
+: follow-by-pin
+
+Opened
+: 2026-11-23
+
+Needs
+: build
+
+
 <a id="docs-pages-rendered-in-ci"></a>
 ### Stop committing rendered docs/: render in the Pages workflow
 
@@ -477,7 +496,26 @@ Status
 : open
 
 Note
-: Steward's structure review rule 6. idealkb first, then google-walleye-lab (conflicts hurt most), then the rest; data/ stays committed. Objections: playbook's make rst/site and the docs site (orchestration's feeds) read rendered pages, so render first there; verify keeps tad check and a canonical check on data.
+: Steward rule 6 (docs 2026-11-23-structure-rendered-pages-not-committed). The same change gives make verify a new job (check that the pages render) and points the README to the site. Before every base follows, show it on google-walleye-lab with two PRs landed minutes apart; walleye saw data/*.json conflict too, so append order may be next. Objections: the playbook's make rst/site and the docs site read rendered pages, so render first there; data/ stays committed.
+
+About
+: follow-by-pin
+
+Opened
+: 2026-11-23
+
+Needs
+: build
+
+
+<a id="folder-readmes-laid-by-idealkb"></a>
+### idealkb lays the READMEs of its own folders: data, docs, queries, records, research
+
+Status
+: open
+
+Note
+: Steward amendment: each folder's README says what it holds (its first paragraph is its brief). Generic files in the follow list; the steward's interim READMEs in the labs and docs are replaced by them.
 
 About
 : follow-by-pin
@@ -496,7 +534,7 @@ Status
 : open
 
 Note
-: Rule 7. Generic table: item, until, by, what (free text), closed. The image sha256 is the device bases', their own extra field. Replaces go_until on backlog (keep witness). waits stays free text; ready derives 'waits: a go' from witness with no open go, and prints act now (go until T) / waits: RECORD / blocked: ID.
+: Rule 7 (docs 2026-11-23-structure-go-is-its-own-record). Generic table: item, until, by, what, closed; the image sha256 is the device bases' own field. Replaces go_until (keep witness). waits stays free text. ready --for keeper prints act now (go until T) / waits: RECORD / blocked: ID, and the keeper acts only on act now; one lasting keeper role per device.
 
 About
 : follow-by-pin
@@ -508,14 +546,14 @@ Needs
 : build
 
 
-<a id="material-and-file-have-a-home"></a>
-### research --material refused outside research/; CI checks named paths exist
+<a id="docs-follows-generic-decision-and-research"></a>
+### docs follows the generic decision and research records and keys
 
 Status
 : open
 
 Note
-: Rule 8. Same refusal as upstream-item --file. The existence check fails today on older rows whose folder is gone or lives in another repo: repair or allow-list first, then turn it on.
+: Seen 2026-11-23: docs' ikb decision lacks --supersedes and --amends (its records/decision.sql is an older own copy; AGENTS.md tells sessions to use them), and docs keys research by (project, id) where google-walleye-lab keys it by id, so ikb set research needs different keys. Fix in docs: take the generic decision record, and make project a field not part of the key (or key everything alike). Not idealkb's code: docs' own files; tell docs.
 
 About
 : follow-by-pin
