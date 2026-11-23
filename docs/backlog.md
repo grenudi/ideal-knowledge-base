@@ -604,3 +604,22 @@ Proof
 
 Rank
 : 3
+
+
+<a id="ready-unranked-first"></a>
+### ready shows an unranked item first with a finding; backlog-go requires outcomes
+
+Status
+: done
+
+Note
+: Orchestration's sign: an item recorded without a rank sank to last in tad q ready. Now first, with finding; a go needs --outcomes (kept in the note). Landed in PR 109.
+
+About
+: follow-by-rhizoid
+
+Opened
+: 2026-11-23
+
+Needs
+: build
