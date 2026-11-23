@@ -582,3 +582,25 @@ Opened
 
 Needs
 : build
+
+
+<a id="rhizoid-status-reads-own"></a>
+### rhizoid status reads idealkb.toml own and why: declared own files are not moved by hand; docs declares its own
+
+Status
+: open
+
+About
+: follow-by-rhizoid
+
+Opened
+: 2026-11-23
+
+Needs
+: build
+
+Proof
+: rhizoid status on device-template and docs shows no moved-by-hand line for declared files
+
+Rank
+: 3
