@@ -773,3 +773,31 @@ Research
 
 Scope
 : bases that follow idealkb, the docs site page
+
+
+<a id="2026-11-23-own-files-read-as-declared"></a>
+### 2026-11-23-own-files-read-as-declared
+
+Date
+: 2026-11-23
+
+Brief
+: A base's own files, named in idealkb.toml own with a why, read as declared: rhizoid status does not call them moved by hand
+
+Decision
+: The bases already declare own files (tables.toml, records/backlog.sql) with a [why] each; bin/check-own.sh enforces the reason. rhizoid status reads own and [why] from idealkb.toml and shows those files as declared; only a file that differs and is not listed is moved by hand. Docs, which has no idealkb part, lists its differing files in its own idealkb.toml own with a why, or sends them upstream as items.
+
+Why
+: Steward's rhizoid status found 13 standing lines in every base while follow calls the same files the base's own; a standing sign is busy work. Declared own is already data, so the status should read it.
+
+Rejected
+: Upstream items for every line: the labs' tables.toml differs by their own device tables, not a gap in idealkb. A suppress list inside rhizoid: a second place for what idealkb.toml already says.
+
+About
+: follow-by-rhizoid
+
+Scope
+: bases, rhizoid, steward
+
+Tracked by
+: rhizoid-status-reads-own
