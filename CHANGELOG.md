@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.27.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.26.0...v0.27.0) (2026-11-24)
+
+
+### Features
+
+* backlog-go --image-sha256, the go's image as its own field ([#112](https://github.com/grenudi/ideal-knowledge-base/issues/112)) ([cc6bdfd](https://github.com/grenudi/ideal-knowledge-base/commit/cc6bdfd709501bce108f399aec95293558d6d441))
+
 ## [0.26.0](https://github.com/grenudi/ideal-knowledge-base/compare/v0.25.0...v0.26.0) (2026-11-23)
 
 
