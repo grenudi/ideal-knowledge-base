@@ -64,6 +64,15 @@ if ikb backlog-go --id attended --until "2099-01-01T00:00:00+00:00" --skip-rende
 ik backlog --id norank --title "recorded without a rank" --needs phone
 ik backlog --id ranked1 --title "ranked" --needs phone --rank 1
 has "ready" "^norank,.*unranked: give it a rank"
+# a go may name the image it covers: image_sha256, exactly 64 lowercase hex, read as its own field
+SHA=$(printf a%.0s $(seq 64))
+ik backlog-go --id attended --until "2099-01-01T00:00:00+00:00" --outcomes "if the go is open then ready shows it" --image-sha256 "$SHA"
+row=$(tad q row --id attended --format csv 2>&1 || true)
+case "$row" in *"$SHA"*) ;; *) echo "image_sha256 not kept as its own field"; exit 1;; esac
+for bad in aaaaaaaaaaaa "$(printf A%.0s $(seq 64))" "$(printf g%.0s $(seq 64))" "${SHA}a"; do
+  if ikb backlog-go --id attended --until "2099-01-01T00:00:00+00:00" --outcomes x --image-sha256 "$bad" --skip-render >/dev/null 2>&1; then echo "a go took a bad sha: $bad"; exit 1; fi
+done
+ik backlog-go --id attended
 # a ready item that needs a witness names the person and the go's end
 ik backlog-go --id attended --until "2099-01-01T00:00:00+00:00" --outcomes "if the go is open then ready shows it"
 has "ready" "^attended,ready,,person,2099-01-01"

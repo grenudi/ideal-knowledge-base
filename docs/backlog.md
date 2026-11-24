@@ -623,3 +623,22 @@ Opened
 
 Needs
 : build
+
+
+<a id="go-names-its-image"></a>
+### a go names its image: backlog-go --image-sha256, field image_sha256
+
+Status
+: done
+
+Note
+: From the walleye lane: UFS run 5 stopped because the go's note gave the sha in 12 characters. 64 lowercase hex or refused; cleared when the go closes. Image-specific for now (one image per go).
+
+About
+: follow-by-rhizoid
+
+Opened
+: 2026-11-24
+
+Needs
+: build
